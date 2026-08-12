@@ -35,7 +35,12 @@ interface SpotifyArtist {
   name: string
   external_urls: { spotify: string }
   images: { url: string }[]
-  followers: { total: number }
+  // A Spotify removeu esse campo da resposta pra apps em "Development
+  // Mode" a partir de fev/mar de 2026 (changelog oficial: "[REMOVED]
+  // followers — Information about the followers of the artist."). Fica
+  // opcional aqui pra refletir a realidade atual da API — não é mais
+  // garantido que essa chave venha preenchida (ou venha, sequer).
+  followers?: { total: number }
 }
 
 // Cache simples em memória — evita pedir um token novo a cada busca.
@@ -99,7 +104,13 @@ function mapArtist(artist: SpotifyArtist) {
     url: artist.external_urls.spotify,
     type: "artist" as const,
     imageUrl: artist.images[0]?.url ?? null,
-    followers: artist.followers.total,
+    // Sem ?? 0 de propósito: quando a Spotify não manda esse dado (caso
+    // comum agora, ver comentário na interface SpotifyArtist acima),
+    // fica undefined — e a interface (spotify-field.tsx) já sabe
+    // esconder a contagem nesse caso, em vez de mostrar "0 seguidores"
+    // de forma enganosa pra um artista que na verdade tem seguidores,
+    // só que a API não informa mais.
+    followers: artist.followers?.total,
   }
 }
 
