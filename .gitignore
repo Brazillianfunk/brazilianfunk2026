@@ -1,0 +1,20 @@
+# dependências
+/node_modules
+
+# build do Next.js
+/.next/
+/out/
+
+# variáveis de ambiente — NUNCA versionar (contém credenciais do Spotify)
+.env
+.env.local
+.env.*.local
+
+# arquivos de sistema/editor
+.DS_Store
+*.pem
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts

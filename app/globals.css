@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Identidade visual — Brazilian Funk
+  Fundo preto absoluto, textos brancos, acento verde.
+  Estas variáveis alimentam as classes shadcn usadas nos componentes
+  (bg-background, text-foreground, border-border, bg-card, bg-accent...),
+  então a Navbar e a Hero herdam o tema automaticamente sem precisar
+  hardcodar cores dentro de cada componente.
+*/
+@layer base {
+  :root {
+    --background: 0 0% 2%;              /* #050505 — preto quase absoluto */
+    --foreground: 60 9% 96%;            /* #f5f4f0 — branco quente */
+
+    --card: 0 0% 5%;                    /* #0c0c0c */
+    --card-foreground: 60 9% 96%;
+
+    --popover: 0 0% 4%;                 /* #0a0a0a */
+    --popover-foreground: 60 9% 96%;
+
+    --primary: 220 98% 23%;              /* #012775 — azul da marca */
+    --primary-foreground: 0 0% 4%;      /* texto quase preto sobre o verde */
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 60 9% 96%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 60 3% 58%;      /* cinza quente para textos secundários */
+
+    --accent: 0 0% 10%;
+    --accent-foreground: 60 9% 96%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9% 96%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 135 95% 30%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/*
+  Esteira de capas da Hero — CSS puro em vez de loop JS (framer-motion
+  `animate` com repeat: Infinity mantinha um requestAnimationFrame rodando
+  pra sempre, mesmo com a Hero fora da tela). Uma @keyframes composta pelo
+  navegador é mais barata e pode ser otimizada/pausada automaticamente
+  quando a camada não está visível.
+*/
+.hero-marquee-track {
+  width: max-content;
+  animation: heroMarquee 60s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-marquee-track {
+    animation: none;
+  }
+}
+@keyframes heroMarquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/*
+  Parede de capas do fundo da Hero — mesmo princípio da esteira acima:
+  só CSS (translateY em loop), zero JavaScript rodando a cada frame.
+  Duas cópias da grade empilhadas + translateY(-50%) = loop sem costura.
+*/
+.hero-wall-track {
+  animation: heroWallScroll 50s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-wall-track {
+    animation: none;
+  }
+}
+@keyframes heroWallScroll {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
