@@ -58,10 +58,19 @@ export const legalTerms: Record<Locale, LegalSection[]> = {
       ]
     },
     {
+      "title": "NATUREZA DA RELAÇÃO QUANTO AOS VALORES RECEBIDOS",
+      "paragraphs": [
+        "Os valores pagos pelos Serviços de Música Digital (DSPs) e demais fontes de exploração comercial das Obras são devidos e pertencem exclusivamente ao Artista, titular dos direitos autorais e conexos sobre as Obras, na proporção e nos termos definidos pelos respectivos DSPs e por eventuais acordos de distribuição de receitas entre cotitulares.",
+        "A Brazilian Funk recebe tais valores das DSPs e demais fontes pagadoras na qualidade de mandatária e gestora financeira do Artista, para fins exclusivos de consolidação, apuração e repasse dos royalties devidos, não havendo transferência de titularidade desses valores à Brazilian Funk em nenhum momento, exceto quanto à parcela correspondente à Comissão de que trata a cláusula anterior.",
+        "A receita própria da Brazilian Funk, para todos os fins contratuais, contábeis e fiscais, corresponde exclusivamente ao valor da Comissão retida sobre os royalties apurados, não se confundindo com o montante total recebido das DSPs, o qual constitui, até o momento do repasse, patrimônio do Artista sob gestão da Brazilian Funk.",
+        "A Brazilian Funk se compromete a manter registros e conciliações que permitam identificar, a qualquer momento, os valores recebidos por DSP, por Obra e por Artista, bem como o cálculo da Comissão aplicada, disponibilizando tais informações ao Artista através do dashboard da Plataforma ou mediante solicitação."
+      ]
+    },
+    {
       "title": "RESCISÃO",
       "paragraphs": [
         "Você pode encerrar sua conta a qualquer momento mediante notificação por escrito (inclusive e-mail), com 1 (um) dia de antecedência, desde que não existam pendências financeiras não compensáveis com seu saldo de royalties. Após seu pedido, notificaremos os DSPs, que terão até 30 (trinta) dias para remover as Obras de todas as plataformas. Não nos responsabilizamos pela exploração das Obras por terceiros após a retirada do Conteúdo.",
-        "A Brazilian Funk pode rescindir este Contrato mediante notificação por escrito, com 1 (um) dia de antecedência, desde que não existam Serviços pendentes a Você. Aplicam-se os mesmos prazos de remoção do Conteúdo dos DSPs descritos na cláusula 15.",
+        "A Brazilian Funk pode rescindir este Contrato mediante notificação por escrito, com 1 (um) dia de antecedência, desde que não existam Serviços pendentes a Você. Aplicam-se os mesmos prazos de remoção do Conteúdo dos DSPs descritos na cláusula anterior.",
         "Qualquer reembolso somente será realizado se comprovada violação direta destes Termos pela Brazilian Funk.",
         "Podemos rescindir este Contrato imediatamente se identificarmos atividade fraudulenta, ilegal, ou comportamento ameaçador, desrespeitoso ou não profissional por parte do Usuário. Nesse caso, não haverá reembolso de valores."
       ]
@@ -165,10 +174,19 @@ export const legalTerms: Record<Locale, LegalSection[]> = {
       ]
     },
     {
+      "title": "NATURE OF THE RELATIONSHIP REGARDING AMOUNTS RECEIVED",
+      "paragraphs": [
+        "The amounts paid by Digital Service Providers (DSPs) and other sources of commercial exploitation of the Works are owed to, and belong exclusively to, the Artist, as the holder of the copyright and related rights over the Works, in the proportion and under the terms defined by the respective DSPs and by any revenue-sharing arrangements among co-owners.",
+        "Brazilian Funk receives such amounts from the DSPs and other paying sources in its capacity as agent and financial manager of the Artist, for the exclusive purposes of consolidating, calculating, and paying out the royalties owed, with no transfer of ownership of such amounts to Brazilian Funk at any time, except with respect to the portion corresponding to the Commission referred to in the preceding clause.",
+        "Brazilian Funk's own revenue, for all contractual, accounting, and tax purposes, corresponds exclusively to the amount of the Commission withheld from the royalties calculated, and is not to be confused with the total amount received from the DSPs, which constitutes, until the moment of payout, the Artist's assets under Brazilian Funk's management.",
+        "Brazilian Funk undertakes to maintain records and reconciliations that make it possible to identify, at any time, the amounts received by DSP, by Work, and by Artist, as well as the calculation of the Commission applied, making such information available to the Artist through the Platform's dashboard or upon request."
+      ]
+    },
+    {
       "title": "TERMINATION",
       "paragraphs": [
         "You may terminate Your account at any time by written notice (including email), with 1 (one) day's notice, provided there are no outstanding financial obligations that cannot be offset against Your royalty balance. After Your request, we will notify the DSPs, who will have up to 30 (thirty) days to remove the Works from all platforms. We are not responsible for the exploitation of the Works by third parties after the Content has been taken down.",
-        "Brazilian Funk may terminate this Agreement by written notice, with 1 (one) day's notice, provided there are no outstanding Services owed to You. The same DSP content removal timeframes described in clause 15 apply.",
+        "Brazilian Funk may terminate this Agreement by written notice, with 1 (one) day's notice, provided there are no outstanding Services owed to You. The same DSP content removal timeframes described in the preceding clause apply.",
         "Any refund will only be made if a direct violation of these Terms by Brazilian Funk is proven.",
         "We may terminate this Agreement immediately if we identify fraudulent or illegal activity, or threatening, disrespectful, or unprofessional conduct on the part of the User. In such case, there will be no refund of amounts."
       ]
@@ -272,10 +290,19 @@ export const legalTerms: Record<Locale, LegalSection[]> = {
       ]
     },
     {
+      "title": "NATURALEZA DE LA RELACIÓN RESPECTO DE LOS VALORES RECIBIDOS",
+      "paragraphs": [
+        "Los valores pagados por los Servicios de Música Digital (DSPs) y demás fuentes de explotación comercial de las Obras son adeudados y pertenecen exclusivamente al Artista, titular de los derechos de autor y conexos sobre las Obras, en la proporción y en los términos definidos por los respectivos DSPs y por eventuales acuerdos de distribución de ingresos entre cotitulares.",
+        "Brazilian Funk recibe dichos valores de los DSPs y demás fuentes pagadoras en calidad de mandataria y gestora financiera del Artista, con fines exclusivos de consolidación, cálculo y pago de las regalías adeudadas, sin que exista transferencia de titularidad de esos valores a Brazilian Funk en ningún momento, salvo en lo que respecta a la parte correspondiente a la Comisión de que trata la cláusula anterior.",
+        "Los ingresos propios de Brazilian Funk, para todos los efectos contractuales, contables y fiscales, corresponden exclusivamente al valor de la Comisión retenida sobre las regalías calculadas, sin confundirse con el monto total recibido de los DSPs, el cual constituye, hasta el momento del pago, patrimonio del Artista bajo la gestión de Brazilian Funk.",
+        "Brazilian Funk se compromete a mantener registros y conciliaciones que permitan identificar, en cualquier momento, los valores recibidos por DSP, por Obra y por Artista, así como el cálculo de la Comisión aplicada, poniendo dicha información a disposición del Artista a través del panel de control de la Plataforma o a solicitud de este."
+      ]
+    },
+    {
       "title": "RESCISIÓN",
       "paragraphs": [
         "Usted puede cancelar su cuenta en cualquier momento mediante notificación por escrito (incluido correo electrónico), con 1 (un) día de anticipación, siempre que no existan pendencias financieras que no puedan compensarse con su saldo de regalías. Tras su solicitud, notificaremos a los DSPs, que tendrán hasta 30 (treinta) días para retirar las Obras de todas las plataformas. No nos responsabilizamos por la explotación de las Obras por parte de terceros después de la retirada del Contenido.",
-        "Brazilian Funk puede rescindir este Contrato mediante notificación por escrito, con 1 (un) día de anticipación, siempre que no existan Servicios pendientes con Usted. Se aplican los mismos plazos de retirada del Contenido de los DSPs descritos en la cláusula 15.",
+        "Brazilian Funk puede rescindir este Contrato mediante notificación por escrito, con 1 (un) día de anticipación, siempre que no existan Servicios pendientes con Usted. Se aplican los mismos plazos de retirada del Contenido de los DSPs descritos en la cláusula anterior.",
         "Cualquier reembolso solo se realizará si se comprueba una infracción directa de estos Términos por parte de Brazilian Funk.",
         "Podemos rescindir este Contrato de inmediato si identificamos actividad fraudulenta, ilegal, o comportamiento amenazante, irrespetuoso o poco profesional por parte del Usuario. En ese caso, no habrá reembolso de valores."
       ]
