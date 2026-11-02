@@ -1,4 +1,6 @@
 "use client"
+import { SplitHeading } from "@/components/ui/split-heading"
+import { SpotlightGroup } from "@/components/ui/spotlight-group"
 
 // Suporte.
 //
@@ -27,16 +29,17 @@ export default function SupportSection() {
         <div className="reveal grid items-end gap-8 md:grid-cols-[1fr_auto]">
           <div className="max-w-2xl">
             <SectionBadge>{t.support.badge}</SectionBadge>
-            <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.support.title}</h2>
+            <SplitHeading className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl" text={t.support.title} />
           </div>
           <p className="max-w-sm text-base text-muted-foreground md:text-lg">{t.support.description}</p>
         </div>
 
-        <div className="reveal mt-14 grid overflow-hidden rounded-[32px] border border-border bg-background/60 sm:grid-cols-2">
+        <SpotlightGroup className="spot-group reveal mt-14 grid overflow-hidden rounded-[32px] border border-border bg-background/60 sm:grid-cols-2">
           {t.support.items.map((item, index) => (
             <article
               key={item.title}
-              className="flex gap-5 border-border p-8 transition-colors hover:bg-card md:p-10 [&:not(:last-child)]:border-b sm:[&:nth-child(odd)]:border-r sm:[&:nth-last-child(-n+2)]:border-b-0"
+              data-spot
+              className="spot flex gap-5 border-border p-8 transition-colors hover:bg-card md:p-10 [&:not(:last-child)]:border-b sm:[&:nth-child(odd)]:border-r sm:[&:nth-last-child(-n+2)]:border-b-0"
             >
               <span className="relative h-14 w-14 flex-none">
                 <img src={IMAGES[index]} alt="" className="h-14 w-14 rounded-full border border-border object-cover" />
@@ -54,7 +57,7 @@ export default function SupportSection() {
               </div>
             </article>
           ))}
-        </div>
+        </SpotlightGroup>
       </div>
     </section>
   )

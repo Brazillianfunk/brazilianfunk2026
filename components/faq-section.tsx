@@ -1,4 +1,5 @@
 "use client"
+import { SplitHeading } from "@/components/ui/split-heading"
 
 // Perguntas frequentes + chamada final.
 //
@@ -29,7 +30,7 @@ export default function FaqSection() {
         <div className="reveal grid gap-12 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-16">
           <div>
             <SectionBadge>{t.faq.badge}</SectionBadge>
-            <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.faq.heading}</h2>
+            <SplitHeading className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl" text={t.faq.heading} />
             <p className="mt-6 max-w-sm text-base text-muted-foreground md:text-lg">{t.faq.subtitle}</p>
             <Button href={WHATSAPP_URL} variant="secondary" className="mt-8" target="_blank" rel="noopener noreferrer">
               {t.faq.whatsapp}
@@ -64,7 +65,7 @@ export default function FaqSection() {
             <p className="max-w-xl text-3xl font-bold tracking-tight text-white md:text-5xl">{t.faq.ctaText}</p>
             <Button href="/solicitar-acesso" size="lg" variant="light">
               {t.hero.cta}
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true" className="btn-arrow">→</span>
             </Button>
           </div>
         </div>

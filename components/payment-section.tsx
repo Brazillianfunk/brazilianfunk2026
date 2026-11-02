@@ -1,4 +1,5 @@
 "use client"
+import { SplitHeading } from "@/components/ui/split-heading"
 
 // Pagamentos.
 //
@@ -61,7 +62,7 @@ export default function PaymentSection() {
         {/* Texto */}
         <div className="reveal">
           <SectionBadge>{t.payment.overline}</SectionBadge>
-          <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.payment.title}</h2>
+          <SplitHeading className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl" text={t.payment.title} />
           <p className="mt-6 max-w-md text-base text-muted-foreground md:text-lg">{t.payment.description}</p>
 
           <ul className="mt-10 max-w-md divide-y divide-border border-y border-border">
