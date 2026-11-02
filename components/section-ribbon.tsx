@@ -8,7 +8,7 @@ import { useTranslation } from "@/lib/i18n/use-translation"
 export default function SectionRibbon() {
   const { t } = useTranslation()
   return (
-    <div className="pointer-events-none relative z-10 -mb-10 -mt-20 md:-mb-16 md:-mt-28">
+    <div className="pointer-events-none relative z-10 -mt-6 md:-mt-10">
       <WavyRibbon text={t.distribution.ribbon} />
     </div>
   )

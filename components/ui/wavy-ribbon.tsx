@@ -31,20 +31,20 @@ export type WavyRibbonProps = {
   className?: string
 }
 
-// Desenho em 1440 x 300. Curva que sobe da esquerda para a direita, com uma
-// ondulação no meio, como no exemplo.
+// Desenho em 1440 x 160. Onda suave, quase horizontal: a faixa marca a
+// passagem entre as seções sem roubar a cena.
 const VIEW_W = 1440
-const VIEW_H = 300
-const PATH = "M -200 250 C 150 270, 420 240, 700 170 S 1180 40, 1640 60"
-const BAND = 120
+const VIEW_H = 160
+const PATH = "M -200 100 C 160 125, 480 50, 820 75 S 1360 115, 1640 55"
+const BAND = 52
 
 export function WavyRibbon({
   text,
   // Espaços comuns se juntam num só dentro do SVG; por isso espaços fixos.
-  separator = "\u00A0\u00A0•\u00A0\u00A0",
+  separator = "\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0",
   color = "hsl(var(--brand-lime))",
   ink = "#050505",
-  speed = 60,
+  speed = 35,
   className = "",
 }: WavyRibbonProps) {
   const uid = "wr" + React.useId().replace(/[^a-zA-Z0-9]/g, "")
@@ -105,9 +105,9 @@ export function WavyRibbon({
   }, [speed, unit])
 
   const textStyle: React.CSSProperties = {
-    fontWeight: 900,
-    fontSize: 78,
-    letterSpacing: "-0.02em",
+    fontWeight: 600,
+    fontSize: 22,
+    letterSpacing: "0.14em",
     fill: ink,
   }
 
@@ -118,13 +118,11 @@ export function WavyRibbon({
         aria-hidden="true"
         focusable="false"
         viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-        className="relative left-1/2 block h-auto w-[max(100%,820px)] -translate-x-1/2"
+        className="relative left-1/2 block h-auto w-[max(100%,1100px)] -translate-x-1/2"
       >
         <defs>
           <path id={uid} d={PATH} />
         </defs>
-        {/* sombra suave sob a faixa, para ela "descolar" do fundo */}
-        <use href={`#${uid}`} fill="none" stroke="rgba(0,0,0,0.45)" strokeWidth={BAND} transform="translate(0 10)" />
         <use href={`#${uid}`} fill="none" stroke={color} strokeWidth={BAND} />
         <text style={textStyle} dominantBaseline="central">
           <textPath ref={textPathRef} href={`#${uid}`} startOffset="0">
