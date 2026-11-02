@@ -17,6 +17,7 @@ export interface Dictionary {
     badge: string
     title: string
     description: string
+    statLabel: string
   }
   payment: {
     title: string
@@ -163,9 +164,10 @@ export const dictionary: Record<Locale, Dictionary> = {
       "wallLabel": "Lançamentos distribuídos pela Brazilian Funk"
     },
     "distribution": {
-      "badge": "+40 Lojas e Serviços",
+      "badge": "Distribuição",
       "title": "Distribuição Global para os Principais Serviços de Música",
-      "description": "Envios ilimitados para as principais plataformas de streaming. Distribua suas músicas para Spotify, Apple Music, TikTok, Amazon, Deezer, Instagram, YouTube Music e mais de 40 plataformas globais."
+      "description": "Envios ilimitados. Um único envio leva seu lançamento para as principais lojas e serviços de streaming do mundo.",
+      "statLabel": "lojas e serviços de streaming"
     },
     "payment": {
       "title": "Receba seus pagamentos de forma simples",
@@ -393,9 +395,10 @@ export const dictionary: Record<Locale, Dictionary> = {
       "wallLabel": "Releases distributed by Brazilian Funk"
     },
     "distribution": {
-      "badge": "+40 Stores and Services",
+      "badge": "Distribution",
       "title": "Global Distribution to the Leading Music Services",
-      "description": "Unlimited uploads to the leading streaming platforms. Distribute your music to Spotify, Apple Music, TikTok, Amazon, Deezer, Instagram, YouTube Music, and more than 40 global platforms."
+      "description": "Unlimited releases. A single upload takes your music to the top stores and streaming services worldwide.",
+      "statLabel": "stores and streaming services"
     },
     "payment": {
       "title": "Receive your payments easily",
@@ -623,9 +626,10 @@ export const dictionary: Record<Locale, Dictionary> = {
       "wallLabel": "Lanzamientos distribuidos por Brazilian Funk"
     },
     "distribution": {
-      "badge": "+40 Tiendas y Servicios",
+      "badge": "Distribución",
       "title": "Distribución Global a los Principales Servicios de Música",
-      "description": "Envíos ilimitados a las principales plataformas de streaming. Distribuye tu música en Spotify, Apple Music, TikTok, Amazon, Deezer, Instagram, YouTube Music y más de 40 plataformas globales."
+      "description": "Envíos ilimitados. Un solo envío lleva tu lanzamiento a las principales tiendas y servicios de streaming del mundo.",
+      "statLabel": "tiendas y servicios de streaming"
     },
     "payment": {
       "title": "Recibe tus pagos de forma sencilla",

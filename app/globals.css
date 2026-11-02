@@ -73,3 +73,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Faixa de plataformas (components/ui/logo-marquee.tsx): duas cópias da
+   lista lado a lado; andar -50% fecha o loop sem costura. */
+@keyframes logo-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

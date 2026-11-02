@@ -1,50 +1,39 @@
 "use client"
 
-// ---------------------------------------------------------------------------
-// Este arquivo faz parte do projeto Next.js (usa imports @/... do seu projeto).
-// Ele NÃO abre como preview aqui no chat — cole no seu projeto pra rodar.
-// Para ver o resultado visual, use o brazilian-funk-preview.html.
-// ---------------------------------------------------------------------------
-
-import { LogoCarousel, type Logo } from "@/components/ui/logo-carousel"
-import { useTranslation } from "@/lib/i18n/use-translation"
+import { LogoMarquee } from "@/components/ui/logo-marquee"
+import { PLATFORMS } from "@/components/ui/platform-icons"
 import { SectionBadge } from "@/components/ui/section-badge"
+import { useTranslation } from "@/lib/i18n/use-translation"
 
-// Catálogo de plataformas — nomes escritos (wordmark), com a cor oficial de
-// cada marca usada apenas no glow sutil por trás do texto.
-const platformLogos: Logo[] = [
-  { name: "Spotify", id: 1, color: "#1ED760" },
-  { name: "Apple Music", id: 2, color: "#FA243C" },
-  { name: "TikTok", id: 3, color: "#049629" },
-  { name: "Amazon Music", id: 4, color: "#049629" },
-  { name: "Deezer", id: 5, color: "#A238FF" },
-  { name: "Instagram", id: 6, color: "#FF0069" },
-  { name: "YouTube Music", id: 7, color: "#FF0000" },
-  { name: "SoundCloud", id: 8, color: "#FF5500" },
-  { name: "TIDAL", id: 9, color: "#049629" },
-  { name: "iHeartRadio", id: 10, color: "#C6002B" },
-  { name: "Pandora", id: 11, color: "#224099" },
-  { name: "Shazam", id: 12, color: "#0088FF" },
-]
+// Distribuição: título à esquerda (como o topo e Pagamentos), o número
+// "40+" em destaque à direita e duas faixas de plataformas em sentidos
+// opostos, com todas as lojas passando.
+const ROW_A = PLATFORMS.slice(0, 6)
+const ROW_B = PLATFORMS.slice(6)
 
 export default function DistributionSection() {
   const { t } = useTranslation()
   return (
-    <section id="distribuicao" className="relative overflow-hidden bg-background px-4 py-24 md:py-32 scroll-mt-24">
-      <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-        <SectionBadge className="mb-6">{t.distribution.badge}</SectionBadge>
+    <section id="distribuicao" className="scroll-mt-24 bg-background px-4 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid items-end gap-10 md:grid-cols-[1fr_auto]">
+          <div>
+            <SectionBadge>{t.distribution.badge}</SectionBadge>
+            <h2 className="mt-6 max-w-2xl text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+              {t.distribution.title}
+            </h2>
+            <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg">{t.distribution.description}</p>
+          </div>
+          <div className="md:text-right">
+            <p className="text-[96px] font-black leading-[0.85] tracking-tighter text-foreground md:text-[140px]">40+</p>
+            <p className="mt-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">{t.distribution.statLabel}</p>
+          </div>
+        </div>
 
-        <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-          {t.distribution.title}
-        </h2>
-
-        <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
-          {t.distribution.description}
-        </p>
-      </div>
-
-      <div className="mx-auto mt-16 max-w-5xl">
-        <LogoCarousel columnCount={4} logos={platformLogos} />
+        <div className="mt-16 divide-y divide-border border-y border-border md:mt-20">
+          <LogoMarquee items={ROW_A} duration={36} className="py-8" label={t.distribution.statLabel} />
+          <LogoMarquee items={ROW_B} duration={36} reverse className="py-8" label={t.distribution.statLabel} />
+        </div>
       </div>
     </section>
   )
