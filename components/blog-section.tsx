@@ -68,7 +68,7 @@ export default function BlogSection() {
   return (
     <section id="noticias" className="scroll-mt-24 bg-background px-4 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-wrap items-end justify-between gap-6">
+        <div className="reveal flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
             <SectionBadge>{t.blog.badge}</SectionBadge>
             <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.blog.subtitle}</h2>
@@ -84,7 +84,7 @@ export default function BlogSection() {
           </a>
         </div>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-[1.25fr_1fr]">
+        <div className="reveal mt-14 grid gap-10 lg:grid-cols-[1.25fr_1fr]">
           {/* Matéria em destaque */}
           <a href={featured.linkHref} target="_blank" rel="noopener noreferrer" className="group block">
             <div className="overflow-hidden rounded-[24px] border border-border">

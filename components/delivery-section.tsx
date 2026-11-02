@@ -18,7 +18,7 @@ export default function DeliverySection() {
   return (
     <section className="bg-background px-4 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <div className="grid items-end gap-8 md:grid-cols-[1fr_auto]">
+        <div className="reveal grid items-end gap-8 md:grid-cols-[1fr_auto]">
           <div className="max-w-2xl">
             <SectionBadge>{t.delivery.badge}</SectionBadge>
             <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.delivery.title}</h2>

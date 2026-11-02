@@ -108,6 +108,8 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} bg-background font-sans text-foreground antialiased`}>
+        {/* Barra fina de progresso de leitura (só CSS) */}
+        <div aria-hidden="true" className="scroll-progress fixed inset-x-0 top-0 z-[70] h-[2px] bg-brand-lime" />
         <LocaleProvider>
           {children}
         </LocaleProvider>

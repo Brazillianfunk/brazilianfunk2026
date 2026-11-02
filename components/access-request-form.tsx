@@ -171,7 +171,8 @@ export default function AccessRequestForm() {
   const nomeArtisticoPlaceholder = data.tipo === "gravadora" ? t.form.step2PlaceholderLabel : t.form.step2PlaceholderArtist
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-background">
+    <div className="grain fixed inset-0 z-50 overflow-y-auto bg-background">
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 bg-[radial-gradient(60%_50%_at_50%_45%,hsl(var(--primary)/0.10),transparent_70%)]" />
       {/* Barra de progresso */}
       <div className="fixed left-0 top-0 z-10 h-1 w-full bg-border">
         <motion.div
@@ -192,7 +193,7 @@ export default function AccessRequestForm() {
         <X className="size-6" />
       </button>
 
-      <div className="flex min-h-screen items-center justify-center px-6 py-24">
+      <div className="relative flex min-h-screen items-center justify-center px-6 py-24">
         <div className="w-full max-w-xl">
           <AnimatePresence mode="wait">
             {submitted ? (

@@ -39,7 +39,7 @@ export type Palette = {
 // Fundo preto do site (#050505). "noite" deixa um brilho verde discreto
 // atrás do título, caso queiram testar depois.
 export const PALETTES = {
-  preto: { ground: "#050505", deep: "#050505", hot: "#0a0a0a", glow: "#111111", ink: "#f5f4f0" },
+  preto: { ground: "#050505", deep: "#050505", hot: "#0d0d10", glow: "#1b1b21", ink: "#f5f4f0" },
   noite: { ground: "#050505", deep: "#060908", hot: "#0c3322", glow: "#10533a", ink: "#f5f4f0" },
 } satisfies Record<string, Palette>
 export type PaletteName = keyof typeof PALETTES

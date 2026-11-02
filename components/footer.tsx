@@ -43,7 +43,8 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="border-t border-border bg-background px-4 pt-16 md:pt-20">
+    <footer className="relative border-t border-border bg-background px-4 pt-16 md:pt-20">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
           {/* Marca */}
@@ -136,7 +137,7 @@ export default function Footer() {
         </div>
 
         {/* Logo grande fechando a página */}
-        <div aria-hidden="true" className="mt-10 overflow-hidden pb-6">
+        <div aria-hidden="true" className="reveal mt-10 overflow-hidden pb-6">
           <img src="/brazilian-funk-logo.png" alt="" className="w-full opacity-[0.08]" />
         </div>
       </div>

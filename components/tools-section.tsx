@@ -2,230 +2,105 @@
 
 // Ferramentas.
 //
-// Referência no 21st.dev: "Feature Tab Switcher" (feature-11). À esquerda,
-// a lista das ferramentas; ao escolher uma, o painel da direita mostra uma
-// prévia da interface daquela ferramenta. Mesmo painel (cartão escuro com
-// borda) usado em Pagamentos, para as seções conversarem entre si.
+// Referência no 21st.dev: "Feature Section with Bento Grid" (tommyjepsen) e
+// "Features 8" (meschacirung): cards de tamanhos diferentes, os maiores com
+// um pedacinho visual do produto. As barras do gráfico crescem e a barra de
+// royalties se preenche conforme a seção entra na tela (só CSS).
 
-import { useState } from "react"
-import { BarChart3, Barcode, Check, FileBarChart, Link2, Plus, Split } from "lucide-react"
+import { BarChart3, Barcode, FileBarChart, Link2, Plus, Split } from "lucide-react"
 import { useTranslation } from "@/lib/i18n/use-translation"
 import { SectionBadge } from "@/components/ui/section-badge"
 import { cn } from "@/lib/utils"
 
-const TOOL_ICONS = [BarChart3, Split, FileBarChart, Link2, Barcode, Plus]
+const ICONS = [BarChart3, Split, FileBarChart, Link2, Barcode, Plus]
+const BARS = [30, 44, 38, 56, 50, 68, 62, 80, 72, 92]
 
-type Mock = ReturnType<typeof useTranslation>["t"]["tools"]["mock"]
-
-function AnalyticsMock({ m }: { m: Mock }) {
-  const bars = [38, 52, 46, 61, 58, 72, 66, 80, 74, 88, 84, 96]
-  return (
-    <div className="flex h-full flex-col">
-      <div className="flex items-start justify-between">
-        <div>
-          <p className="text-xs uppercase tracking-wide text-muted-foreground">{m.streams}</p>
-          <p className="mt-1 text-3xl font-bold tabular-nums text-foreground">1,24 mi</p>
-        </div>
-        <span className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">{m.last28}</span>
-      </div>
-      <div className="mt-auto flex h-40 items-end gap-2">
-        {bars.map((h, i) => (
-          <div key={i} className={cn("flex-1 rounded-t-md", i === bars.length - 1 ? "bg-primary" : "bg-white/15")} style={{ height: `${h}%` }} />
-        ))}
-      </div>
-      <div className="mt-4 flex items-center justify-between border-t border-border pt-4 text-sm">
-        <span className="text-muted-foreground">{m.listeners}</span>
-        <span className="font-semibold tabular-nums text-foreground">
-          312 mil <span className="text-brand-lime">+18%</span>
-        </span>
-      </div>
-    </div>
-  )
-}
-
-function RoyaltiesMock({ m }: { m: Mock }) {
-  const rows = [
-    { name: m.artist, pct: 50, color: "bg-primary" },
-    { name: m.producer, pct: 30, color: "bg-white/60" },
-    { name: m.label, pct: 20, color: "bg-white/25" },
-  ]
-  return (
-    <div className="flex h-full flex-col justify-center gap-6">
-      <div className="flex h-3 overflow-hidden rounded-full">
-        {rows.map((r) => (
-          <div key={r.name} className={r.color} style={{ width: `${r.pct}%` }} />
-        ))}
-      </div>
-      <ul className="divide-y divide-border border-y border-border">
-        {rows.map((r) => (
-          <li key={r.name} className="flex items-center gap-3 py-4">
-            <span className={cn("h-2.5 w-2.5 rounded-full", r.color)} />
-            <span className="flex-1 text-sm font-medium text-foreground">{r.name}</span>
-            <span className="text-sm font-semibold tabular-nums text-foreground">{r.pct}%</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
-function ReportsMock({ m }: { m: Mock }) {
-  const rows = [
-    { region: "Brasil", pct: 62 },
-    { region: "Portugal", pct: 14 },
-    { region: "Estados Unidos", pct: 9 },
-    { region: "Angola", pct: 6 },
-    { region: "Outros", pct: 9 },
-  ]
-  return (
-    <div className="flex h-full flex-col justify-center">
-      <div className="flex justify-between border-b border-border pb-3 text-xs uppercase tracking-wide text-muted-foreground">
-        <span>{m.region}</span>
-        <span>{m.share}</span>
-      </div>
-      <ul>
-        {rows.map((r) => (
-          <li key={r.region} className="grid grid-cols-[1fr_120px_44px] items-center gap-3 border-b border-border py-3.5 text-sm">
-            <span className="font-medium text-foreground">{r.region}</span>
-            <span className="h-1.5 rounded-full bg-white/10">
-              <span className="block h-1.5 rounded-full bg-primary" style={{ width: `${r.pct}%` }} />
-            </span>
-            <span className="text-right font-semibold tabular-nums text-foreground">{r.pct}%</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
-function SmartLinkMock({ m }: { m: Mock }) {
-  return (
-    <div className="flex h-full items-center justify-center">
-      <div className="w-full max-w-[260px] rounded-3xl border border-border bg-background p-4">
-        <img src="/lancamentos/lancamento-04.jpg" alt="" className="aspect-square w-full rounded-2xl object-cover" />
-        <p className="mt-3 font-bold text-foreground">Sentadinha Muito Diferente</p>
-        <p className="text-xs text-muted-foreground">Dyamante DJ</p>
-        <div className="mt-4 grid gap-2">
-          <span className="flex h-10 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">{m.presave}</span>
-          <span className="flex h-10 items-center justify-center rounded-full border border-white/25 text-sm font-semibold text-foreground">{m.listenNow}</span>
-        </div>
-        <p className="mt-3 text-center font-mono text-[11px] text-muted-foreground">bfunk.co/sentadinha</p>
-      </div>
-    </div>
-  )
-}
-
-function CodesMock({ m }: { m: Mock }) {
-  const codes = [
-    { label: "ISRC", value: "BR-BFK-26-00042" },
-    { label: "UPC", value: "0 198765 432109" },
-  ]
-  return (
-    <div className="flex h-full flex-col justify-center gap-4">
-      {codes.map((c) => (
-        <div key={c.label} className="rounded-2xl border border-border bg-background p-5">
-          <p className="text-xs uppercase tracking-wide text-muted-foreground">{c.label}</p>
-          <p className="mt-2 font-mono text-xl font-medium tracking-wide text-foreground">{c.value}</p>
-          <p className="mt-3 flex items-center gap-1.5 text-xs text-brand-lime">
-            <Check className="h-3.5 w-3.5" strokeWidth={3} />
-            {m.generated}
-          </p>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function MoreMock({ m }: { m: Mock }) {
-  return (
-    <div className="flex h-full flex-col items-center justify-center gap-6 text-center">
-      <div className="grid grid-cols-3 gap-3 opacity-80">
-        {TOOL_ICONS.slice(0, 5).map((Icon, i) => (
-          <span key={i} className="flex h-14 w-14 items-center justify-center rounded-2xl border border-border bg-background text-foreground/70">
-            <Icon className="h-6 w-6" />
-          </span>
-        ))}
-        <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
-          <Plus className="h-6 w-6" />
-        </span>
-      </div>
-      <p className="max-w-[220px] text-lg font-semibold text-foreground">{m.more}</p>
-    </div>
-  )
-}
-
-const MOCKS = [AnalyticsMock, RoyaltiesMock, ReportsMock, SmartLinkMock, CodesMock, MoreMock]
+const card = "group relative overflow-hidden rounded-[24px] border border-border bg-card transition-colors duration-300 hover:border-white/25"
 
 export default function ToolsSection() {
   const { t } = useTranslation()
-  const [active, setActive] = useState(0)
-  const Panel = MOCKS[active]
+  const items = t.tools.items
 
   return (
-    <section id="ferramentas" className="scroll-mt-24 bg-background px-4 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
-        <div className="max-w-2xl">
+    <section id="ferramentas" className="relative scroll-mt-24 overflow-hidden bg-background px-4 py-24 md:py-32">
+      {/* grade de pontos bem sutil ao fundo */}
+      <div aria-hidden="true" className="dot-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black_20%,transparent_70%)]" />
+
+      <div className="relative mx-auto max-w-6xl">
+        <div className="reveal max-w-2xl">
           <SectionBadge>{t.tools.badge}</SectionBadge>
           <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.tools.title}</h2>
           <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg">{t.tools.description}</p>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:gap-10">
-          <div role="tablist" aria-label={t.tools.badge} className="divide-y divide-border border-y border-border">
-            {t.tools.items.map((tool, i) => {
-              const Icon = TOOL_ICONS[i]
-              const isActive = i === active
-              return (
-                <button
-                  key={tool.title}
-                  type="button"
-                  role="tab"
-                  id={`tool-tab-${i}`}
-                  aria-selected={isActive}
-                  aria-controls="tool-panel"
-                  onClick={() => setActive(i)}
-                  onMouseEnter={() => setActive(i)}
-                  className={cn(
-                    "flex w-full items-start gap-4 px-2 py-5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
-                    isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  <span
-                    className={cn(
-                      "flex h-9 w-9 flex-none items-center justify-center rounded-lg border transition-colors",
-                      isActive ? "border-transparent bg-foreground text-background" : "border-border text-muted-foreground"
-                    )}
-                  >
-                    <Icon className="h-4 w-4" />
-                  </span>
-                  <span>
-                    <span className="block font-semibold">{tool.title}</span>
-                    <span className={cn("mt-1 block text-sm leading-relaxed", isActive ? "text-muted-foreground" : "hidden md:block md:text-muted-foreground/70")}>
-                      {tool.desc}
-                    </span>
-                  </span>
-                </button>
-              )
-            })}
-          </div>
+        <div className="mt-14 grid gap-4 lg:grid-cols-3">
+          {/* Analytics: card grande com gráfico */}
+          <article className={cn(card, "reveal-scale flex min-h-[320px] flex-col justify-between p-8 lg:col-span-2")}>
+            <div className="flex items-start justify-between">
+              <span className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">{t.tools.mock.last28}</span>
+              <span className="text-sm font-semibold tabular-nums text-brand-lime">+18%</span>
+            </div>
+            <div aria-hidden="true" className="mt-6 flex h-32 items-end gap-2">
+              {BARS.map((h, i) => (
+                <div
+                  key={i}
+                  className={cn("grow-bar flex-1 rounded-t-md transition-colors duration-300", i === BARS.length - 1 ? "bg-primary" : "bg-white/15 group-hover:bg-white/25")}
+                  style={{ height: `${h}%` }}
+                />
+              ))}
+            </div>
+            <div className="mt-6">
+              <BarChart3 className="h-5 w-5 text-foreground" />
+              <h3 className="mt-4 text-xl font-semibold text-foreground">{items[0].title}</h3>
+              <p className="mt-2 max-w-md text-sm text-muted-foreground">{items[0].desc}</p>
+            </div>
+          </article>
 
-          <div className="md:sticky md:top-28 md:self-start">
-            <div
-              id="tool-panel"
-              role="tabpanel"
-              aria-labelledby={`tool-tab-${active}`}
-              className="relative h-[420px] overflow-hidden rounded-[32px] border border-border bg-card p-8"
-            >
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 opacity-[0.35] [background-image:linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] [background-size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]"
-              />
-              <div key={active} className="relative h-full animate-in fade-in duration-300">
-                <Panel m={t.tools.mock} />
+          {/* Royalties: barra dividida */}
+          <article className={cn(card, "reveal-scale flex min-h-[320px] flex-col justify-between p-8")}>
+            <div aria-hidden="true">
+              <div className="grow-x flex h-3 overflow-hidden rounded-full">
+                <div className="w-1/2 bg-primary" />
+                <div className="w-[30%] bg-white/60" />
+                <div className="w-[20%] bg-white/25" />
+              </div>
+              <div className="mt-4 grid grid-cols-3 text-xs text-muted-foreground">
+                <span>{t.tools.mock.artist} 50%</span>
+                <span className="text-center">{t.tools.mock.producer} 30%</span>
+                <span className="text-right">{t.tools.mock.label} 20%</span>
               </div>
             </div>
-            <p className="mt-3 text-center text-xs text-muted-foreground">{t.tools.mock.illustrative}</p>
-          </div>
+            <div>
+              <Split className="h-5 w-5 text-foreground" />
+              <h3 className="mt-4 text-xl font-semibold text-foreground">{items[1].title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{items[1].desc}</p>
+            </div>
+          </article>
+
+          {/* Relatórios, Smart Link, Códigos */}
+          {[2, 3, 4].map((i) => {
+            const Icon = ICONS[i]
+            return (
+              <article key={i} className={cn(card, "reveal-scale p-8")}>
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-background text-foreground transition-colors duration-300 group-hover:border-transparent group-hover:bg-foreground group-hover:text-background">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-10 text-lg font-semibold text-foreground">{items[i].title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{items[i].desc}</p>
+              </article>
+            )
+          })}
+
+          {/* +Recursos */}
+          <article className={cn(card, "reveal-scale flex items-center justify-between gap-6 p-8 lg:col-span-3")}>
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">{items[5].title}</h3>
+              <p className="mt-2 max-w-xl text-sm text-muted-foreground">{items[5].desc}</p>
+            </div>
+            <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 group-hover:rotate-90">
+              <Plus className="h-5 w-5" />
+            </span>
+          </article>
         </div>
       </div>
     </section>

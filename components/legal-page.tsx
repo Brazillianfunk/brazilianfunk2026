@@ -20,9 +20,10 @@ export default function LegalPage({ document }: LegalPageProps) {
     <main className="min-h-screen bg-background">
       <Navbar />
 
-      <article className="px-4 py-24 md:py-32">
+      <article className="relative px-4 py-24 md:py-32">
+        <div aria-hidden="true" className="dot-grid pointer-events-none absolute inset-x-0 top-0 h-[420px] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
         <div className="mx-auto max-w-3xl">
-          <header className="mb-12 md:mb-16">
+          <header className="reveal relative mb-12 md:mb-16">
             <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
               {title}
             </h1>
