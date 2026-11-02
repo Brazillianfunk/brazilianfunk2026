@@ -1,5 +1,4 @@
 "use client"
-import { SplitHeading } from "@/components/ui/split-heading"
 
 import { ScrollTimeline } from "@/components/ui/scroll-timeline"
 import { useTranslation } from "@/lib/i18n/use-translation"
@@ -22,7 +21,7 @@ export default function DeliverySection() {
         <div className="reveal grid items-end gap-8 md:grid-cols-[1fr_auto]">
           <div className="max-w-2xl">
             <SectionBadge>{t.delivery.badge}</SectionBadge>
-            <SplitHeading className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl" text={t.delivery.title} />
+            <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.delivery.title}</h2>
           </div>
           <p className="max-w-sm text-base text-muted-foreground md:text-lg">{t.delivery.description}</p>
         </div>

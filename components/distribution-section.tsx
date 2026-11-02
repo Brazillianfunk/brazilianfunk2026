@@ -1,5 +1,4 @@
 "use client"
-import { SplitHeading } from "@/components/ui/split-heading"
 
 import { LogoMarquee } from "@/components/ui/logo-marquee"
 import { PLATFORMS } from "@/components/ui/platform-icons"
@@ -21,7 +20,9 @@ export default function DistributionSection() {
         <div className="reveal grid items-end gap-10 md:grid-cols-[1fr_auto]">
           <div>
             <SectionBadge>{t.distribution.badge}</SectionBadge>
-            <SplitHeading className="mt-6 max-w-2xl text-4xl font-bold tracking-tight text-foreground md:text-5xl" text={t.distribution.title} />
+            <h2 className="mt-6 max-w-2xl text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+              {t.distribution.title}
+            </h2>
             <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg">{t.distribution.description}</p>
           </div>
           <div className="md:text-right">

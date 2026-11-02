@@ -1,6 +1,5 @@
 "use client"
 
-import { Equalizer } from "@/components/ui/equalizer"
 import * as React from "react"
 import { Button } from "@/components/ui/button"
 
@@ -240,7 +239,7 @@ export function ReleaseWallHero({
       <div className="rwh-in">
         <div className="rwh-copy" ref={copyRef}>
           <h1 className="rwh-title" id={titleId} ref={titleRef}>
-            <span className="rwh-eyebrow">{eyebrow} <Equalizer className="ml-[0.15em]" /> </span>
+            <span className="rwh-eyebrow">{eyebrow} </span>
             {lines.map((l, i) => (
               <span className="rwh-line" key={i} style={{ "--i": i } as React.CSSProperties}>
                 <span>{l}</span>
@@ -252,7 +251,7 @@ export function ReleaseWallHero({
           <div className="rwh-actions">
             <Button href={cta.href} size="lg">
               {cta.label}
-              <span aria-hidden="true" className="btn-arrow">→</span>
+              <span aria-hidden="true">→</span>
             </Button>
             {secondaryCta ? (
               <Button href={secondaryCta.href} size="lg" variant="secondary">

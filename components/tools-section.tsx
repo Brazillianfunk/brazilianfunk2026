@@ -1,6 +1,4 @@
 "use client"
-import { SplitHeading } from "@/components/ui/split-heading"
-import { SpotlightGroup } from "@/components/ui/spotlight-group"
 
 // Ferramentas.
 //
@@ -31,13 +29,13 @@ export default function ToolsSection() {
       <div className="relative mx-auto max-w-6xl">
         <div className="reveal max-w-2xl">
           <SectionBadge>{t.tools.badge}</SectionBadge>
-          <SplitHeading className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl" text={t.tools.title} />
+          <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.tools.title}</h2>
           <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg">{t.tools.description}</p>
         </div>
 
-        <SpotlightGroup className="spot-group mt-14 grid gap-4 lg:grid-cols-3">
+        <div className="mt-14 grid gap-4 lg:grid-cols-3">
           {/* Analytics: card grande com gráfico */}
-          <article data-spot className={cn(card, "spot", "reveal-scale flex min-h-[320px] flex-col justify-between p-8 lg:col-span-2")}>
+          <article className={cn(card, "reveal-scale flex min-h-[320px] flex-col justify-between p-8 lg:col-span-2")}>
             <div className="flex items-start justify-between">
               <span className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">{t.tools.mock.last28}</span>
               <span className="text-sm font-semibold tabular-nums text-brand-lime">+18%</span>
@@ -59,7 +57,7 @@ export default function ToolsSection() {
           </article>
 
           {/* Royalties: barra dividida */}
-          <article data-spot className={cn(card, "spot", "reveal-scale flex min-h-[320px] flex-col justify-between p-8")}>
+          <article className={cn(card, "reveal-scale flex min-h-[320px] flex-col justify-between p-8")}>
             <div aria-hidden="true">
               <div className="grow-x flex h-3 overflow-hidden rounded-full">
                 <div className="w-1/2 bg-primary" />
@@ -83,7 +81,7 @@ export default function ToolsSection() {
           {[2, 3, 4].map((i) => {
             const Icon = ICONS[i]
             return (
-              <article key={i} data-spot className={cn(card, "spot", "reveal-scale p-8")}>
+              <article key={i} className={cn(card, "reveal-scale p-8")}>
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-background text-foreground transition-colors duration-300 group-hover:border-transparent group-hover:bg-foreground group-hover:text-background">
                   <Icon className="h-5 w-5" />
                 </span>
@@ -94,7 +92,7 @@ export default function ToolsSection() {
           })}
 
           {/* +Recursos */}
-          <article data-spot className={cn(card, "spot", "reveal-scale flex items-center justify-between gap-6 p-8 lg:col-span-3")}>
+          <article className={cn(card, "reveal-scale flex items-center justify-between gap-6 p-8 lg:col-span-3")}>
             <div>
               <h3 className="text-lg font-semibold text-foreground">{items[5].title}</h3>
               <p className="mt-2 max-w-xl text-sm text-muted-foreground">{items[5].desc}</p>
@@ -103,7 +101,7 @@ export default function ToolsSection() {
               <Plus className="h-5 w-5" />
             </span>
           </article>
-        </SpotlightGroup>
+        </div>
       </div>
     </section>
   )

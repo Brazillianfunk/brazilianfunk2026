@@ -1,5 +1,4 @@
 "use client"
-import { SplitHeading } from "@/components/ui/split-heading"
 
 // Blog.
 //
@@ -72,7 +71,7 @@ export default function BlogSection() {
         <div className="reveal flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
             <SectionBadge>{t.blog.badge}</SectionBadge>
-            <SplitHeading className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl" text={t.blog.subtitle} />
+            <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.blog.subtitle}</h2>
           </div>
           <a
             href={INSTAGRAM_URL}
