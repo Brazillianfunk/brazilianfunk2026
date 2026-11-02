@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar"
 import ReleaseWallHeroSection from "@/components/release-wall-hero-section"
 import DistributionSection from "@/components/distribution-section"
+import SectionRibbon from "@/components/section-ribbon"
 import PaymentSection from "@/components/payment-section"
 import DeliverySection from "@/components/delivery-section"
 import ToolsSection from "@/components/tools-section"
@@ -14,6 +15,7 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Navbar />
       <ReleaseWallHeroSection />
+      <SectionRibbon />
       <DistributionSection />
       <PaymentSection />
       <DeliverySection />

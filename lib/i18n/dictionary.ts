@@ -14,6 +14,7 @@ export interface Dictionary {
     wallLabel: string
   }
   distribution: {
+    ribbon: string
     badge: string
     title: string
     description: string
@@ -153,6 +154,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "wallLabel": "Lançamentos distribuídos pela Brazilian Funk"
     },
     "distribution": {
+      "ribbon": "40+ plataformas  •  Nas lojas em até 24h  •  Saque via Pix ou PayPal  •  Feito para o funk",
       "badge": "+40 Lojas e Serviços",
       "title": "Distribuição Global para os Principais Serviços de Música",
       "description": "Envios ilimitados para as principais plataformas de streaming. Distribua suas músicas para Spotify, Apple Music, TikTok, Amazon, Deezer, Instagram, YouTube Music e mais de 40 plataformas globais."
@@ -364,6 +366,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "wallLabel": "Releases distributed by Brazilian Funk"
     },
     "distribution": {
+      "ribbon": "40+ platforms  •  In stores within 24h  •  Payouts via Pix or PayPal  •  Made for funk",
       "badge": "+40 Stores and Services",
       "title": "Global Distribution to the Leading Music Services",
       "description": "Unlimited uploads to the leading streaming platforms. Distribute your music to Spotify, Apple Music, TikTok, Amazon, Deezer, Instagram, YouTube Music, and more than 40 global platforms."
@@ -575,6 +578,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "wallLabel": "Lanzamientos distribuidos por Brazilian Funk"
     },
     "distribution": {
+      "ribbon": "40+ plataformas  •  En las tiendas en hasta 24h  •  Retiros vía Pix o PayPal  •  Hecho para el funk",
       "badge": "+40 Tiendas y Servicios",
       "title": "Distribución Global a los Principales Servicios de Música",
       "description": "Envíos ilimitados a las principales plataformas de streaming. Distribuye tu música en Spotify, Apple Music, TikTok, Amazon, Deezer, Instagram, YouTube Music y más de 40 plataformas globales."
