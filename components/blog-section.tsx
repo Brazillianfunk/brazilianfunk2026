@@ -1,33 +1,16 @@
-// ---------------------------------------------------------------------------
-// Este arquivo faz parte do projeto Next.js (usa imports @/... do seu projeto).
-// Ele NÃO abre como preview aqui no chat — cole no seu projeto pra rodar.
-// Para ver o resultado visual, use o brazilian-funk-preview.html.
-// ---------------------------------------------------------------------------
-//
-// Estética do card vem do card-grid.tsx enviado como referência (imagem,
-// título, link com seta, elevação no hover). A disposição é um carrossel
-// horizontal — mas, diferente da primeira tentativa (scroll nativo do
-// navegador, que ficou imprevisível), agora o movimento é controlado
-// inteiramente por JS: um índice de posição, deslocamento por
-// transform/translateX com transição suave, botões que desabilitam nas
-// pontas. Sem depender de física de scroll do navegador. Reaproveita o
-// mesmo estilo de seta já usado no carrossel de Suporte
-// (circular-carousel.tsx).
-//
-// Categoria e data: o modelo original não tinha esses campos, mas o
-// briefing listou como conteúdo obrigatório. Usei o mesmo estilo de
-// "pill" que já existe no carrossel de Suporte.
-//
-// IMAGENS: por enquanto é um placeholder visual (ícone + gradiente sutil),
-// não uma foto real — troque pelo campo imageSrc quando tiver as imagens
-// reais das matérias.
-
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
-import { ArrowRight, ChevronLeft, ChevronRight, Newspaper } from "lucide-react"
+// Blog.
+//
+// Referência no 21st.dev: "Blog 7" (shadcnblocks): cabeçalho com selo e
+// link "ver todas" à direita, e os cards de matéria com imagem, categoria,
+// data e título. Aqui a primeira matéria ganha destaque grande e as outras
+// ficam numa lista ao lado, em vez do carrossel com setas: todas aparecem
+// de uma vez, sem precisar clicar.
+
+import { ArrowUpRight } from "lucide-react"
 import { useTranslation } from "@/lib/i18n/use-translation"
+import { SectionBadge } from "@/components/ui/section-badge"
 
 interface ArticleAsset {
   id: number
@@ -36,9 +19,6 @@ interface ArticleAsset {
   linkHref: string
 }
 
-// Só o que não muda com o idioma (imagem, link do Instagram e a categoria
-// como chave de lookup no dicionário). Título e data vêm de t.blog.articles,
-// casados pelo mesmo índice — cada matéria continua indo pro link certo.
 const ARTICLE_ASSETS: ArticleAsset[] = [
   {
     id: 1,
@@ -66,133 +46,88 @@ const ARTICLE_ASSETS: ArticleAsset[] = [
   },
 ]
 
-const CARD_WIDTH = 320
-const CARD_GAP = 24
-const STEP = CARD_WIDTH + CARD_GAP
+const INSTAGRAM_URL = "https://www.instagram.com/brazillianfunk/"
 
 export default function BlogSection() {
   const { t } = useTranslation()
-  const viewportRef = useRef<HTMLDivElement | null>(null)
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [viewportWidth, setViewportWidth] = useState(0)
-
-  const ARTICLES = ARTICLE_ASSETS.map((asset, i) => ({
+  const articles = ARTICLE_ASSETS.map((asset, i) => ({
     ...asset,
     category: t.blog.categories[asset.categoryKey],
     title: t.blog.articles[i].title,
     date: t.blog.articles[i].date,
-    linkText: t.blog.readMore,
   }))
+  const [featured, ...rest] = articles
 
-  // Mede a largura real do viewport em pixels — recalcula ao
-  // redimensionar (ResizeObserver, não fica escutando "resize" sem
-  // necessidade). Trabalhar direto em pixels (em vez de "quantos cards
-  // cabem", que precisa arredondar) é o que garante nunca sobrar espaço
-  // vazio no fim do carrossel, não importa quantos cards existam.
-  useEffect(() => {
-    const el = viewportRef.current
-    if (!el || !("ResizeObserver" in window)) return
-    const observer = new ResizeObserver(([entry]) => {
-      setViewportWidth(entry.contentRect.width)
-    })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
-  const trackWidth = ARTICLES.length * CARD_WIDTH + (ARTICLES.length - 1) * CARD_GAP
-  const maxTranslate = Math.max(0, trackWidth - viewportWidth)
-  const maxIndex = maxTranslate === 0 ? 0 : Math.ceil(maxTranslate / STEP)
-  const translateX = Math.min(activeIndex * STEP, maxTranslate)
-
-  useEffect(() => {
-    // Se a tela cresceu e o índice atual ficou fora do alcance, recua.
-    setActiveIndex((i) => Math.min(i, maxIndex))
-  }, [maxIndex])
+  const meta = (category: string, date: string) => (
+    <p className="flex items-center gap-3 text-xs">
+      <span className="font-semibold uppercase tracking-wider text-foreground">{category}</span>
+      <span className="text-muted-foreground">{date}</span>
+    </p>
+  )
 
   return (
-    <section id="noticias" className="bg-background px-4 py-24 md:py-32 scroll-mt-24">
+    <section id="noticias" className="scroll-mt-24 bg-background px-4 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 flex flex-col items-center justify-between gap-6 sm:flex-row sm:items-end md:mb-16">
-          <div className="text-center sm:text-left">
-            <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.blog.heading}</h2>
-            <p className="mt-6 max-w-md text-base text-muted-foreground md:text-lg">
-              {t.blog.subtitle}
-            </p>
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <SectionBadge>{t.blog.badge}</SectionBadge>
+            <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.blog.subtitle}</h2>
           </div>
-          <div className="flex flex-none items-center gap-3">
-            <button
-              type="button"
-              onClick={() => setActiveIndex((i) => Math.max(0, i - 1))}
-              disabled={activeIndex === 0}
-              aria-label={t.blog.prevAria}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-foreground/5 text-muted-foreground backdrop-blur-sm transition-colors hover:bg-foreground/10 hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-foreground/5"
-            >
-              <ChevronLeft className="size-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveIndex((i) => Math.min(maxIndex, i + 1))}
-              disabled={activeIndex >= maxIndex}
-              aria-label={t.blog.nextAria}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-foreground/5 text-muted-foreground backdrop-blur-sm transition-colors hover:bg-foreground/10 hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-foreground/5"
-            >
-              <ChevronRight className="size-5" />
-            </button>
-          </div>
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-1.5 text-sm font-semibold text-foreground"
+          >
+            {t.blog.viewAll}
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
         </div>
 
-        <div ref={viewportRef} className="overflow-hidden">
-          <motion.div
-            className="flex gap-6"
-            animate={{ x: -translateX }}
-            transition={{ type: "spring", stiffness: 300, damping: 32 }}
-          >
-            {ARTICLES.map((article) => (
-              <motion.a
-                key={article.id}
-                href={article.linkHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ width: CARD_WIDTH }}
-                className="group block flex-none overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-300 hover:border-primary/30"
-                whileHover={{ y: -8 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="flex h-full flex-col">
-                  {/* Imagem (placeholder por enquanto — ver nota no topo do arquivo) */}
-                  <div className="relative h-48 w-full overflow-hidden bg-background">
-                    {article.imageSrc ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={article.imageSrc}
-                        alt={article.title}
-                        className="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-card to-background">
-                        <Newspaper className="size-8 text-muted-foreground/40" strokeWidth={1.5} />
-                      </div>
-                    )}
-                  </div>
+        <div className="mt-14 grid gap-10 lg:grid-cols-[1.25fr_1fr]">
+          {/* Matéria em destaque */}
+          <a href={featured.linkHref} target="_blank" rel="noopener noreferrer" className="group block">
+            <div className="overflow-hidden rounded-[24px] border border-border">
+              <img
+                src={featured.imageSrc}
+                alt=""
+                loading="lazy"
+                className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+            </div>
+            <div className="mt-6">
+              {meta(featured.category, featured.date)}
+              <h3 className="mt-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">{featured.title}</h3>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground">
+                {t.blog.readMore}
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </span>
+            </div>
+          </a>
 
-                  {/* Conteúdo */}
-                  <div className="flex flex-grow flex-col p-6">
-                    <div className="mb-3 flex items-center gap-2">
-                      <span className="rounded-full bg-foreground/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-foreground/70">
-                        {article.category}
-                      </span>
-                      <span className="text-xs text-muted-foreground">{article.date}</span>
-                    </div>
-                    <h3 className="mb-4 flex-grow text-lg font-semibold text-card-foreground">{article.title}</h3>
-                    <div className="mt-auto flex items-center text-sm font-medium" style={{ color: "#FFCB00" }}>
-                      {article.linkText}
-                      <ArrowRight className="ml-2 size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </div>
+          {/* Demais matérias */}
+          <ul className="divide-y divide-border border-y border-border">
+            {rest.map((a) => (
+              <li key={a.id}>
+                <a href={a.linkHref} target="_blank" rel="noopener noreferrer" className="group flex gap-5 py-6">
+                  <div className="h-24 w-32 flex-none overflow-hidden rounded-xl border border-border">
+                    <img
+                      src={a.imageSrc}
+                      alt=""
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                    />
                   </div>
-                </div>
-              </motion.a>
+                  <div className="min-w-0">
+                    {meta(a.category, a.date)}
+                    <h3 className="mt-2 text-lg font-bold leading-snug text-foreground group-hover:underline group-hover:underline-offset-4">
+                      {a.title}
+                    </h3>
+                  </div>
+                </a>
+              </li>
             ))}
-          </motion.div>
+          </ul>
         </div>
       </div>
     </section>

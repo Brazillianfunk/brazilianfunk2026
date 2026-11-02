@@ -40,6 +40,7 @@ export interface Dictionary {
     sendTo: string
   }
   delivery: {
+    badge: string
     title: string
     description: string
     steps: string[]
@@ -47,6 +48,22 @@ export interface Dictionary {
     stepLabel: string
   }
   tools: {
+    badge: string
+    mock: {
+      streams: string
+      listeners: string
+      last28: string
+      artist: string
+      producer: string
+      label: string
+      region: string
+      share: string
+      presave: string
+      listenNow: string
+      generated: string
+      more: string
+      illustrative: string
+    }
     title: string
     description: string
     items: {
@@ -55,6 +72,7 @@ export interface Dictionary {
     }[]
   }
   support: {
+    badge: string
     title: string
     description: string
     items: {
@@ -64,6 +82,8 @@ export interface Dictionary {
     }[]
   }
   blog: {
+    badge: string
+    viewAll: string
     heading: string
     subtitle: string
     readMore: string
@@ -81,6 +101,8 @@ export interface Dictionary {
     }[]
   }
   faq: {
+    badge: string
+    whatsapp: string
     heading: string
     subtitle: string
     ctaText: string
@@ -194,6 +216,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "sendTo": "Receber em"
     },
     "delivery": {
+      "badge": "Entrega",
       "title": "Entrega Rápida de Conteúdo",
       "description": "Garantimos que seu conteúdo chegue às lojas em até 24 horas.",
       "steps": [
@@ -211,6 +234,22 @@ export const dictionary: Record<Locale, Dictionary> = {
       "stepLabel": "Etapa"
     },
     "tools": {
+      "badge": "Ferramentas",
+      "mock": {
+          "streams": "Streams",
+          "listeners": "Ouvintes",
+          "last28": "Últimos 28 dias",
+          "artist": "Artista",
+          "producer": "Produtor",
+          "label": "Gravadora",
+          "region": "Região",
+          "share": "Participação",
+          "presave": "Pré-save",
+          "listenNow": "Ouvir agora",
+          "generated": "Gerado automaticamente",
+          "more": "E muito mais no seu painel",
+          "illustrative": "Valores ilustrativos"
+        },
       "title": "Ferramentas para potencializar seu catálogo musical",
       "description": "Tudo que você precisa para acompanhar, proteger e maximizar o retorno das suas músicas, em um só lugar.",
       "items": [
@@ -241,6 +280,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "support": {
+      "badge": "Suporte",
       "title": "Suporte em Cada Etapa",
       "description": "Acompanhamos você em todas as etapas, do envio do conteúdo ao primeiro pagamento.",
       "items": [
@@ -267,6 +307,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "blog": {
+      "badge": "Blog",
+      "viewAll": "Ver no Instagram",
       "heading": "Blog",
       "subtitle": "Notícias, cultura e os bastidores do desenvolvimento do funk.",
       "readMore": "Ler matéria",
@@ -298,6 +340,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "faq": {
+      "badge": "Dúvidas",
+      "whatsapp": "Falar no WhatsApp",
       "heading": "Perguntas frequentes",
       "subtitle": "Tire suas dúvidas sobre distribuição, prazos e royalties.",
       "ctaText": "Quer distribuir com a Brazilian Funk?",
@@ -425,6 +469,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "sendTo": "Receive via"
     },
     "delivery": {
+      "badge": "Delivery",
       "title": "Fast Content Delivery",
       "description": "We ensure your content reaches stores within 24 hours.",
       "steps": [
@@ -442,6 +487,22 @@ export const dictionary: Record<Locale, Dictionary> = {
       "stepLabel": "Step"
     },
     "tools": {
+      "badge": "Tools",
+      "mock": {
+          "streams": "Streams",
+          "listeners": "Listeners",
+          "last28": "Last 28 days",
+          "artist": "Artist",
+          "producer": "Producer",
+          "label": "Label",
+          "region": "Region",
+          "share": "Share",
+          "presave": "Pre-save",
+          "listenNow": "Listen now",
+          "generated": "Generated automatically",
+          "more": "And much more in your dashboard",
+          "illustrative": "Illustrative values"
+        },
       "title": "Tools to power up your music catalog",
       "description": "Everything you need to track, protect, and maximize the return on your music, all in one place.",
       "items": [
@@ -472,6 +533,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "support": {
+      "badge": "Support",
       "title": "Support at Every Step",
       "description": "We support you every step of the way, from content submission to your first payment.",
       "items": [
@@ -498,6 +560,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "blog": {
+      "badge": "Blog",
+      "viewAll": "View on Instagram",
       "heading": "Blog",
       "subtitle": "News, culture, and the behind-the-scenes of funk's development.",
       "readMore": "Read article",
@@ -529,6 +593,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "faq": {
+      "badge": "FAQ",
+      "whatsapp": "Chat on WhatsApp",
       "heading": "Frequently asked questions",
       "subtitle": "Get your questions answered about distribution, timelines, and royalties.",
       "ctaText": "Want to distribute with Brazilian Funk?",
@@ -656,6 +722,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "sendTo": "Recibir en"
     },
     "delivery": {
+      "badge": "Entrega",
       "title": "Entrega Rápida de Contenido",
       "description": "Garantizamos que tu contenido llegue a las tiendas en hasta 24 horas.",
       "steps": [
@@ -673,6 +740,22 @@ export const dictionary: Record<Locale, Dictionary> = {
       "stepLabel": "Etapa"
     },
     "tools": {
+      "badge": "Herramientas",
+      "mock": {
+          "streams": "Streams",
+          "listeners": "Oyentes",
+          "last28": "Últimos 28 días",
+          "artist": "Artista",
+          "producer": "Productor",
+          "label": "Disquera",
+          "region": "Región",
+          "share": "Participación",
+          "presave": "Pre-save",
+          "listenNow": "Escuchar ahora",
+          "generated": "Generado automáticamente",
+          "more": "Y mucho más en tu panel",
+          "illustrative": "Valores ilustrativos"
+        },
       "title": "Herramientas para potenciar tu catálogo musical",
       "description": "Todo lo que necesitas para monitorear, proteger y maximizar el retorno de tu música, en un solo lugar.",
       "items": [
@@ -703,6 +786,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "support": {
+      "badge": "Soporte",
       "title": "Soporte en Cada Etapa",
       "description": "Te acompañamos en cada etapa, desde el envío del contenido hasta tu primer pago.",
       "items": [
@@ -729,6 +813,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "blog": {
+      "badge": "Blog",
+      "viewAll": "Ver en Instagram",
       "heading": "Blog",
       "subtitle": "Noticias, cultura y los bastidores del desarrollo del funk.",
       "readMore": "Leer artículo",
@@ -760,6 +846,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "faq": {
+      "badge": "Dudas",
+      "whatsapp": "Hablar por WhatsApp",
       "heading": "Preguntas frecuentes",
       "subtitle": "Resuelve tus dudas sobre distribución, plazos y regalías.",
       "ctaText": "¿Quieres distribuir con Brazilian Funk?",

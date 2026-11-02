@@ -1,5 +1,11 @@
 "use client"
 
+// Perguntas frequentes + chamada final.
+//
+// Referência no 21st.dev: "Two Column FAQ" (faq-6) e "FAQ Section": título,
+// texto e um atalho para falar com a equipe à esquerda; perguntas à direita.
+// A chamada final segue o mesmo painel com borda de Ferramentas e Pagamentos.
+
 import {
   Accordion,
   AccordionContent,
@@ -8,38 +14,44 @@ import {
 } from "@/components/ui/accordion"
 import { useTranslation } from "@/lib/i18n/use-translation"
 import { Button } from "@/components/ui/button"
+import { SectionBadge } from "@/components/ui/section-badge"
+
+const WHATSAPP_URL =
+  "https://api.whatsapp.com/send/?phone=5592981755727&text=Ol%C3%A1%2C+Brazilian+Funk.+Podem+me+ajudar+%3F&type=phone_number&app_absent=0"
 
 export default function FaqSection() {
   const { t } = useTranslation()
   return (
     <section id="faq" className="bg-background px-4 py-24 md:py-32">
-      <div className="mx-auto max-w-3xl">
-        <div className="mb-12 text-center md:mb-16">
-          <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-            {t.faq.heading}
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            {t.faq.subtitle}
-          </p>
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-12 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-16">
+          <div>
+            <SectionBadge>{t.faq.badge}</SectionBadge>
+            <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.faq.heading}</h2>
+            <p className="mt-6 max-w-sm text-base text-muted-foreground md:text-lg">{t.faq.subtitle}</p>
+            <Button href={WHATSAPP_URL} variant="secondary" className="mt-8" target="_blank" rel="noopener noreferrer">
+              {t.faq.whatsapp}
+            </Button>
+          </div>
+
+          <Accordion type="single" collapsible className="w-full border-t border-border">
+            {t.faq.items.map((item, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="py-6 text-left text-base font-semibold hover:text-brand-link hover:no-underline md:text-lg">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-base leading-relaxed text-muted-foreground">{item.answer}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
 
-        <Accordion type="single" collapsible className="w-full">
-          {t.faq.items.map((item, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left hover:text-brand-link hover:no-underline">
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent>{item.answer}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-
-        {/* Chamada no fim da página: antes o "Solicitar acesso" só aparecia
-            no topo e sumia até o rodapé. */}
-        <div className="mt-16 flex flex-col items-center gap-6 rounded-3xl border border-border bg-card px-6 py-12 text-center">
-          <p className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">{t.faq.ctaText}</p>
+        {/* Chamada final: o "Solicitar acesso" volta antes do rodapé. */}
+        <div className="mt-24 flex flex-col items-start justify-between gap-8 rounded-[32px] border border-border bg-card p-10 md:mt-32 md:flex-row md:items-center md:p-14">
+          <p className="max-w-xl text-3xl font-bold tracking-tight text-foreground md:text-4xl">{t.faq.ctaText}</p>
           <Button href="/solicitar-acesso" size="lg">
             {t.hero.cta}
+            <span aria-hidden="true">→</span>
           </Button>
         </div>
       </div>
