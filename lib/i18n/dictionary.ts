@@ -29,6 +29,13 @@ export interface Dictionary {
     updatedNow: string
     chooseMethod: string
     amount: string
+    overline: string
+    features: { title: string; desc: string }[]
+    recentLabel: string
+    illustrative: string
+    notifTitle: string
+    notifAmount: string
+    sendTo: string
   }
   delivery: {
     title: string
@@ -169,7 +176,18 @@ export const dictionary: Record<Locale, Dictionary> = {
       "balanceLabel": "Saldo disponível",
       "updatedNow": "Atualizado agora",
       "chooseMethod": "Escolha o método de saque",
-      "amount": "R$ 1.000,00"
+      "amount": "R$ 1.000,00",
+      "overline": "Pagamentos",
+      "features": [
+        { "title": "Saque via Pix", "desc": "O valor cai direto na sua chave Pix cadastrada." },
+        { "title": "Saque via PayPal", "desc": "Para quem prefere receber na conta PayPal." },
+        { "title": "Extrato transparente", "desc": "Veja quanto cada plataforma pagou, por período." }
+      ],
+      "recentLabel": "Últimos ganhos",
+      "illustrative": "Valores ilustrativos",
+      "notifTitle": "Pix recebido",
+      "notifAmount": "R$ 850,00",
+      "sendTo": "Receber em"
     },
     "delivery": {
       "title": "Entrega Rápida de Conteúdo",
@@ -387,7 +405,18 @@ export const dictionary: Record<Locale, Dictionary> = {
       "balanceLabel": "Available balance",
       "updatedNow": "Updated just now",
       "chooseMethod": "Choose a payout method",
-      "amount": "R$ 1,000.00"
+      "amount": "R$ 1,000.00",
+      "overline": "Payments",
+      "features": [
+        { "title": "Pix payouts", "desc": "Money goes straight to your registered Pix key." },
+        { "title": "PayPal payouts", "desc": "For those who prefer to receive in their PayPal account." },
+        { "title": "Transparent statements", "desc": "See how much each platform paid, by period." }
+      ],
+      "recentLabel": "Recent earnings",
+      "illustrative": "Illustrative values",
+      "notifTitle": "Pix received",
+      "notifAmount": "R$ 850.00",
+      "sendTo": "Receive via"
     },
     "delivery": {
       "title": "Fast Content Delivery",
@@ -605,7 +634,18 @@ export const dictionary: Record<Locale, Dictionary> = {
       "balanceLabel": "Saldo disponible",
       "updatedNow": "Actualizado ahora",
       "chooseMethod": "Elige el método de retiro",
-      "amount": "R$ 1.000,00"
+      "amount": "R$ 1.000,00",
+      "overline": "Pagos",
+      "features": [
+        { "title": "Retiro vía Pix", "desc": "El dinero llega directo a tu clave Pix registrada." },
+        { "title": "Retiro vía PayPal", "desc": "Para quien prefiere recibir en su cuenta PayPal." },
+        { "title": "Extracto transparente", "desc": "Mira cuánto pagó cada plataforma, por período." }
+      ],
+      "recentLabel": "Últimas ganancias",
+      "illustrative": "Valores ilustrativos",
+      "notifTitle": "Pix recibido",
+      "notifAmount": "R$ 850,00",
+      "sendTo": "Recibir en"
     },
     "delivery": {
       "title": "Entrega Rápida de Contenido",
