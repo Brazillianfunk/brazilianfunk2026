@@ -34,11 +34,11 @@
        botão fica escuro demais como texto sobre preto (3,3:1). */
     --brand-link: 226 100% 74%;         /* ≈ #7a95ff — 7:1 sobre o fundo */
 
-    /* Verde da bandeira do Brasil — a cor da marca. Usado só em detalhes
+    /* Verde da marca (o mesmo do favicon/ícone do app). Usado só em detalhes
        (valores recebidos, "online", barra de progresso, mapa do rodapé).
        O nome da variável ficou "lime" para não mexer em todos os componentes. */
-    --brand-lime: 142 100% 31%;         /* #009c3b */
-    --brand-lime-foreground: 0 0% 100%;
+    --brand-lime: 72 97% 59%;           /* #d7fc32 */
+    --brand-lime-foreground: 0 0% 4%;
 
     --secondary: 0 0% 10%;
     --secondary-foreground: 60 9% 96%;
@@ -221,6 +221,6 @@
   --muted-foreground: 60 3% 58%;
   --border: 0 0% 15%;
   --brand-link: 226 100% 74%;
-  --brand-lime: 142 100% 31%;
+  --brand-lime: 72 97% 59%;
   color: hsl(var(--foreground));
 }
