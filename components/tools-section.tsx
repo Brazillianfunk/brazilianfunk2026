@@ -18,7 +18,11 @@ const BARS = [30, 44, 38, 56, 50, 68, 62, 80, 72, 92]
 const card = "group relative overflow-hidden rounded-[24px] border border-border bg-card transition-colors duration-300 hover:border-white/25"
 
 export default function ToolsSection() {
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
+  const streams = new Intl.NumberFormat({ pt: "pt-BR", en: "en-US", es: "es-ES" }[locale] ?? "pt-BR", {
+    notation: "compact",
+    maximumFractionDigits: 2,
+  }).format(1240000)
   const items = t.tools.items
 
   return (
@@ -36,9 +40,15 @@ export default function ToolsSection() {
         <div className="mt-14 grid gap-4 lg:grid-cols-3">
           {/* Analytics: card grande com gráfico */}
           <article className={cn(card, "reveal-scale flex min-h-[320px] flex-col justify-between p-8 lg:col-span-2")}>
-            <div className="flex items-start justify-between">
-              <span className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">{t.tools.mock.last28}</span>
-              <span className="text-sm font-semibold tabular-nums text-brand-lime">+18%</span>
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs uppercase tracking-wide text-muted-foreground">{t.tools.mock.streams}</p>
+                <p className="mt-1 flex items-baseline gap-3">
+                  <span className="text-4xl font-bold tabular-nums tracking-tight text-foreground">{streams}</span>
+                  <span className="text-sm font-semibold tabular-nums text-brand-lime">+18%</span>
+                </p>
+              </div>
+              <span className="whitespace-nowrap rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">{t.tools.mock.last28}</span>
             </div>
             <div aria-hidden="true" className="mt-6 flex h-32 items-end gap-2">
               {BARS.map((h, i) => (
