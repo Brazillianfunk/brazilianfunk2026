@@ -176,7 +176,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "balanceLabel": "Saldo disponível",
       "updatedNow": "Atualizado agora",
       "chooseMethod": "Escolha o método de saque",
-      "amount": "R$ 1.000,00",
+      "amount": "US$ 1.000,00",
       "overline": "Pagamentos",
       "features": [
         { "title": "Saque via Pix", "desc": "O valor cai direto na sua chave Pix cadastrada." },
@@ -185,8 +185,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       ],
       "recentLabel": "Últimos ganhos",
       "illustrative": "Valores ilustrativos",
-      "notifTitle": "Pix recebido",
-      "notifAmount": "R$ 850,00",
+      "notifTitle": "Pagamento recebido",
+      "notifAmount": "US$ 850,00",
       "sendTo": "Receber em"
     },
     "delivery": {
@@ -405,7 +405,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "balanceLabel": "Available balance",
       "updatedNow": "Updated just now",
       "chooseMethod": "Choose a payout method",
-      "amount": "R$ 1,000.00",
+      "amount": "$1,000.00",
       "overline": "Payments",
       "features": [
         { "title": "Pix payouts", "desc": "Money goes straight to your registered Pix key." },
@@ -414,8 +414,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       ],
       "recentLabel": "Recent earnings",
       "illustrative": "Illustrative values",
-      "notifTitle": "Pix received",
-      "notifAmount": "R$ 850.00",
+      "notifTitle": "Payment received",
+      "notifAmount": "$850.00",
       "sendTo": "Receive via"
     },
     "delivery": {
@@ -634,7 +634,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "balanceLabel": "Saldo disponible",
       "updatedNow": "Actualizado ahora",
       "chooseMethod": "Elige el método de retiro",
-      "amount": "R$ 1.000,00",
+      "amount": "US$ 1.000,00",
       "overline": "Pagos",
       "features": [
         { "title": "Retiro vía Pix", "desc": "El dinero llega directo a tu clave Pix registrada." },
@@ -643,8 +643,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       ],
       "recentLabel": "Últimas ganancias",
       "illustrative": "Valores ilustrativos",
-      "notifTitle": "Pix recibido",
-      "notifAmount": "R$ 850,00",
+      "notifTitle": "Pago recibido",
+      "notifAmount": "US$ 850,00",
       "sendTo": "Recibir en"
     },
     "delivery": {

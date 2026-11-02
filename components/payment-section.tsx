@@ -6,11 +6,12 @@
 // aproveitadas: o produto mostrado dentro de um celular, saldo grande com os
 // centavos menores, poucas ações bem claras e uma lista de movimentações.
 // Cores e componentes são os do site; os valores são ilustrativos.
+// Moeda: dólar (os artistas recebem os ganhos em USD).
 //
 // O celular é interativo: dá para escolher Pix ou PayPal no seletor.
 
 import { useState } from "react"
-import { FileText } from "lucide-react"
+import { ArrowDownLeft, FileText } from "lucide-react"
 import { useTranslation } from "@/lib/i18n/use-translation"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -29,7 +30,7 @@ const SAMPLE_EARNINGS = [
 
 function useMoney() {
   const { locale } = useTranslation()
-  const fmt = new Intl.NumberFormat(LOCALE_FORMAT[locale] ?? "pt-BR", { style: "currency", currency: "BRL" })
+  const fmt = new Intl.NumberFormat(LOCALE_FORMAT[locale] ?? "pt-BR", { style: "currency", currency: "USD" })
   return {
     format: (v: number) => fmt.format(v),
     // Separa a parte inteira dos centavos, para mostrar os centavos menores.
@@ -165,8 +166,8 @@ export default function PaymentSection() {
 
           {/* notificação de Pix, fora do painel para não ser cortada */}
           <div className="absolute -top-7 right-3 z-10 flex w-[205px] items-center gap-3 rounded-2xl bg-foreground p-3 text-background shadow-[0_20px_40px_-12px_rgba(0,0,0,0.7)] md:-left-16 md:right-auto md:top-56">
-            <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-white ring-1 ring-black/10">
-              <img src={PIX_ICON} alt="" className="h-6 w-6 object-contain" />
+            <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-brand-lime text-brand-lime-foreground">
+              <ArrowDownLeft className="h-5 w-5" strokeWidth={2.5} />
             </span>
             <div className="min-w-0">
               <p className="text-xs font-semibold">{t.payment.notifTitle}</p>
