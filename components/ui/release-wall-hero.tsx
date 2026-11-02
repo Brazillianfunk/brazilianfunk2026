@@ -8,13 +8,11 @@ import { Button } from "@/components/ui/button"
  *
  * Adaptado do componente "Duotone Team Roster" (21st.dev): título pesado
  * embaixo à esquerda sobre um campo de cor, e ao lado colunas de capas que
- * deslizam devagar em sentidos opostos. Todas as capas passam pelo mesmo
- * filtro de três tons (sombra, meio-tom, luz) feito com o azul da marca,
- * então capas de cores muito diferentes viram um conjunto só. Passar o mouse
- * (ou focar com o teclado) devolve a cor original da capa.
+ * deslizam devagar em sentidos opostos. Passar o mouse (ou focar com o teclado) destaca a capa.
  *
  * Diferenças em relação ao original: capas quadradas em vez de retratos,
- * paleta no azul da marca, fonte Inter do site, botão padrão do site,
+ * capas com as cores originais (sem o filtro de duas cores), fundo preto
+ * do site, fonte Inter, botão padrão do site,
  * textos traduzidos, sem os cards de "membro da equipe" (entram quando
  * houver nome/artista/link de cada lançamento).
  *
@@ -34,43 +32,18 @@ export type Palette = {
   hot: string
   glow: string
   ink: string
-  shadow: string
-  highlight: string
 }
 
-// Paletas candidatas. O fundo é sempre o preto do site (#050505).
+// Fundo preto do site (#050505). "noite" deixa um brilho verde discreto
+// atrás do título, caso queiram testar depois.
 export const PALETTES = {
-  // Verde-esmeralda #10C47A (citado no README original do projeto)
-  esmeralda: { ground: "#050505", deep: "#03291a", hot: "#10c47a", glow: "#7ef0bd", ink: "#f5f4f0", shadow: "#021a10", highlight: "#dcfbe9" },
-  // Verde #049629 (usado em pontos do código atual)
-  verde: { ground: "#050505", deep: "#032b10", hot: "#0a9a32", glow: "#6fe08b", ink: "#f5f4f0", shadow: "#021807", highlight: "#dbf7e1" },
-  // Fundo escuro com um brilho verde discreto atrás do título
-  noite: { ground: "#050505", deep: "#060908", hot: "#0c3322", glow: "#10533a", ink: "#f5f4f0", shadow: "#021a10", highlight: "#dcfbe9" },
-  // Preto puro, sem brilho
-  preto: { ground: "#050505", deep: "#050505", hot: "#0a0a0a", glow: "#111111", ink: "#f5f4f0", shadow: "#021a10", highlight: "#dcfbe9" },
-  // Azul (primeira prévia)
-  azul: { ground: "#050505", deep: "#0a1550", hot: "#2152e8", glow: "#7a95ff", ink: "#f5f4f0", shadow: "#040a2e", highlight: "#dfe6ff" },
+  preto: { ground: "#050505", deep: "#050505", hot: "#0a0a0a", glow: "#111111", ink: "#f5f4f0" },
+  noite: { ground: "#050505", deep: "#060908", hot: "#0c3322", glow: "#10533a", ink: "#f5f4f0" },
 } satisfies Record<string, Palette>
 export type PaletteName = keyof typeof PALETTES
 
-function hexToUnit(hex: string) {
-  let h = hex.replace("#", "")
-  if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2]
-  return [0, 2, 4].map((i) => Math.round((parseInt(h.slice(i, i + 2), 16) / 255) * 1000) / 1000)
-}
 
-function mixHex(a: string, b: string, t: number) {
-  const x = hexToUnit(a)
-  const y = hexToUnit(b)
-  return "#" + [0, 1, 2].map((i) => Math.round((x[i] + (y[i] - x[i]) * t) * 255).toString(16).padStart(2, "0")).join("")
-}
 
-function tritoneTables(shadow: string, mid: string, highlight: string) {
-  const s = hexToUnit(shadow)
-  const m = hexToUnit(mid)
-  const h = hexToUnit(highlight)
-  return [0, 1, 2].map((c) => `${s[c]} ${m[c]} ${h[c]}`)
-}
 
 /** Distribui as capas nas colunas, alternando, e completa colunas curtas. */
 function dealColumns<T>(items: T[], columns: number, minPerColumn: number) {
@@ -99,7 +72,6 @@ const css = `
 .rwh *,.rwh *::before,.rwh *::after{box-sizing:border-box}
 .rwh-field{position:absolute;inset:0;z-index:-2;background:radial-gradient(38cqw 46cqw at 0% 100%,var(--rwh-ground) 0%,color-mix(in srgb,var(--rwh-ground) 55%,var(--rwh-deep)) 72%,transparent 100%),radial-gradient(70% 62% at 30% 40%,color-mix(in srgb,var(--rwh-hot) 75%,var(--rwh-glow)) 0%,var(--rwh-hot) 22%,color-mix(in srgb,var(--rwh-hot) 45%,var(--rwh-deep)) 48%,transparent 78%),radial-gradient(60% 90% at 78% 30%,color-mix(in srgb,var(--rwh-hot) 55%,var(--rwh-deep)) 0%,transparent 70%),linear-gradient(98deg,var(--rwh-ground) 0%,var(--rwh-deep) 16%,transparent 42%),linear-gradient(0deg,var(--rwh-ground) 0%,color-mix(in srgb,var(--rwh-deep) 85%,transparent) 30%,transparent 62%),var(--rwh-deep)}
 .rwh-grain{position:absolute;inset:-50%;z-index:-1;pointer-events:none;opacity:.18;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.6 -.35'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");background-size:220px 220px}
-.rwh-defs{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
 .rwh-in{position:relative;display:grid;grid-template-columns:minmax(0,44fr) minmax(0,56fr);height:100%}
 .rwh[data-cols="2"] .rwh-in{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 .rwh-copy{position:relative;z-index:5;grid-row:1;grid-column:1;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--rwh-pad);padding-right:clamp(16px,2cqw,32px);min-width:0}
@@ -117,9 +89,7 @@ const css = `
 .rwh[data-paused] .rwh-track,.rwh[data-offscreen] .rwh-track,.rwh-wall:hover .rwh-track,.rwh-wall:focus-within .rwh-track,.rwh[data-paused] .rwh-strip-track,.rwh[data-offscreen] .rwh-strip-track{animation-play-state:paused}
 .rwh-card{position:relative;margin:0 0 var(--rwh-gap);aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--rwh-deep);transition:transform 260ms var(--rwh-ease),opacity 260ms ease;outline:none}
 .rwh-card img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:opacity 300ms ease,transform 300ms var(--rwh-ease)}
-.rwh-true{opacity:0}
 .rwh-card:hover,.rwh-card:focus-visible{transform:translateY(-4px) scale(1.02);z-index:2}
-.rwh-card:hover .rwh-true,.rwh-card:focus-visible .rwh-true{opacity:1}
 .rwh-card:focus-visible{box-shadow:0 0 0 2px var(--rwh-ground),0 0 0 4px var(--rwh-ink)}
 .rwh-wall:hover .rwh-card:not(:hover){opacity:.7}
 .rwh-pause{position:absolute;right:var(--rwh-pad);bottom:14px;z-index:6;display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border:0;border-radius:999px;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--rwh-ink) 32%,transparent);background:color-mix(in srgb,var(--rwh-ground) 88%,transparent);color:var(--rwh-ink);font:600 12px/1 inherit;cursor:pointer}
@@ -163,8 +133,6 @@ export type ReleaseWallHeroProps = {
   driftSeconds?: number
   height?: string
   palette?: PaletteName
-  /** Aplica o filtro de duas cores nas capas. Desligado: capas com as cores originais. */
-  tint?: boolean
 }
 
 export function ReleaseWallHero({
@@ -178,12 +146,10 @@ export function ReleaseWallHero({
   columns = 3,
   driftSeconds = 9,
   height = "calc(100svh - 72px)",
-  palette = "noite",
-  tint = false,
+  palette = "preto",
 }: ReleaseWallHeroProps) {
   const pal = PALETTES[palette]
   const uid = "rwh" + React.useId().replace(/[^a-zA-Z0-9]/g, "")
-  const filterId = uid + "-tone"
   const titleId = uid + "-title"
   const rootRef = React.useRef<HTMLElement | null>(null)
   const copyRef = React.useRef<HTMLDivElement | null>(null)
@@ -195,8 +161,6 @@ export function ReleaseWallHero({
   const [offscreen, setOffscreen] = React.useState(false)
 
   const lines = title.split("\n").map((l) => l.trim()).filter(Boolean)
-  const mid = mixHex(pal.hot, pal.highlight, 0.3)
-  const tables = tritoneTables(mixHex(pal.shadow, pal.deep, 0.4), mid, mixHex(pal.highlight, pal.ink, 0.5))
   const plan = React.useMemo(() => dealColumns(releases, Math.max(1, cols), cols ? minPer : 0), [releases, cols, minPer])
 
   // Mede o container: escolhe o layout e ajusta o título à coluna.
@@ -244,14 +208,7 @@ export function ReleaseWallHero({
 
   const card = (r: Release, key: string, dup: boolean) => (
     <div key={key} className="rwh-card" tabIndex={dup ? -1 : 0} aria-hidden={dup ? true : undefined} role={dup ? undefined : "img"} aria-label={dup ? undefined : r.alt}>
-      {tint ? (
-        <>
-          <img src={r.cover} alt="" width={480} height={480} loading="lazy" decoding="async" draggable={false} style={{ filter: `url(#${filterId})` }} />
-          <img className="rwh-true" src={r.cover} alt="" width={480} height={480} loading="lazy" decoding="async" draggable={false} />
-        </>
-      ) : (
-        <img src={r.cover} alt="" width={480} height={480} loading="lazy" decoding="async" draggable={false} />
-      )}
+      <img src={r.cover} alt="" width={480} height={480} loading="lazy" decoding="async" draggable={false} />
     </div>
   )
 
@@ -288,21 +245,6 @@ export function ReleaseWallHero({
       data-offscreen={offscreen ? "" : undefined}
     >
       <style>{css}</style>
-      <svg className="rwh-defs" aria-hidden="true" focusable="false">
-        <filter id={filterId} colorInterpolationFilters="sRGB">
-          <feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0" />
-          <feComponentTransfer>
-            <feFuncR type="table" tableValues="0 0.13 0.5 0.9 1" />
-            <feFuncG type="table" tableValues="0 0.13 0.5 0.9 1" />
-            <feFuncB type="table" tableValues="0 0.13 0.5 0.9 1" />
-          </feComponentTransfer>
-          <feComponentTransfer>
-            <feFuncR type="table" tableValues={tables[0]} />
-            <feFuncG type="table" tableValues={tables[1]} />
-            <feFuncB type="table" tableValues={tables[2]} />
-          </feComponentTransfer>
-        </filter>
-      </svg>
       <div className="rwh-field" aria-hidden="true" />
       <div className="rwh-grain" aria-hidden="true" />
       {cols !== 0 ? pauseButton : null}
@@ -320,7 +262,7 @@ export function ReleaseWallHero({
           </h1>
           <p className="rwh-intro">{intro}</p>
           <div className="rwh-actions">
-            <Button href={cta.href} size="lg" variant="light">
+            <Button href={cta.href} size="lg">
               {cta.label}
               <span aria-hidden="true">→</span>
             </Button>

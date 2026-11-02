@@ -1,5 +1,5 @@
 import Navbar from "@/components/navbar"
-import HeroSection from "@/components/hero-section"
+import ReleaseWallHeroSection from "@/components/release-wall-hero-section"
 import DistributionSection from "@/components/distribution-section"
 import PaymentSection from "@/components/payment-section"
 import DeliverySection from "@/components/delivery-section"
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
-      <HeroSection />
+      <ReleaseWallHeroSection />
       <DistributionSection />
       <PaymentSection />
       <DeliverySection />
