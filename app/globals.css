@@ -209,18 +209,6 @@
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
 }
-.theme-lime {
-  --background: 77 77% 51%;          /* #b0e321 — verde-limão da marca */
-  --foreground: 0 0% 4%;
-  --card: 77 70% 57%;
-  --card-foreground: 0 0% 4%;
-  --muted-foreground: 77 40% 16%;
-  --border: 77 45% 36%;
-  --brand-lime: 0 0% 4%;             /* ponto "online" fica preto sobre o limão */
-  --brand-link: 0 0% 4%;
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-}
 .theme-dark {
   --background: 0 0% 2%;
   --foreground: 60 9% 96%;
