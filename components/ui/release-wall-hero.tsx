@@ -28,7 +28,7 @@ export type Release = {
   alt?: string
 }
 
-type Palette = {
+export type Palette = {
   ground: string
   deep: string
   hot: string
@@ -38,16 +38,20 @@ type Palette = {
   highlight: string
 }
 
-// Azul da marca (#2152e8) como meio-tom; fundo igual ao do site (#050505).
-const BRAND_PALETTE: Palette = {
-  ground: "#050505",
-  deep: "#0a1550",
-  hot: "#2152e8",
-  glow: "#7a95ff",
-  ink: "#f5f4f0",
-  shadow: "#040a2e",
-  highlight: "#dfe6ff",
-}
+// Paletas candidatas. O fundo é sempre o preto do site (#050505).
+export const PALETTES = {
+  // Verde-esmeralda #10C47A (citado no README original do projeto)
+  esmeralda: { ground: "#050505", deep: "#03291a", hot: "#10c47a", glow: "#7ef0bd", ink: "#f5f4f0", shadow: "#021a10", highlight: "#dcfbe9" },
+  // Verde #049629 (usado em pontos do código atual)
+  verde: { ground: "#050505", deep: "#032b10", hot: "#0a9a32", glow: "#6fe08b", ink: "#f5f4f0", shadow: "#021807", highlight: "#dbf7e1" },
+  // Fundo escuro com um brilho verde discreto atrás do título
+  noite: { ground: "#050505", deep: "#060908", hot: "#0c3322", glow: "#10533a", ink: "#f5f4f0", shadow: "#021a10", highlight: "#dcfbe9" },
+  // Preto puro, sem brilho
+  preto: { ground: "#050505", deep: "#050505", hot: "#0a0a0a", glow: "#111111", ink: "#f5f4f0", shadow: "#021a10", highlight: "#dcfbe9" },
+  // Azul (primeira prévia)
+  azul: { ground: "#050505", deep: "#0a1550", hot: "#2152e8", glow: "#7a95ff", ink: "#f5f4f0", shadow: "#040a2e", highlight: "#dfe6ff" },
+} satisfies Record<string, Palette>
+export type PaletteName = keyof typeof PALETTES
 
 function hexToUnit(hex: string) {
   let h = hex.replace("#", "")
@@ -117,7 +121,7 @@ const css = `
 .rwh-card:hover,.rwh-card:focus-visible{transform:translateY(-4px) scale(1.02);z-index:2}
 .rwh-card:hover .rwh-true,.rwh-card:focus-visible .rwh-true{opacity:1}
 .rwh-card:focus-visible{box-shadow:0 0 0 2px var(--rwh-ground),0 0 0 4px var(--rwh-ink)}
-.rwh-wall:hover .rwh-card:not(:hover){opacity:.55}
+.rwh-wall:hover .rwh-card:not(:hover){opacity:.7}
 .rwh-pause{position:absolute;right:var(--rwh-pad);bottom:14px;z-index:6;display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border:0;border-radius:999px;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--rwh-ink) 32%,transparent);background:color-mix(in srgb,var(--rwh-ground) 88%,transparent);color:var(--rwh-ink);font:600 12px/1 inherit;cursor:pointer}
 .rwh-pause:focus-visible{outline:2px solid var(--rwh-ink);outline-offset:3px}
 .rwh-pause i{display:inline-block;width:8px;height:9px;border-left:3px solid currentColor;border-right:3px solid currentColor}
@@ -158,6 +162,9 @@ export type ReleaseWallHeroProps = {
   /** Segundos para uma coluna deslizar o tamanho de uma capa. */
   driftSeconds?: number
   height?: string
+  palette?: PaletteName
+  /** Aplica o filtro de duas cores nas capas. Desligado: capas com as cores originais. */
+  tint?: boolean
 }
 
 export function ReleaseWallHero({
@@ -171,8 +178,10 @@ export function ReleaseWallHero({
   columns = 3,
   driftSeconds = 9,
   height = "calc(100svh - 72px)",
+  palette = "noite",
+  tint = false,
 }: ReleaseWallHeroProps) {
-  const pal = BRAND_PALETTE
+  const pal = PALETTES[palette]
   const uid = "rwh" + React.useId().replace(/[^a-zA-Z0-9]/g, "")
   const filterId = uid + "-tone"
   const titleId = uid + "-title"
@@ -235,8 +244,14 @@ export function ReleaseWallHero({
 
   const card = (r: Release, key: string, dup: boolean) => (
     <div key={key} className="rwh-card" tabIndex={dup ? -1 : 0} aria-hidden={dup ? true : undefined} role={dup ? undefined : "img"} aria-label={dup ? undefined : r.alt}>
-      <img src={r.cover} alt="" width={480} height={480} loading="lazy" decoding="async" draggable={false} style={{ filter: `url(#${filterId})` }} />
-      <img className="rwh-true" src={r.cover} alt="" width={480} height={480} loading="lazy" decoding="async" draggable={false} />
+      {tint ? (
+        <>
+          <img src={r.cover} alt="" width={480} height={480} loading="lazy" decoding="async" draggable={false} style={{ filter: `url(#${filterId})` }} />
+          <img className="rwh-true" src={r.cover} alt="" width={480} height={480} loading="lazy" decoding="async" draggable={false} />
+        </>
+      ) : (
+        <img src={r.cover} alt="" width={480} height={480} loading="lazy" decoding="async" draggable={false} />
+      )}
     </div>
   )
 
@@ -305,7 +320,7 @@ export function ReleaseWallHero({
           </h1>
           <p className="rwh-intro">{intro}</p>
           <div className="rwh-actions">
-            <Button href={cta.href} size="lg">
+            <Button href={cta.href} size="lg" variant="light">
               {cta.label}
               <span aria-hidden="true">→</span>
             </Button>
