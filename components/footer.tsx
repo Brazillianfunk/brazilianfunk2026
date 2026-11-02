@@ -137,8 +137,12 @@ export default function Footer() {
         </div>
 
         {/* Logo grande fechando a página */}
-        <div aria-hidden="true" className="reveal mt-10 overflow-hidden pb-6">
-          <img src="/brazilian-funk-logo.png" alt="" className="w-full opacity-[0.08]" />
+        <div aria-hidden="true" className="reveal mt-10 flex items-end gap-[3%] overflow-hidden pb-6">
+          {/* Mapa da logo em verde-bandeira (máscara sobre o PNG branco) */}
+          <span
+            className="aspect-[400/339] w-[12%] flex-none bg-brand-lime [mask:url(/brazilian-funk-mapa.png)_center/contain_no-repeat] [-webkit-mask:url(/brazilian-funk-mapa.png)_center/contain_no-repeat]"
+          />
+          <img src="/brazilian-funk-logo.png" alt="" className="min-w-0 flex-1 opacity-[0.08]" />
         </div>
       </div>
     </footer>
