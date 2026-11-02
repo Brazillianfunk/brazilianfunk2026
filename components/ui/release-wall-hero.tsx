@@ -76,7 +76,7 @@ const css = `
 .rwh-grain{position:absolute;inset:-50%;z-index:-1;pointer-events:none;opacity:.18;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.6 -.35'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");background-size:220px 220px}
 .rwh-in{position:relative;display:grid;grid-template-columns:minmax(0,44fr) minmax(0,56fr);height:100%}
 .rwh[data-cols="2"] .rwh-in{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-.rwh-copy{position:relative;z-index:5;grid-row:1;grid-column:1;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--rwh-pad);padding-right:clamp(16px,2cqw,32px);min-width:0}
+.rwh-copy{position:relative;z-index:5;grid-row:1;grid-column:1;pointer-events:none;display:flex;flex-direction:column;justify-content:center;padding:var(--rwh-pad);padding-bottom:calc(var(--rwh-pad) + 4vh);padding-right:clamp(16px,2cqw,32px);min-width:0}
 .rwh-title{margin:0;font-weight:900;line-height:.86;letter-spacing:-.045em;color:var(--rwh-ink);font-size:var(--rwh-ts,clamp(56px,9cqw,180px));text-transform:uppercase;text-shadow:0 .02em .14em color-mix(in srgb,var(--rwh-ground) 30%,transparent)}
 .rwh-eyebrow{display:block;font-size:.34em;line-height:1;letter-spacing:-.02em;margin:0 0 .18em .03em;white-space:nowrap}
 .rwh-line{display:block;clip-path:inset(-30% -400% 0 -10%);padding-bottom:.04em;margin-bottom:-.04em}
@@ -141,7 +141,7 @@ export function ReleaseWallHero({
   labels,
   columns = 3,
   driftSeconds = 9,
-  height = "calc(100svh - 72px)",
+  height = "calc(100svh - 52px)",
   palette = "preto",
 }: ReleaseWallHeroProps) {
   const pal = PALETTES[palette]
@@ -182,7 +182,7 @@ export function ReleaseWallHero({
         setMinPer((m) => (m === need ? m : need))
       }
       const strip = next === 0
-      const maxByHeight = strip ? 120 : Math.max(56, (rect.height * 0.46) / Math.max(1, lines.length + 0.5))
+      const maxByHeight = strip ? 120 : Math.max(48, (rect.height * 0.36) / Math.max(1, lines.length + 0.5))
       const size = widest > 0 ? (avail / ((widest / cur) * 100)) * 100 : 0
       setTitleSize(Math.max(40, Math.min(200, maxByHeight, Math.floor(size * 10) / 10)))
     }
@@ -219,7 +219,7 @@ export function ReleaseWallHero({
     "--rwh-ts": titleSize ? titleSize + "px" : undefined,
     "--rwh-sdur": Math.max(20, releases.length * driftSeconds * 0.5) + "s",
     height: cols === 0 ? "auto" : height,
-    minHeight: cols === 0 ? undefined : "620px",
+    minHeight: cols === 0 ? undefined : "540px",
   } as React.CSSProperties
 
   return (
