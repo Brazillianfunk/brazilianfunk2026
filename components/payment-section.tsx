@@ -12,14 +12,8 @@
 
 import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Poppins } from "next/font/google"
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-})
-
 import { useTranslation } from "@/lib/i18n/use-translation"
+import { Button } from "@/components/ui/button"
 
 const PAYPAL_ICON = "/paypal-icon.png"
 const PIX_ICON = "/pix-icon.png"
@@ -40,7 +34,7 @@ export default function PaymentSection() {
     <section id="pagamentos" className="bg-[#1c1c1c] px-3 py-8 sm:px-6 sm:py-10 md:px-10 md:py-14 lg:px-16 lg:py-16 scroll-mt-24">
       <div className="rounded-[28px] bg-background md:rounded-[36px]">
         <div
-          className={`${poppins.className} relative mx-auto flex w-full max-w-[1080px] flex-wrap items-center justify-center gap-20 overflow-hidden px-6 py-14`}
+          className={`relative mx-auto flex w-full max-w-[1080px] flex-wrap items-center justify-center gap-20 overflow-hidden px-6 py-14`}
         >
 
           {/* Wallet card */}
@@ -51,20 +45,20 @@ export default function PaymentSection() {
           style={{ background: "#161616", filter: "blur(22px)" }}
         />
         <div className="relative z-10 w-full rounded-[22px] bg-[#141414] px-[22px] pb-[22px] pt-7">
-          <p className="m-0 mb-2 text-center text-[11px] font-medium tracking-wide text-[#8a8a8a]">
-            SALDO DISPONÍVEL
+          <p className="m-0 mb-2 text-center text-[11px] font-medium uppercase tracking-wide text-[#8a8a8a]">
+            {t.payment.balanceLabel}
           </p>
-          <p className="m-0 text-center text-[32px] font-extrabold text-white">$1,000.00</p>
-          <p className="m-0 mb-[26px] mt-1 text-center text-xs text-[#8a8a8a]">Atualizado agora</p>
+          <p className="m-0 text-center text-[32px] font-extrabold tabular-nums text-white">{t.payment.amount}</p>
+          <p className="m-0 mb-[26px] mt-1 text-center text-xs text-[#8a8a8a]">{t.payment.updatedNow}</p>
 
-          <p className="m-0 mb-2.5 text-[11px] font-medium text-[#8a8a8a]">Escolha o método de saque</p>
+          <p className="m-0 mb-2.5 text-[11px] font-medium text-[#8a8a8a]">{t.payment.chooseMethod}</p>
 
           {methods.map((method) => {
             const isSelected = selectedMethod === method.id
             return (
               <div
                 key={method.id}
-                onMouseEnter={() => setSelectedMethod(method.id)}
+                onClick={() => setSelectedMethod(method.id)}
                 onFocus={() => setSelectedMethod(method.id)}
                 onKeyDown={(e) =>
                   (e.key === "Enter" || e.key === " ") && setSelectedMethod(method.id)
@@ -134,21 +128,18 @@ export default function PaymentSection() {
           })}
 
 
-          <button className="mt-3 w-full rounded-full bg-white py-3.5 text-[13px] font-extrabold tracking-wider text-black">
+          <Button variant="light" className="mt-3 w-full">
             {t.payment.withdraw}
-          </button>
+          </Button>
         </div>
       </div>
 
       {/* Título + subtítulo + bolhas */}
       <div className="relative z-10 max-w-[400px] flex-1 basis-[360px] text-center md:text-left">
-        <h2
-          className="m-0 mb-3.5 font-extrabold leading-[1.15]"
-          style={{ color: "#ffffff", fontSize: "clamp(26px, 3.4vw, 34px)" }}
-        >
+        <h2 className="m-0 mb-4 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
           {t.payment.title}
         </h2>
-        <p className="m-0 mb-7 max-w-[380px] text-sm leading-relaxed text-white md:mx-0 mx-auto">
+        <p className="m-0 mb-7 mx-auto max-w-[380px] text-base text-muted-foreground md:mx-0 md:text-lg">
           {t.payment.description}
         </p>
 
@@ -164,7 +155,7 @@ export default function PaymentSection() {
             <div className="min-w-0 text-white">
               <h3 className="m-0 mb-[3px] text-[14.5px] font-bold">Paypal</h3>
               <p className="m-0 text-[10.5px] leading-snug">
-                You are receiving a payment for your declared earnings through Brazilian Funk.
+                {t.payment.paypalDesc}
               </p>
             </div>
           </div>

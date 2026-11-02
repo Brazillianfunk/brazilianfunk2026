@@ -23,6 +23,11 @@ export interface Dictionary {
     withdraw: string
     pixName: string
     pixDesc: string
+    paypalDesc: string
+    balanceLabel: string
+    updatedNow: string
+    chooseMethod: string
+    amount: string
   }
   delivery: {
     title: string
@@ -66,6 +71,7 @@ export interface Dictionary {
   faq: {
     heading: string
     subtitle: string
+    ctaText: string
     items: {
       question: string
       answer: string
@@ -136,13 +142,13 @@ export const dictionary: Record<Locale, Dictionary> = {
       "ferramentas": "Ferramentas",
       "noticias": "Notícias",
       "entrar": "Entrar",
-      "comecar": "Começar"
+      "comecar": "Solicitar acesso"
     },
     "hero": {
       "titleLine1": "A Distribuidora",
       "titleLine2": "Musical do Funk",
       "description": "Uma plataforma especializada em Funk para artistas, DJs e gravadoras que desejam distribuir suas músicas globalmente, gerenciar royalties e desenvolver sua carreira musical.",
-      "cta": "Solicitar Acesso"
+      "cta": "Solicitar acesso"
     },
     "distribution": {
       "badge": "+40 Lojas e Serviços",
@@ -152,9 +158,14 @@ export const dictionary: Record<Locale, Dictionary> = {
     "payment": {
       "title": "Receba seus pagamentos de forma simples",
       "description": "Efetue saques de forma prática e segura, com opções de recebimento via PayPal ou Pix.",
-      "withdraw": "WITHDRAW",
+      "withdraw": "Sacar",
       "pixName": "Pix",
-      "pixDesc": "Você está recebendo um pagamento pelos seus ganhos declarados através da Brazilian Funk."
+      "pixDesc": "Você está recebendo um pagamento pelos seus ganhos declarados através da Brazilian Funk.",
+      "paypalDesc": "Você está recebendo um pagamento pelos seus ganhos declarados através da Brazilian Funk.",
+      "balanceLabel": "Saldo disponível",
+      "updatedNow": "Atualizado agora",
+      "chooseMethod": "Escolha o método de saque",
+      "amount": "R$ 1.000,00"
     },
     "delivery": {
       "title": "Entrega Rápida de Conteúdo",
@@ -256,6 +267,7 @@ export const dictionary: Record<Locale, Dictionary> = {
     "faq": {
       "heading": "Perguntas frequentes",
       "subtitle": "Tire suas dúvidas sobre distribuição, prazos e royalties.",
+      "ctaText": "Quer distribuir com a Brazilian Funk?",
       "items": [
         {
           "question": "O que é a Brazilian Funk?",
@@ -340,13 +352,13 @@ export const dictionary: Record<Locale, Dictionary> = {
       "ferramentas": "Tools",
       "noticias": "News",
       "entrar": "Sign In",
-      "comecar": "Get Started"
+      "comecar": "Request access"
     },
     "hero": {
       "titleLine1": "The Music Distributor",
       "titleLine2": "for Funk",
       "description": "A platform specialized in Funk for artists, DJs, and labels who want to distribute their music globally, manage royalties, and grow their music career.",
-      "cta": "Request Access"
+      "cta": "Request access"
     },
     "distribution": {
       "badge": "+40 Stores and Services",
@@ -356,9 +368,14 @@ export const dictionary: Record<Locale, Dictionary> = {
     "payment": {
       "title": "Receive your payments easily",
       "description": "Make withdrawals easily and securely, with payout options via PayPal or Pix.",
-      "withdraw": "WITHDRAW",
+      "withdraw": "Withdraw",
       "pixName": "Pix",
-      "pixDesc": "You are receiving a payment for your declared earnings through Brazilian Funk."
+      "pixDesc": "You are receiving a payment for your declared earnings through Brazilian Funk.",
+      "paypalDesc": "You are receiving a payment for your declared earnings through Brazilian Funk.",
+      "balanceLabel": "Available balance",
+      "updatedNow": "Updated just now",
+      "chooseMethod": "Choose a payout method",
+      "amount": "R$ 1,000.00"
     },
     "delivery": {
       "title": "Fast Content Delivery",
@@ -460,6 +477,7 @@ export const dictionary: Record<Locale, Dictionary> = {
     "faq": {
       "heading": "Frequently asked questions",
       "subtitle": "Get your questions answered about distribution, timelines, and royalties.",
+      "ctaText": "Want to distribute with Brazilian Funk?",
       "items": [
         {
           "question": "What is Brazilian Funk?",
@@ -544,13 +562,13 @@ export const dictionary: Record<Locale, Dictionary> = {
       "ferramentas": "Herramientas",
       "noticias": "Noticias",
       "entrar": "Iniciar sesión",
-      "comecar": "Empezar"
+      "comecar": "Solicitar acceso"
     },
     "hero": {
       "titleLine1": "La Distribuidora",
       "titleLine2": "Musical del Funk",
       "description": "Una plataforma especializada en Funk para artistas, DJs y sellos discográficos que desean distribuir su música globalmente, gestionar regalías y desarrollar su carrera musical.",
-      "cta": "Solicitar Acceso"
+      "cta": "Solicitar acceso"
     },
     "distribution": {
       "badge": "+40 Tiendas y Servicios",
@@ -560,9 +578,14 @@ export const dictionary: Record<Locale, Dictionary> = {
     "payment": {
       "title": "Recibe tus pagos de forma sencilla",
       "description": "Realiza retiros de forma práctica y segura, con opciones de cobro vía PayPal o Pix.",
-      "withdraw": "WITHDRAW",
+      "withdraw": "Retirar",
       "pixName": "Pix",
-      "pixDesc": "Estás recibiendo un pago por tus ganancias declaradas a través de Brazilian Funk."
+      "pixDesc": "Estás recibiendo un pago por tus ganancias declaradas a través de Brazilian Funk.",
+      "paypalDesc": "Estás recibiendo un pago por tus ganancias declaradas a través de Brazilian Funk.",
+      "balanceLabel": "Saldo disponible",
+      "updatedNow": "Actualizado ahora",
+      "chooseMethod": "Elige el método de retiro",
+      "amount": "R$ 1.000,00"
     },
     "delivery": {
       "title": "Entrega Rápida de Contenido",
@@ -664,6 +687,7 @@ export const dictionary: Record<Locale, Dictionary> = {
     "faq": {
       "heading": "Preguntas frecuentes",
       "subtitle": "Resuelve tus dudas sobre distribución, plazos y regalías.",
+      "ctaText": "¿Quieres distribuir con Brazilian Funk?",
       "items": [
         {
           "question": "¿Qué es Brazilian Funk?",

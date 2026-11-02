@@ -36,7 +36,7 @@ export default function ToolsSection() {
           </p>
         </div>
 
-        <div className="relative mx-auto grid max-w-2xl divide-x divide-y divide-border border border-border bg-[#1c1c1c] *:p-12 sm:grid-cols-2 lg:max-w-4xl lg:grid-cols-3">
+        <div className="relative mx-auto grid max-w-2xl divide-x divide-y divide-border border border-border bg-card *:p-12 sm:grid-cols-2 lg:max-w-4xl lg:grid-cols-3">
           {tools.map((tool, index) => (
             <div key={index} className="space-y-3">
               <div className="flex items-center gap-2">

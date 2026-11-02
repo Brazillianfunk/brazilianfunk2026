@@ -40,8 +40,6 @@ const IMAGES = [
 // referência (cada card com uma leve rotação própria), só com ângulos
 // bem menores, pra ficar discreto e não brigar com o tom minimalista do
 // site.
-const ROTATIONS = ["-rotate-1", "rotate-1", "-rotate-1", "rotate-1"]
-
 export default function SupportSection() {
   const { t } = useTranslation()
 
@@ -57,18 +55,12 @@ export default function SupportSection() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {t.support.items.map((item, index) => {
           return (
-            <div key={index} className={`group relative ${ROTATIONS[index]} transition-transform duration-300 hover:rotate-0`}>
-              {/* Camada de fundo defasada — borda + sombra sólida branca,
-                  sem blur. Se desloca no hover, dando a sensação de
-                  "levantar" o cartão, sem nenhuma animação
-                  automática/contínua. */}
-              <div
-                className="absolute inset-0 rounded-2xl border-2 border-border bg-card shadow-[6px_6px_0_0_rgba(245,244,240,0.35)] transition-all duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1 group-hover:shadow-[10px_10px_0_0_rgba(245,244,240,0.45)]"
-                aria-hidden="true"
-              />
+            <div key={index} className="relative">
+              {/* Fundo do card: mesmo estilo dos cards de Ferramentas e Blog. */}
+              <div className="absolute inset-0 rounded-2xl border border-border bg-card" aria-hidden="true" />
 
               <div className="relative flex h-full flex-col p-6">
-                <div className="mb-4 h-12 w-12 overflow-hidden rounded-full border-2 border-border">
+                <div className="mb-4 h-12 w-12 overflow-hidden rounded-full border border-border">
                   <img src={IMAGES[index]} alt="" className="h-full w-full object-cover" />
                 </div>
 

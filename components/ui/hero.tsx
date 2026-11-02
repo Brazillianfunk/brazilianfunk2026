@@ -8,7 +8,7 @@
 import React from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { LiquidMetalButton } from "@/components/ui/liquid-metal-button"
+import { Button } from "@/components/ui/button"
 
 interface AnimatedMarqueeHeroProps {
   titleLine1: string
@@ -22,12 +22,14 @@ interface AnimatedMarqueeHeroProps {
   className?: string
 }
 
-// Botão "Solicitar Acesso" — metal líquido animado (shader WebGL),
-// substituindo o pill sólido anterior. Envolvido em mt-8 pra manter o
-// mesmo espaçamento de antes em relação à descrição acima.
+// Botão "Solicitar acesso": o botão padrão do site (azul sólido, texto
+// branco). Substitui o botão de "metal líquido" (shader WebGL), que era
+// escuro sobre fundo escuro e se perdia em cima das capas.
 const ActionButton = ({ children }: { children: string }) => (
   <div className="mt-8">
-    <LiquidMetalButton label={children} href="/solicitar-acesso" />
+    <Button href="/solicitar-acesso" size="lg">
+      {children}
+    </Button>
   </div>
 )
 

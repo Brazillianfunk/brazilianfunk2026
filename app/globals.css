@@ -21,8 +21,21 @@
     --popover: 0 0% 4%;                 /* #0a0a0a */
     --popover-foreground: 60 9% 96%;
 
-    --primary: 220 98% 23%;              /* #012775 — azul da marca */
-    --primary-foreground: 0 0% 4%;      /* texto quase preto sobre o verde */
+    /* Azul da marca. Antes era #012775 (azul-marinho) com texto quase
+       preto por cima — o botão "Começar" ficava ilegível (contraste ~1,4:1)
+       e quase sumia no fundo preto. Mesmo tom, mais vivo: texto branco
+       passa 6:1 e o botão se destaca do fundo. */
+    --primary: 224 81% 52%;             /* ≈ #2152e8 */
+    --primary-foreground: 0 0% 100%;    /* texto branco sobre o azul */
+
+    /* Verde do Pix — cor de destaque secundária (selo "Novo", valores
+       recebidos, foco em elementos de pagamento). Texto sobre ele: preto. */
+    /* Azul claro para TEXTO (links, asteriscos, item ativo). O azul do
+       botão fica escuro demais como texto sobre preto (3,3:1). */
+    --brand-link: 226 100% 74%;         /* ≈ #7a95ff — 7:1 sobre o fundo */
+
+    --brand-lime: 77 77% 51%;           /* #b0e321 */
+    --brand-lime-foreground: 0 0% 4%;
 
     --secondary: 0 0% 10%;
     --secondary-foreground: 60 9% 96%;
@@ -38,7 +51,7 @@
 
     --border: 0 0% 15%;
     --input: 0 0% 15%;
-    --ring: 135 95% 30%;
+    --ring: 224 81% 60%;              /* anel de foco no azul da marca */
 
     --radius: 0.75rem;
   }
@@ -50,6 +63,11 @@
   }
   html {
     scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
   body {
     @apply bg-background text-foreground;

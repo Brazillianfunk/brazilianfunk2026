@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { useTranslation } from "@/lib/i18n/use-translation"
+import { Button } from "@/components/ui/button"
 
 export default function FaqSection() {
   const { t } = useTranslation()
@@ -25,13 +26,22 @@ export default function FaqSection() {
         <Accordion type="single" collapsible className="w-full">
           {t.faq.items.map((item, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left hover:text-primary hover:no-underline">
+              <AccordionTrigger className="text-left hover:text-brand-link hover:no-underline">
                 {item.question}
               </AccordionTrigger>
               <AccordionContent>{item.answer}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
+
+        {/* Chamada no fim da página: antes o "Solicitar acesso" só aparecia
+            no topo e sumia até o rodapé. */}
+        <div className="mt-16 flex flex-col items-center gap-6 rounded-3xl border border-border bg-card px-6 py-12 text-center">
+          <p className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">{t.faq.ctaText}</p>
+          <Button href="/solicitar-acesso" size="lg">
+            {t.hero.cta}
+          </Button>
+        </div>
       </div>
     </section>
   )

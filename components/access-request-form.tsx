@@ -24,6 +24,7 @@ import { SpotifyField, type SpotifyProfile } from "@/components/ui/spotify-field
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { useTranslation } from "@/lib/i18n/use-translation"
+import { buttonVariants } from "@/components/ui/button"
 
 // Integração EmailJS (sem backend) — Service ID e Template ID não são
 // segredos, fazem parte da chamada pública do SDK. A Public Key também é
@@ -213,7 +214,7 @@ export default function AccessRequestForm() {
                 <button
                   type="button"
                   onClick={handleClose}
-                  className="mt-8 rounded-md bg-primary px-8 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                  className={buttonVariants({ className: "mt-8" })}
                 >
                   {t.form.confirmButton}
                 </button>
@@ -229,7 +230,7 @@ export default function AccessRequestForm() {
                 {step === 0 && (
                   <fieldset>
                     <legend className="mb-6 text-2xl font-semibold text-foreground md:text-3xl">
-                      {t.form.step0Question}<span className="text-primary">*</span>
+                      {t.form.step0Question}<span className="text-brand-link">*</span>
                     </legend>
                     <div className="flex flex-col gap-3">
                       {(["artista", "gravadora"] as const).map((opt) => (
@@ -295,7 +296,7 @@ export default function AccessRequestForm() {
                     }
                   }}>
                     <label className="mb-6 block text-2xl font-semibold text-foreground md:text-3xl">
-                      {t.form.step4Label}<span className="text-primary">*</span>
+                      {t.form.step4Label}<span className="text-brand-link">*</span>
                     </label>
                     <div
                       className={`rounded-md border px-3 ${
@@ -320,7 +321,7 @@ export default function AccessRequestForm() {
                   <div>
                     <label className="mb-6 block text-2xl font-semibold text-foreground md:text-3xl">
                       {data.tipo === "gravadora" ? t.form.step5LabelLabel : t.form.step5LabelArtist}
-                      {!data.naoTemSpotify && <span className="text-primary">*</span>}
+                      {!data.naoTemSpotify && <span className="text-brand-link">*</span>}
                     </label>
 
                     {!data.naoTemSpotify ? (
@@ -383,14 +384,14 @@ export default function AccessRequestForm() {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="rounded-md bg-secondary px-5 py-3 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/70"
+                      className={buttonVariants({ variant: "secondary" })}
                     >
                       {t.form.back}
                     </button>
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="rounded-md bg-primary px-8 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                      className={buttonVariants()}
                     >
                       {step === TOTAL_STEPS - 1 ? t.form.send : t.form.ok}
                     </button>
@@ -434,7 +435,7 @@ export default function AccessRequestForm() {
                   href="/termos-de-uso"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary underline underline-offset-2"
+                  className="text-brand-link underline underline-offset-2"
                 >
                   {t.footer.termsLink}
                 </a>{" "}
@@ -443,7 +444,7 @@ export default function AccessRequestForm() {
                   href="/politica-de-privacidade"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary underline underline-offset-2"
+                  className="text-brand-link underline underline-offset-2"
                 >
                   {t.footer.privacyLink}
                 </a>
@@ -472,7 +473,7 @@ export default function AccessRequestForm() {
                   type="button"
                   onClick={handleDeclineTerms}
                   disabled={sending}
-                  className="rounded-md bg-secondary px-5 py-3 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/70 disabled:cursor-not-allowed disabled:opacity-50"
+                  className={buttonVariants({ variant: "secondary" })}
                 >
                   {t.form.decline}
                 </button>
@@ -480,7 +481,7 @@ export default function AccessRequestForm() {
                   type="button"
                   onClick={handleAcceptTerms}
                   disabled={!acceptedTerms || sending}
-                  className="rounded-md bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
+                  className={buttonVariants()}
                 >
                   {sending ? t.form.sending : t.form.acceptAndSend}
                 </button>
@@ -514,7 +515,7 @@ function TextStep({ label, placeholder, value, onChange, type = "text", autoFocu
     <div>
       <label className="mb-6 block text-2xl font-semibold text-foreground md:text-3xl">
         {label}
-        <span className="text-primary">*</span>
+        <span className="text-brand-link">*</span>
       </label>
       <input
         type={type}

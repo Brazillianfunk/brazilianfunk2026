@@ -31,7 +31,7 @@ export default function DistributionSection() {
   return (
     <section id="distribuicao" className="relative overflow-hidden bg-background px-4 py-24 md:py-32 scroll-mt-24">
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-        <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
+        <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-lime">
           {t.distribution.badge}
         </span>
 

@@ -43,7 +43,7 @@ function FooterLink({
 
   if (isAnchor) {
     return (
-      <li className="font-medium text-muted-foreground transition-colors hover:text-primary">
+      <li className="font-medium text-muted-foreground transition-colors hover:text-foreground">
         <Link href={href} onClick={scrollToSection}>
           {name}
         </Link>
@@ -52,7 +52,7 @@ function FooterLink({
   }
 
   return (
-    <li className="font-medium text-muted-foreground transition-colors hover:text-primary">
+    <li className="break-words font-medium text-muted-foreground transition-colors hover:text-foreground [overflow-wrap:anywhere]">
       <a
         href={href}
         target={external ? "_blank" : undefined}
@@ -98,7 +98,7 @@ export default function Footer() {
             </p>
             <ul className="flex items-center gap-4 text-muted-foreground">
               {SOCIAL_LINKS.map((social) => (
-                <li key={social.name} className="transition-colors hover:text-primary">
+                <li key={social.name} className="transition-colors hover:text-foreground">
                   <a
                     href={social.href}
                     target="_blank"
@@ -161,10 +161,10 @@ export default function Footer() {
         <div className="mt-12 flex flex-col-reverse items-center justify-between gap-4 border-t border-border pt-8 text-xs font-medium text-muted-foreground md:flex-row">
           <p>{t.footer.copyright}</p>
           <ul className="flex flex-col items-center gap-2 sm:flex-row sm:gap-6">
-            <li className="transition-colors hover:text-primary">
+            <li className="transition-colors hover:text-foreground">
               <Link href="/termos-de-uso">{t.footer.termsLink}</Link>
             </li>
-            <li className="transition-colors hover:text-primary">
+            <li className="transition-colors hover:text-foreground">
               <Link href="/politica-de-privacidade">{t.footer.privacyLink}</Link>
             </li>
           </ul>

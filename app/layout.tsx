@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { PageLoader } from "@/components/page-loader"
 import { LocaleProvider } from "@/lib/i18n/context"
 
 // A configuração com "variable" cria uma variável CSS (--font-inter) usada
@@ -10,9 +9,8 @@ import { LocaleProvider } from "@/lib/i18n/context"
 // font-family fica inválida (não é "pula pro próximo da lista"), e o
 // navegador cai pro padrão dele — que é serifado, bem diferente da Inter.
 // Por isso também aplicamos `inter.className` diretamente no <body> logo
-// abaixo — é o mesmo padrão já usado com a Poppins em payment-section.tsx,
-// que aplica a fonte de verdade sem depender de nenhuma variável
-// intermediária. Combinando os dois, a fonte correta sempre é aplicada,
+// abaixo, que aplica a fonte de verdade sem depender de nenhuma variável
+// intermediária. A Inter é a única família do site. Combinando os dois, a fonte correta sempre é aplicada,
 // mesmo se o mecanismo da variável falhar por algum motivo.
 const inter = Inter({
   subsets: ["latin"],
@@ -111,7 +109,6 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-background font-sans text-foreground antialiased`}>
         <LocaleProvider>
-          <PageLoader />
           {children}
         </LocaleProvider>
       </body>

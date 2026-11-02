@@ -29,7 +29,7 @@ export default function SiteNavbar() {
   const navItems = [
     { name: t.nav.distribuicao, link: "/#distribuicao" },
     { name: t.nav.ferramentas, link: "/#ferramentas" },
-    { name: t.nav.noticias, link: "/#noticias", highlight: true },
+    { name: t.nav.noticias, link: "/#noticias" },
   ]
 
   return (
@@ -76,16 +76,7 @@ export default function SiteNavbar() {
               }}
               className="relative text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              <span
-                className={
-                  item.highlight
-                    ? "rounded-full border px-2 py-0.5"
-                    : undefined
-                }
-                style={item.highlight ? { borderColor: "#ffcb00" } : undefined}
-              >
-                {item.name}
-              </span>
+              {item.name}
             </Link>
           ))}
           <div className="flex w-full flex-col gap-3 pt-2">

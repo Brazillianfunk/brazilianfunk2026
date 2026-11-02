@@ -8,36 +8,20 @@ import SupportSection from "@/components/support-section"
 import BlogSection from "@/components/blog-section"
 import FaqSection from "@/components/faq-section"
 import Footer from "@/components/footer"
-import { RevealOnScroll } from "@/components/ui/reveal-on-scroll"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <RevealOnScroll>
-        <DistributionSection />
-      </RevealOnScroll>
-      <RevealOnScroll>
-        <PaymentSection />
-      </RevealOnScroll>
-      <RevealOnScroll>
-        <DeliverySection />
-      </RevealOnScroll>
-      <RevealOnScroll>
-        <ToolsSection />
-      </RevealOnScroll>
-      <RevealOnScroll>
-        <SupportSection />
-      </RevealOnScroll>
-      <RevealOnScroll>
-        <BlogSection />
-      </RevealOnScroll>
-      <RevealOnScroll>
-        <FaqSection />
-      </RevealOnScroll>
+      <DistributionSection />
+      <PaymentSection />
+      <DeliverySection />
+      <ToolsSection />
+      <SupportSection />
+      <BlogSection />
+      <FaqSection />
       <Footer />
-      {/* Próximas seções entram aqui */}
     </main>
   )
 }

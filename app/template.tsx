@@ -1,20 +1,6 @@
-"use client"
-
-import { motion } from "framer-motion"
-
-// `template.tsx` (diferente de `layout.tsx`) remonta a cada navegação —
-// é o lugar certo do Next.js App Router pra animação de entrada por
-// página. Precisa do next/link (em vez de <a> comum) nos links internos
-// pra essa transição funcionar de verdade: <a> normal recarrega a página
-// inteira no navegador, o que impede qualquer fade suave entre rotas.
+// Antes este template envolvia cada página num fade de opacity 0 → 1 com
+// framer-motion. Como o HTML chegava com opacity 0, a página inteira ficava
+// invisível até o JavaScript carregar (pior no 4G). Mantido sem animação.
 export default function Template({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.35, ease: "easeOut" }}
-    >
-      {children}
-    </motion.div>
-  )
+  return <>{children}</>
 }
