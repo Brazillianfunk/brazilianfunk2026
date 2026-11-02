@@ -21,13 +21,6 @@ const PIX_ICON = "/pix-icon.png"
 
 const LOCALE_FORMAT = { pt: "pt-BR", en: "en-US", es: "es-ES" } as const
 
-// Ganhos de exemplo, só para ilustrar o extrato.
-const SAMPLE_EARNINGS = [
-  { platform: "Spotify", value: 412.3, color: "#1ED760" },
-  { platform: "YouTube Music", value: 186.9, color: "#FF0033" },
-  { platform: "TikTok", value: 98.4, color: "#25F4EE" },
-]
-
 function useMoney() {
   const { locale } = useTranslation()
   const fmt = new Intl.NumberFormat(LOCALE_FORMAT[locale] ?? "pt-BR", { style: "currency", currency: "USD" })
@@ -147,19 +140,18 @@ export default function PaymentSection() {
                   </Button>
                 </div>
 
-                {/* últimos ganhos */}
+                {/* última transação */}
                 <p className="mt-6 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">{t.payment.recentLabel}</p>
-                <ul className="mt-2 divide-y divide-border">
-                  {SAMPLE_EARNINGS.map((e) => (
-                    <li key={e.platform} className="flex items-center gap-3 py-3">
-                      <span aria-hidden="true" className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-secondary">
-                        <i className="h-2.5 w-2.5 rounded-full" style={{ background: e.color }} />
-                      </span>
-                      <span className="flex-1 text-[13px] font-medium text-foreground">{e.platform}</span>
-                      <span className="text-[13px] font-semibold tabular-nums text-brand-lime">+ {money.format(e.value)}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="mt-2 flex items-center gap-3 border-t border-border py-3">
+                  <span aria-hidden="true" className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-secondary text-brand-lime">
+                    <ArrowDownLeft className="h-4 w-4" strokeWidth={2.5} />
+                  </span>
+                  <span className="flex-1">
+                    <span className="block text-[13px] font-medium text-foreground">{t.payment.notifTitle}</span>
+                    <span className="block text-[11px] text-muted-foreground">{t.payment.today}</span>
+                  </span>
+                  <span className="text-[13px] font-semibold tabular-nums text-brand-lime">+ {money.format(850)}</span>
+                </div>
               </div>
             </div>
           </div>

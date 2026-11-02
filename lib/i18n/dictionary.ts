@@ -32,6 +32,7 @@ export interface Dictionary {
     overline: string
     features: { title: string; desc: string }[]
     recentLabel: string
+    today: string
     illustrative: string
     notifTitle: string
     notifAmount: string
@@ -183,7 +184,8 @@ export const dictionary: Record<Locale, Dictionary> = {
         { "title": "Saque via PayPal", "desc": "Para quem prefere receber na conta PayPal." },
         { "title": "Extrato transparente", "desc": "Veja quanto cada plataforma pagou, por período." }
       ],
-      "recentLabel": "Últimos ganhos",
+      "recentLabel": "Última transação",
+      "today": "Hoje",
       "illustrative": "Valores ilustrativos",
       "notifTitle": "Pagamento recebido",
       "notifAmount": "US$ 850,00",
@@ -412,7 +414,8 @@ export const dictionary: Record<Locale, Dictionary> = {
         { "title": "PayPal payouts", "desc": "For those who prefer to receive in their PayPal account." },
         { "title": "Transparent statements", "desc": "See how much each platform paid, by period." }
       ],
-      "recentLabel": "Recent earnings",
+      "recentLabel": "Last transaction",
+      "today": "Today",
       "illustrative": "Illustrative values",
       "notifTitle": "Payment received",
       "notifAmount": "$850.00",
@@ -641,7 +644,8 @@ export const dictionary: Record<Locale, Dictionary> = {
         { "title": "Retiro vía PayPal", "desc": "Para quien prefiere recibir en su cuenta PayPal." },
         { "title": "Extracto transparente", "desc": "Mira cuánto pagó cada plataforma, por período." }
       ],
-      "recentLabel": "Últimas ganancias",
+      "recentLabel": "Última transacción",
+      "today": "Hoy",
       "illustrative": "Valores ilustrativos",
       "notifTitle": "Pago recibido",
       "notifAmount": "US$ 850,00",
