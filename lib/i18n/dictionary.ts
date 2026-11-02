@@ -34,6 +34,8 @@ export interface Dictionary {
     title: string
     description: string
     steps: string[]
+    stepDescriptions: string[]
+    stepLabel: string
   }
   tools: {
     title: string
@@ -177,7 +179,14 @@ export const dictionary: Record<Locale, Dictionary> = {
         "Processamento",
         "Distribuição Global",
         "Disponível nas Lojas"
-      ]
+      ],
+      "stepDescriptions": [
+        "Você envia o áudio, a capa e as informações da faixa pelo painel.",
+        "Nossa equipe confere os dados e avisa se algo precisa de ajuste antes de seguir.",
+        "O lançamento é enviado para Spotify, Apple Music, TikTok e mais de 40 plataformas.",
+        "Sua música fica disponível nas lojas em até 24 horas."
+      ],
+      "stepLabel": "Etapa"
     },
     "tools": {
       "title": "Ferramentas para potencializar seu catálogo musical",
@@ -388,7 +397,14 @@ export const dictionary: Record<Locale, Dictionary> = {
         "Processing",
         "Global Distribution",
         "Live on Stores"
-      ]
+      ],
+      "stepDescriptions": [
+        "You upload the audio, artwork and track details from the dashboard.",
+        "Our team checks the data and lets you know if anything needs fixing before moving on.",
+        "Your release is sent to Spotify, Apple Music, TikTok and 40+ platforms.",
+        "Your music goes live on stores within 24 hours."
+      ],
+      "stepLabel": "Step"
     },
     "tools": {
       "title": "Tools to power up your music catalog",
@@ -599,7 +615,14 @@ export const dictionary: Record<Locale, Dictionary> = {
         "Procesamiento",
         "Distribución Global",
         "Disponible en las Tiendas"
-      ]
+      ],
+      "stepDescriptions": [
+        "Envías el audio, la portada y la información de la pista desde el panel.",
+        "Nuestro equipo revisa los datos y te avisa si algo necesita ajustes antes de seguir.",
+        "El lanzamiento se envía a Spotify, Apple Music, TikTok y más de 40 plataformas.",
+        "Tu música queda disponible en las tiendas en hasta 24 horas."
+      ],
+      "stepLabel": "Etapa"
     },
     "tools": {
       "title": "Herramientas para potenciar tu catálogo musical",
