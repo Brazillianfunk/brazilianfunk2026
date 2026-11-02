@@ -11,8 +11,6 @@ export interface Dictionary {
     titleLine2: string
     description: string
     cta: string
-    pause: string
-    play: string
     wallLabel: string
   }
   distribution: {
@@ -152,8 +150,6 @@ export const dictionary: Record<Locale, Dictionary> = {
       "titleLine2": "Musical do Funk",
       "description": "Uma plataforma especializada em Funk para artistas, DJs e gravadoras que desejam distribuir suas músicas globalmente, gerenciar royalties e desenvolver sua carreira musical.",
       "cta": "Solicitar acesso",
-      "pause": "Pausar",
-      "play": "Continuar",
       "wallLabel": "Lançamentos distribuídos pela Brazilian Funk"
     },
     "distribution": {
@@ -365,8 +361,6 @@ export const dictionary: Record<Locale, Dictionary> = {
       "titleLine2": "for Funk",
       "description": "A platform specialized in Funk for artists, DJs, and labels who want to distribute their music globally, manage royalties, and grow their music career.",
       "cta": "Request access",
-      "pause": "Pause",
-      "play": "Play",
       "wallLabel": "Releases distributed by Brazilian Funk"
     },
     "distribution": {
@@ -578,8 +572,6 @@ export const dictionary: Record<Locale, Dictionary> = {
       "titleLine2": "Musical del Funk",
       "description": "Una plataforma especializada en Funk para artistas, DJs y sellos discográficos que desean distribuir su música globalmente, gestionar regalías y desarrollar su carrera musical.",
       "cta": "Solicitar acceso",
-      "pause": "Pausar",
-      "play": "Reanudar",
       "wallLabel": "Lanzamientos distribuidos por Brazilian Funk"
     },
     "distribution": {

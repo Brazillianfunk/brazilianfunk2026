@@ -17,7 +17,9 @@ import { Button } from "@/components/ui/button"
  * houver nome/artista/link de cada lançamento).
  *
  * Abaixo de ~700px as colunas viram uma faixa horizontal acima do título.
- * Com "reduzir movimento" ativo, as colunas ficam paradas.
+ * O movimento é contínuo. Ele só para quando o mouse está sobre as capas
+ * (ou o foco do teclado), quando o topo sai da tela (economia de bateria) e
+ * para quem ativou "reduzir movimento" no aparelho.
  */
 
 export type Release = {
@@ -86,16 +88,12 @@ const css = `
 .rwh-col{position:relative;min-width:0;animation:rwh-rise 1100ms var(--rwh-ease) both;animation-delay:calc(var(--ci) * 90ms)}
 .rwh-track{display:flex;flex-direction:column;will-change:transform;animation:rwh-up var(--rwh-dur) linear infinite;animation-delay:var(--rwh-phase)}
 .rwh-col[data-dir="down"] .rwh-track{animation-name:rwh-down}
-.rwh[data-paused] .rwh-track,.rwh[data-offscreen] .rwh-track,.rwh-wall:hover .rwh-track,.rwh-wall:focus-within .rwh-track,.rwh[data-paused] .rwh-strip-track,.rwh[data-offscreen] .rwh-strip-track{animation-play-state:paused}
+.rwh[data-offscreen] .rwh-track,.rwh-wall:hover .rwh-track,.rwh-wall:focus-within .rwh-track,.rwh[data-offscreen] .rwh-strip-track,.rwh-strip:focus-within .rwh-strip-track{animation-play-state:paused}
 .rwh-card{position:relative;margin:0 0 var(--rwh-gap);aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--rwh-deep);transition:transform 260ms var(--rwh-ease),opacity 260ms ease;outline:none}
 .rwh-card img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:opacity 300ms ease,transform 300ms var(--rwh-ease)}
 .rwh-card:hover,.rwh-card:focus-visible{transform:translateY(-4px) scale(1.02);z-index:2}
 .rwh-card:focus-visible{box-shadow:0 0 0 2px var(--rwh-ground),0 0 0 4px var(--rwh-ink)}
 .rwh-wall:hover .rwh-card:not(:hover){opacity:.7}
-.rwh-pause{position:absolute;right:var(--rwh-pad);bottom:14px;z-index:6;display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border:0;border-radius:999px;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--rwh-ink) 32%,transparent);background:color-mix(in srgb,var(--rwh-ground) 88%,transparent);color:var(--rwh-ink);font:600 12px/1 inherit;cursor:pointer}
-.rwh-pause:focus-visible{outline:2px solid var(--rwh-ink);outline-offset:3px}
-.rwh-pause i{display:inline-block;width:8px;height:9px;border-left:3px solid currentColor;border-right:3px solid currentColor}
-.rwh[data-paused] .rwh-pause i{border-right:0;border-left:8px solid currentColor;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent;width:0;height:0}
 .rwh-strip{display:none}
 .rwh[data-mode="strip"] .rwh-in{display:flex;flex-direction:column;height:auto}
 .rwh[data-mode="strip"] .rwh-wall{display:none}
@@ -103,7 +101,6 @@ const css = `
 .rwh-strip-track{display:flex;width:max-content;padding-left:20px;will-change:transform;animation:rwh-left var(--rwh-sdur) linear infinite}
 .rwh-strip .rwh-card{width:clamp(150px,44cqw,220px);margin:0 10px 0 0;flex:none}
 .rwh[data-mode="strip"] .rwh-copy{padding:20px 20px 36px}
-.rwh[data-mode="strip"] .rwh-pause{position:static;margin-left:auto}
 @keyframes rwh-up{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-50%,0)}}
 @keyframes rwh-down{from{transform:translate3d(0,-50%,0)}to{transform:translate3d(0,0,0)}}
 @keyframes rwh-left{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% + 10px),0,0)}}
@@ -115,7 +112,6 @@ const css = `
 .rwh-col,.rwh-line>span{animation:none}
 .rwh-card,.rwh-card img{transition-duration:1ms}
 .rwh-card:hover,.rwh-card:focus-visible{transform:none}
-.rwh-pause{display:none}
 }
 `
 
@@ -127,7 +123,7 @@ export type ReleaseWallHeroProps = {
   intro: string
   cta: { label: string; href: string }
   secondaryCta?: { label: string; href: string } | null
-  labels: { pause: string; play: string; wall: string }
+  labels: { wall: string }
   columns?: number
   /** Segundos para uma coluna deslizar o tamanho de uma capa. */
   driftSeconds?: number
@@ -157,7 +153,6 @@ export function ReleaseWallHero({
   const [cols, setCols] = React.useState(columns)
   const [titleSize, setTitleSize] = React.useState(0)
   const [minPer, setMinPer] = React.useState(4)
-  const [paused, setPaused] = React.useState(false)
   const [offscreen, setOffscreen] = React.useState(false)
 
   const lines = title.split("\n").map((l) => l.trim()).filter(Boolean)
@@ -212,12 +207,6 @@ export function ReleaseWallHero({
     </div>
   )
 
-  const pauseButton = (
-    <button type="button" className="rwh-pause" aria-pressed={paused} onClick={() => setPaused((p) => !p)}>
-      <i aria-hidden="true" />
-      {paused ? labels.play : labels.pause}
-    </button>
-  )
 
   const phases = [0, 0.38, 0.71, 0.18]
   const rootStyle = {
@@ -241,13 +230,11 @@ export function ReleaseWallHero({
       aria-labelledby={titleId}
       data-mode={cols === 0 ? "strip" : "columns"}
       data-cols={cols || undefined}
-      data-paused={paused ? "" : undefined}
       data-offscreen={offscreen ? "" : undefined}
     >
       <style>{css}</style>
       <div className="rwh-field" aria-hidden="true" />
       <div className="rwh-grain" aria-hidden="true" />
-      {cols !== 0 ? pauseButton : null}
 
       <div className="rwh-in">
         <div className="rwh-copy" ref={copyRef}>
@@ -271,7 +258,6 @@ export function ReleaseWallHero({
                 {secondaryCta.label}
               </Button>
             ) : null}
-            {cols === 0 ? pauseButton : null}
           </div>
         </div>
 

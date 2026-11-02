@@ -17,7 +17,7 @@ export default function ReleaseWallHeroSection({ palette }: { palette?: PaletteN
       intro={t.hero.description}
       cta={{ label: t.hero.cta, href: "/solicitar-acesso" }}
       palette={palette}
-      labels={{ pause: t.hero.pause, play: t.hero.play, wall: t.hero.wallLabel }}
+      labels={{ wall: t.hero.wallLabel }}
     />
   )
 }
