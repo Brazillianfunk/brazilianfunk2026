@@ -191,3 +191,45 @@
   background-image: radial-gradient(hsl(0 0% 100% / 0.07) 1px, transparent 1px);
   background-size: 22px 22px;
 }
+
+/* ---------- Seções com fundo próprio (blocos de cor) ----------
+   Cada classe troca as variáveis de cor só dentro da seção, então os
+   componentes (badge, bordas, textos secundários, botões) se ajustam
+   sozinhos. .theme-dark devolve o tema escuro para algo dentro de uma
+   seção clara (ex.: o celular de Pagamentos). */
+.theme-light {
+  --background: 40 18% 94%;          /* #f3f1ec — branco quebrado */
+  --foreground: 0 0% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 4%;
+  --secondary: 40 10% 88%;
+  --muted-foreground: 30 4% 36%;
+  --border: 40 8% 82%;
+  --brand-link: 224 81% 45%;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+.theme-lime {
+  --background: 77 77% 51%;          /* #b0e321 — verde-limão da marca */
+  --foreground: 0 0% 4%;
+  --card: 77 70% 57%;
+  --card-foreground: 0 0% 4%;
+  --muted-foreground: 77 40% 16%;
+  --border: 77 45% 36%;
+  --brand-lime: 0 0% 4%;             /* ponto "online" fica preto sobre o limão */
+  --brand-link: 0 0% 4%;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+.theme-dark {
+  --background: 0 0% 2%;
+  --foreground: 60 9% 96%;
+  --card: 0 0% 5%;
+  --card-foreground: 60 9% 96%;
+  --secondary: 0 0% 10%;
+  --muted-foreground: 60 3% 58%;
+  --border: 0 0% 15%;
+  --brand-link: 226 100% 74%;
+  --brand-lime: 77 77% 51%;
+  color: hsl(var(--foreground));
+}

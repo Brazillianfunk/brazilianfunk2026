@@ -22,7 +22,7 @@ export default function SupportSection() {
   const { t } = useTranslation()
 
   return (
-    <section className="section-soft px-4 py-24 md:py-32">
+    <section className="theme-lime px-4 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <div className="reveal grid items-end gap-8 md:grid-cols-[1fr_auto]">
           <div className="max-w-2xl">
@@ -32,7 +32,7 @@ export default function SupportSection() {
           <p className="max-w-sm text-base text-muted-foreground md:text-lg">{t.support.description}</p>
         </div>
 
-        <div className="reveal mt-14 grid overflow-hidden rounded-[32px] border border-border bg-background/60 sm:grid-cols-2">
+        <div className="reveal mt-14 grid overflow-hidden rounded-[32px] border border-border bg-background sm:grid-cols-2">
           {t.support.items.map((item, index) => (
             <article
               key={item.title}

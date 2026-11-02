@@ -56,7 +56,7 @@ export default function PaymentSection() {
   ]
 
   return (
-    <section id="pagamentos" className="section-soft scroll-mt-24 px-4 py-24 md:py-32">
+    <section id="pagamentos" className="theme-light scroll-mt-24 px-4 py-24 md:py-32">
       <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-2 md:gap-16">
         {/* Texto */}
         <div className="reveal">
@@ -87,7 +87,7 @@ export default function PaymentSection() {
             />
 
             {/* Celular (sangra pela borda de baixo do painel) */}
-            <div className="float-soft relative w-[300px] flex-none rounded-[48px] bg-[#1a1a1a] p-[10px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)] ring-1 ring-white/10 sm:w-[320px]">
+            <div className="theme-dark float-soft relative w-[300px] flex-none rounded-[48px] bg-[#1a1a1a] p-[10px] shadow-[0_40px_80px_-24px_rgba(0,0,0,0.45)] ring-1 ring-white/10 sm:w-[320px]">
               <div className="h-[660px] overflow-hidden rounded-[38px] bg-[#0b0b0b] px-5 pt-3">
                 {/* barra de status */}
                 <div className="flex items-center justify-between px-1 text-[11px] font-semibold text-foreground">
@@ -156,7 +156,7 @@ export default function PaymentSection() {
           </div>
 
           {/* notificação de Pix, fora do painel para não ser cortada */}
-          <div className="float-soft-delay absolute -top-7 right-3 z-10 flex w-[205px] items-center gap-3 rounded-2xl bg-foreground p-3 text-background shadow-[0_20px_40px_-12px_rgba(0,0,0,0.7)] md:-left-16 md:right-auto md:top-56">
+          <div className="float-soft-delay absolute -top-7 right-3 z-10 flex w-[205px] items-center gap-3 rounded-2xl bg-foreground p-3 text-background shadow-[0_20px_40px_-12px_rgba(0,0,0,0.35)] md:-left-16 md:right-auto md:top-56">
             <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-brand-lime text-brand-lime-foreground">
               <ArrowDownLeft className="h-5 w-5" strokeWidth={2.5} />
             </span>
