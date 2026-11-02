@@ -14,6 +14,7 @@ import { useState } from "react"
 import { ArrowDownLeft, FileText } from "lucide-react"
 import { useTranslation } from "@/lib/i18n/use-translation"
 import { Button } from "@/components/ui/button"
+import { SectionBadge } from "@/components/ui/section-badge"
 import { cn } from "@/lib/utils"
 
 const PAYPAL_ICON = "/paypal-icon.png"
@@ -59,9 +60,7 @@ export default function PaymentSection() {
       <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-2 md:gap-16">
         {/* Texto */}
         <div>
-          <span className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-lime">
-            {t.payment.overline}
-          </span>
+          <SectionBadge>{t.payment.overline}</SectionBadge>
           <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.payment.title}</h2>
           <p className="mt-6 max-w-md text-base text-muted-foreground md:text-lg">{t.payment.description}</p>
 

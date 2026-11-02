@@ -8,6 +8,7 @@
 
 import { LogoCarousel, type Logo } from "@/components/ui/logo-carousel"
 import { useTranslation } from "@/lib/i18n/use-translation"
+import { SectionBadge } from "@/components/ui/section-badge"
 
 // Catálogo de plataformas — nomes escritos (wordmark), com a cor oficial de
 // cada marca usada apenas no glow sutil por trás do texto.
@@ -31,9 +32,7 @@ export default function DistributionSection() {
   return (
     <section id="distribuicao" className="relative overflow-hidden bg-background px-4 py-24 md:py-32 scroll-mt-24">
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-        <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-lime">
-          {t.distribution.badge}
-        </span>
+        <SectionBadge className="mb-6">{t.distribution.badge}</SectionBadge>
 
         <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
           {t.distribution.title}
