@@ -166,6 +166,14 @@ export interface Dictionary {
     confirmTitle: string
     confirmBody: string
     confirmButton: string
+    spotifyPlaceholder: string
+    spotifySearching: string
+    spotifyNoResults: string
+    spotifyError: string
+    spotifyErrorNetwork: string
+    spotifyArtist: string
+    spotifyFollowers: string
+    spotifyChange: string
   }
 }
 
@@ -424,7 +432,15 @@ export const dictionary: Record<Locale, Dictionary> = {
       "sendError": "Não foi possível enviar sua solicitação agora. Verifique sua internet e tente novamente.",
       "confirmTitle": "Solicitação enviada",
       "confirmBody": "Vamos analisar seu perfil e retornar por e-mail em breve.",
-      "confirmButton": "Concluir"
+      "confirmButton": "Concluir",
+      "spotifyPlaceholder": "Buscar seu artista ou colar link do Spotify",
+      "spotifySearching": "Buscando...",
+      "spotifyNoResults": "Nenhum resultado encontrado.",
+      "spotifyError": "Não foi possível buscar agora.",
+      "spotifyErrorNetwork": "Não foi possível buscar agora. Verifique sua conexão.",
+      "spotifyArtist": "Artista no Spotify",
+      "spotifyFollowers": "seguidores",
+      "spotifyChange": "Trocar perfil selecionado"
     }
   },
   "en": {
@@ -679,7 +695,15 @@ export const dictionary: Record<Locale, Dictionary> = {
       "sendError": "We couldn't submit your request right now. Check your internet connection and try again.",
       "confirmTitle": "Request submitted",
       "confirmBody": "We'll review your profile and get back to you by email soon.",
-      "confirmButton": "Done"
+      "confirmButton": "Done",
+      "spotifyPlaceholder": "Search your artist or paste a Spotify link",
+      "spotifySearching": "Searching...",
+      "spotifyNoResults": "No results found.",
+      "spotifyError": "Could not search right now.",
+      "spotifyErrorNetwork": "Could not search right now. Check your connection.",
+      "spotifyArtist": "Artist on Spotify",
+      "spotifyFollowers": "followers",
+      "spotifyChange": "Change selected profile"
     }
   },
   "es": {
@@ -934,7 +958,15 @@ export const dictionary: Record<Locale, Dictionary> = {
       "sendError": "No pudimos enviar tu solicitud en este momento. Verifica tu conexión a internet e inténtalo de nuevo.",
       "confirmTitle": "Solicitud enviada",
       "confirmBody": "Analizaremos tu perfil y te responderemos por correo electrónico pronto.",
-      "confirmButton": "Listo"
+      "confirmButton": "Listo",
+      "spotifyPlaceholder": "Busca tu artista o pega el enlace de Spotify",
+      "spotifySearching": "Buscando...",
+      "spotifyNoResults": "No se encontraron resultados.",
+      "spotifyError": "No fue posible buscar ahora.",
+      "spotifyErrorNetwork": "No fue posible buscar ahora. Verifica tu conexión.",
+      "spotifyArtist": "Artista en Spotify",
+      "spotifyFollowers": "seguidores",
+      "spotifyChange": "Cambiar perfil seleccionado"
     }
   }
 }

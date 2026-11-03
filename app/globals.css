@@ -268,3 +268,10 @@ html[data-intro-visto] .intro { display: none; }
   font-size: clamp(48px, 7vw, 104px); font-weight: 900; line-height: 0.85; letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums; color: hsl(var(--foreground));
 }
+
+/* Painel de capas do formulário "Solicitar acesso": colunas subindo devagar */
+@keyframes cover-rise { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@media (prefers-reduced-motion: no-preference) {
+  .cover-rise { animation: cover-rise 70s linear infinite; }
+  .cover-rise-reverse { animation-direction: reverse; animation-duration: 85s; }
+}
