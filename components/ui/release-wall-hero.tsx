@@ -232,7 +232,7 @@ export function ReleaseWallHero({
       data-cols={cols || undefined}
       data-offscreen={offscreen ? "" : undefined}
     >
-      <style>{css}</style>
+      <style dangerouslySetInnerHTML={{ __html: css }} />
       <div className="rwh-field" aria-hidden="true" />
       <div className="rwh-grain" aria-hidden="true" />
 
