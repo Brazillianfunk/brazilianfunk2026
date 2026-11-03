@@ -6,7 +6,22 @@ import { useEffect, useRef, useState } from "react"
 // O HTML já chega com o valor final (bom para SEO e para quem está sem
 // JavaScript); a contagem só roda uma vez, ao entrar na tela, e não roda
 // para quem ativou "reduzir movimento".
-export function CountUp({ to, suffix = "", duration = 1200, className }: { to: number; suffix?: string; duration?: number; className?: string }) {
+export function CountUp({
+  to,
+  suffix = "",
+  prefix = "",
+  duration = 1200,
+  format,
+  className,
+}: {
+  to: number
+  suffix?: string
+  prefix?: string
+  duration?: number
+  /** Formata o número exibido (ex.: 1240000 → "1,24 mi"). Sem isso, arredonda. */
+  format?: (n: number) => string
+  className?: string
+}) {
   const ref = useRef<HTMLSpanElement | null>(null)
   const [value, setValue] = useState(to)
 
@@ -24,7 +39,7 @@ export function CountUp({ to, suffix = "", duration = 1200, className }: { to: n
       const tick = (now: number) => {
         const p = Math.min(1, (now - start) / duration)
         const eased = 1 - Math.pow(1 - p, 3)
-        setValue(Math.round(eased * to))
+        setValue(eased * to)
         if (p < 1) raf = requestAnimationFrame(tick)
       }
       raf = requestAnimationFrame(tick)
@@ -38,7 +53,8 @@ export function CountUp({ to, suffix = "", duration = 1200, className }: { to: n
 
   return (
     <span ref={ref} className={className}>
-      {value}
+      {prefix}
+      {format ? format(value) : Math.round(value)}
       {suffix}
     </span>
   )

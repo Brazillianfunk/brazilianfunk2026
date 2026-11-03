@@ -7,7 +7,7 @@ import { CountUp } from "@/components/ui/count-up"
 import { useTranslation } from "@/lib/i18n/use-translation"
 
 // Distribuição: título à esquerda (como o topo e Pagamentos), o número
-// "40+" em destaque à direita e duas faixas de plataformas em sentidos
+// "50+" em destaque à direita e duas faixas de plataformas em sentidos
 // opostos, com todas as lojas passando.
 const ROW_A = PLATFORMS.slice(0, 6)
 const ROW_B = PLATFORMS.slice(6)
@@ -27,7 +27,7 @@ export default function DistributionSection() {
           </div>
           <div className="md:text-right">
             <p className="text-[96px] font-black leading-[0.85] tracking-tighter text-foreground md:text-[140px]">
-              <CountUp to={40} suffix="+" />
+              <CountUp to={50} suffix="+" />
             </p>
             <p className="mt-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">{t.distribution.statLabel}</p>
           </div>

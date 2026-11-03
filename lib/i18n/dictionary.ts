@@ -228,7 +228,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "stepDescriptions": [
         "Você envia o áudio, a capa e as informações da faixa pelo painel.",
         "Nossa equipe confere os dados e avisa se algo precisa de ajuste antes de seguir.",
-        "O lançamento é enviado para Spotify, Apple Music, TikTok e mais de 40 plataformas.",
+        "O lançamento é enviado para Spotify, Apple Music, TikTok e mais de 50 plataformas.",
         "Sua música fica disponível nas lojas em até 24 horas."
       ],
       "stepLabel": "Etapa"
@@ -482,7 +482,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "stepDescriptions": [
         "You upload the audio, artwork and track details from the dashboard.",
         "Our team checks the data and lets you know if anything needs fixing before moving on.",
-        "Your release is sent to Spotify, Apple Music, TikTok and 40+ platforms.",
+        "Your release is sent to Spotify, Apple Music, TikTok and 50+ platforms.",
         "Your music goes live on stores within 24 hours."
       ],
       "stepLabel": "Step"
@@ -736,7 +736,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "stepDescriptions": [
         "Envías el audio, la portada y la información de la pista desde el panel.",
         "Nuestro equipo revisa los datos y te avisa si algo necesita ajustes antes de seguir.",
-        "El lanzamiento se envía a Spotify, Apple Music, TikTok y más de 40 plataformas.",
+        "El lanzamiento se envía a Spotify, Apple Music, TikTok y más de 50 plataformas.",
         "Tu música queda disponible en las tiendas en hasta 24 horas."
       ],
       "stepLabel": "Etapa"

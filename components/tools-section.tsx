@@ -11,6 +11,7 @@ import { BarChart3, Barcode, FileBarChart, Link2, Plus, Split } from "lucide-rea
 import { useTranslation } from "@/lib/i18n/use-translation"
 import { SectionBadge } from "@/components/ui/section-badge"
 import { cn } from "@/lib/utils"
+import { CountUp } from "@/components/ui/count-up"
 import { RoyaltySplitPanel } from "@/components/ui/royalty-split-panel"
 
 const ICONS = [BarChart3, Split, FileBarChart, Link2, Barcode, Plus]
@@ -20,10 +21,11 @@ const card = "group relative overflow-hidden rounded-[24px] border border-border
 
 export default function ToolsSection() {
   const { t, locale } = useTranslation()
-  const streams = new Intl.NumberFormat({ pt: "pt-BR", en: "en-US", es: "es-ES" }[locale] ?? "pt-BR", {
-    notation: "compact",
-    maximumFractionDigits: 2,
-  }).format(1240000)
+  const loc = { pt: "pt-BR", en: "en-US", es: "es-ES" }[locale] ?? "pt-BR"
+  const millions = new Intl.NumberFormat(loc, { notation: "compact", minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  const thousands = new Intl.NumberFormat(loc, { notation: "compact", maximumFractionDigits: 0 })
+  // Durante a contagem: "120 mil" → "850 mil" → "1,24 mi"
+  const formatStreams = (n: number) => (n < 1_000_000 ? thousands.format(n) : millions.format(n))
   const items = t.tools.items
 
   return (
@@ -45,8 +47,8 @@ export default function ToolsSection() {
               <div>
                 <p className="text-xs uppercase tracking-wide text-muted-foreground">{t.tools.mock.streams}</p>
                 <p className="mt-1 flex items-baseline gap-3">
-                  <span className="text-4xl font-bold tabular-nums tracking-tight text-foreground">{streams}</span>
-                  <span className="text-sm font-semibold tabular-nums text-brand-lime">+18%</span>
+                  <CountUp to={1240000} duration={1400} format={formatStreams} className="text-4xl font-bold tabular-nums tracking-tight text-foreground" />
+                  <CountUp to={18} prefix="+" suffix="%" duration={1400} className="text-sm font-semibold tabular-nums text-brand-lime" />
                 </p>
               </div>
               <span className="whitespace-nowrap rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">{t.tools.mock.last28}</span>

@@ -23,7 +23,7 @@ const SITE_URL = "https://www.brazilianfunk.co"
 const SITE_NAME = "Brazilian Funk"
 const SITE_TITLE = "Brazilian Funk — A Distribuidora Musical do Funk"
 const SITE_DESCRIPTION =
-  "Distribuição musical especializada em Funk para artistas, DJs e gravadoras. Distribua para Spotify, Apple Music, TikTok, Amazon e mais de 40 plataformas globais."
+  "Distribuição musical especializada em Funk para artistas, DJs e gravadoras. Distribua para Spotify, Apple Music, TikTok, Amazon e mais de 50 plataformas globais."
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
