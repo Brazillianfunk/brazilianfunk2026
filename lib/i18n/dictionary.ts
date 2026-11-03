@@ -445,7 +445,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "sending": "Enviando...",
       "sendError": "Não foi possível enviar sua solicitação agora. Verifique sua internet e tente novamente.",
       "confirmTitle": "Solicitação enviada",
-      "confirmBody": "Vamos analisar seu perfil e entraremos em contato em breve.",
+      "confirmBody": "Vamos analisar seu perfil e entrar em contato em breve.",
       "confirmButton": "Concluir",
       "spotifyPlaceholder": "Buscar seu artista ou colar link do Spotify",
       "spotifySearching": "Buscando...",
