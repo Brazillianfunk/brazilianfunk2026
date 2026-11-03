@@ -294,7 +294,7 @@ export const dictionary: Record<Locale, Dictionary> = {
           "desc": "Geração automática dos códigos de identificação exigidos pelas plataformas."
         },
         {
-          "title": "+Recursos",
+          "title": "Recursos",
           "desc": "Diversos outros recursos para o gerenciamento e desenvolvimento do seu catálogo no ambiente digital."
         }
       ]
@@ -564,7 +564,7 @@ export const dictionary: Record<Locale, Dictionary> = {
           "desc": "Automatic generation of the identification codes required by the platforms."
         },
         {
-          "title": "+More Features",
+          "title": "More Features",
           "desc": "Several other features to manage and grow your catalog in the digital space."
         }
       ]
@@ -834,7 +834,7 @@ export const dictionary: Record<Locale, Dictionary> = {
           "desc": "Generación automática de los códigos de identificación exigidos por las plataformas."
         },
         {
-          "title": "+Recursos",
+          "title": "Recursos",
           "desc": "Varios otros recursos para la gestión y el desarrollo de tu catálogo en el entorno digital."
         }
       ]
