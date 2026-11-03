@@ -8,10 +8,12 @@ import SupportSection from "@/components/support-section"
 import BlogSection from "@/components/blog-section"
 import FaqSection from "@/components/faq-section"
 import Footer from "@/components/footer"
+import { IntroLoader } from "@/components/intro-loader"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
+      <IntroLoader />
       <Navbar />
       <ReleaseWallHeroSection />
       <DistributionSection />

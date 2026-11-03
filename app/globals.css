@@ -224,3 +224,47 @@
   --brand-lime: 72 97% 59%;
   color: hsl(var(--foreground));
 }
+
+/* ---------- Tela de entrada (components/intro-loader.tsx) ---------- */
+.intro {
+  position: fixed; inset: 0; z-index: 100; pointer-events: auto;
+  /* fallback sem JS: some sozinha depois de 6s */
+  animation: intro-auto-hide 0.4s ease 6s forwards;
+}
+html[data-intro-visto] .intro { display: none; }
+@media (prefers-reduced-motion: reduce) { .intro { display: none; } }
+@keyframes intro-auto-hide { to { opacity: 0; visibility: hidden; } }
+
+.intro-curtain {
+  position: absolute; inset: 0 0 -14vh 0; background: #050505;
+  display: grid; place-items: center;
+  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+}
+/* borda inferior em arco, que aparece quando a cortina sobe */
+.intro-curtain::after {
+  content: ""; position: absolute; left: -10%; right: -10%; bottom: 1px; height: 14vh;
+  background: #050505; border-radius: 0 0 50% 50% / 0 0 100% 100%; transform: translateY(100%);
+}
+.intro-out { pointer-events: none; }
+.intro-out .intro-curtain { transform: translateY(calc(-100% - 2px)); }
+
+.intro-logo { position: relative; width: clamp(96px, 12vw, 168px); aspect-ratio: 400 / 339; margin-bottom: 14vh; }
+.intro-mark {
+  position: absolute; inset: 0;
+  -webkit-mask: url(/brazilian-funk-mapa.png) center / contain no-repeat;
+  mask: url(/brazilian-funk-mapa.png) center / contain no-repeat;
+}
+.intro-mark-dim { background: #262626; }
+.intro-mark-fill {
+  background: hsl(var(--brand-lime));
+  clip-path: inset(0 calc(100% - var(--p, 0%)) 0 0);
+}
+.intro-label {
+  position: absolute; left: 4vw; bottom: calc(14vh + 5vh);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8a8a8a;
+}
+.intro-count {
+  position: absolute; right: 4vw; bottom: calc(14vh + 4vh);
+  font-size: clamp(48px, 7vw, 104px); font-weight: 900; line-height: 0.85; letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums; color: hsl(var(--foreground));
+}
