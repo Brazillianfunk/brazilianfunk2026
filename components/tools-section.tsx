@@ -94,14 +94,9 @@ export default function ToolsSection() {
           })}
 
           {/* +Recursos */}
-          <article className={cn(card, "reveal-scale flex items-center justify-between gap-6 p-8 lg:col-span-3")}>
-            <div>
-              <h3 className="text-lg font-semibold text-foreground">{items[5].title}</h3>
-              <p className="mt-2 max-w-xl text-sm text-muted-foreground">{items[5].desc}</p>
-            </div>
-            <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 group-hover:rotate-90">
-              <Plus className="h-5 w-5" />
-            </span>
+          <article className={cn(card, "reveal-scale p-8 lg:col-span-3")}>
+            <h3 className="text-lg font-semibold text-foreground">{items[5].title}</h3>
+            <p className="mt-2 max-w-xl text-sm text-muted-foreground">{items[5].desc}</p>
           </article>
         </div>
       </div>
