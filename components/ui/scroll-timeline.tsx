@@ -17,7 +17,7 @@ export interface TimelineStep {
   id: string
   badge: string
   title: string
-  description: string
+  description?: string
 }
 
 export function ScrollTimeline({ steps, className }: { steps: TimelineStep[]; className?: string }) {
@@ -94,7 +94,7 @@ export function ScrollTimeline({ steps, className }: { steps: TimelineStep[]; cl
                   {step.badge}
                 </span>
                 <h3 className="text-2xl font-bold tracking-tight text-foreground">{step.title}</h3>
-                <p className="mt-3 text-base leading-relaxed text-muted-foreground">{step.description}</p>
+                {step.description && <p className="mt-3 text-base leading-relaxed text-muted-foreground">{step.description}</p>}
               </div>
             </li>
           )

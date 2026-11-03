@@ -12,7 +12,6 @@ export default function DeliverySection() {
     id: String(i + 1),
     badge: `${t.delivery.stepLabel} ${i + 1}`,
     title,
-    description: t.delivery.stepDescriptions[i],
   }))
 
   return (
