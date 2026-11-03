@@ -11,6 +11,7 @@ import { BarChart3, Barcode, FileBarChart, Link2, Plus, Split } from "lucide-rea
 import { useTranslation } from "@/lib/i18n/use-translation"
 import { SectionBadge } from "@/components/ui/section-badge"
 import { cn } from "@/lib/utils"
+import { RoyaltySplitPanel } from "@/components/ui/royalty-split-panel"
 
 const ICONS = [BarChart3, Split, FileBarChart, Link2, Barcode, Plus]
 const BARS = [30, 44, 38, 56, 50, 68, 62, 80, 72, 92]
@@ -66,20 +67,9 @@ export default function ToolsSection() {
             </div>
           </article>
 
-          {/* Royalties: barra dividida */}
-          <article className={cn(card, "reveal-scale flex min-h-[320px] flex-col justify-between p-8")}>
-            <div aria-hidden="true">
-              <div className="grow-x flex h-3 overflow-hidden rounded-full">
-                <div className="w-1/2 bg-primary" />
-                <div className="w-[30%] bg-white/60" />
-                <div className="w-[20%] bg-white/25" />
-              </div>
-              <div className="mt-4 grid grid-cols-3 text-xs text-muted-foreground">
-                <span>{t.tools.mock.artist} 50%</span>
-                <span className="text-center">{t.tools.mock.producer} 30%</span>
-                <span className="text-right">{t.tools.mock.label} 20%</span>
-              </div>
-            </div>
+          {/* Royalties: a faixa e quem recebe (formato da tela de split) */}
+          <article className={cn(card, "reveal-scale flex min-h-[320px] flex-col justify-between gap-8 p-6 sm:p-8")}>
+            <RoyaltySplitPanel />
             <div>
               <Split className="h-5 w-5 text-foreground" />
               <h3 className="mt-4 text-xl font-semibold text-foreground">{items[1].title}</h3>

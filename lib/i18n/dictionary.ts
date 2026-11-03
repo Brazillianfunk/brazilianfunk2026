@@ -55,6 +55,9 @@ export interface Dictionary {
       artist: string
       producer: string
       label: string
+      feat: string
+      production: string
+      total: string
       region: string
       share: string
       presave: string
@@ -239,6 +242,9 @@ export const dictionary: Record<Locale, Dictionary> = {
           "artist": "Artista",
           "producer": "Produtor",
           "label": "Gravadora",
+          "feat": "Feat.",
+          "production": "Produção",
+          "total": "Total",
           "region": "Região",
           "share": "Participação",
           "presave": "Pré-save",
@@ -490,6 +496,9 @@ export const dictionary: Record<Locale, Dictionary> = {
           "artist": "Artist",
           "producer": "Producer",
           "label": "Label",
+          "feat": "Feat.",
+          "production": "Production",
+          "total": "Total",
           "region": "Region",
           "share": "Share",
           "presave": "Pre-save",
@@ -741,6 +750,9 @@ export const dictionary: Record<Locale, Dictionary> = {
           "artist": "Artista",
           "producer": "Productor",
           "label": "Disquera",
+          "feat": "Feat.",
+          "production": "Producción",
+          "total": "Total",
           "region": "Región",
           "share": "Participación",
           "presave": "Pre-save",
