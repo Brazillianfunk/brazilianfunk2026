@@ -62,7 +62,7 @@ export default function FaqSection() {
           <div className="relative flex flex-col items-start justify-between gap-8 bg-gradient-to-r from-primary via-primary/90 to-primary/40 p-10 md:flex-row md:items-center md:p-14">
             <p className="max-w-xl text-3xl font-bold tracking-tight text-white md:text-5xl">{t.faq.ctaText}</p>
             <Button href="/solicitar-acesso" size="lg" variant="light">
-              {t.hero.cta}
+              {t.faq.ctaButton}
               <span aria-hidden="true">→</span>
             </Button>
           </div>

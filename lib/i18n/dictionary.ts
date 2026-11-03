@@ -109,6 +109,7 @@ export interface Dictionary {
     heading: string
     subtitle: string
     ctaText: string
+    ctaButton: string
     items: {
       question: string
       answer: string
@@ -365,6 +366,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "heading": "Perguntas frequentes",
       "subtitle": "Tire suas dúvidas sobre distribuição, prazos e royalties.",
       "ctaText": "Quer distribuir com a Brazilian Funk?",
+      "ctaButton": "Começar agora",
       "items": [
         {
           "question": "O que é a Brazilian Funk?",
@@ -635,6 +637,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "heading": "Frequently asked questions",
       "subtitle": "Get your questions answered about distribution, timelines, and royalties.",
       "ctaText": "Want to distribute with Brazilian Funk?",
+      "ctaButton": "Get started",
       "items": [
         {
           "question": "What is Brazilian Funk?",
@@ -905,6 +908,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "heading": "Preguntas frecuentes",
       "subtitle": "Resuelve tus dudas sobre distribución, plazos y regalías.",
       "ctaText": "¿Quieres distribuir con Brazilian Funk?",
+      "ctaButton": "Empezar ahora",
       "items": [
         {
           "question": "¿Qué es Brazilian Funk?",
