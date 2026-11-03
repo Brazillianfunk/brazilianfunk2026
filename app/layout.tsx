@@ -85,13 +85,25 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/brazilian-funk-mark.png`,
+  // Logo com fundo (a marca branca sem fundo some no fundo branco do Google)
+  logo: `${SITE_URL}/brazilian-funk-logo-quadrado.png`,
   description: SITE_DESCRIPTION,
   email: "contato@brazilianfunk.online",
   sameAs: [
     "https://www.instagram.com/brazillianfunk/",
     "https://www.youtube.com/@BrazillianFunk",
   ],
+}
+
+// WebSite: ajuda o Google a mostrar "Brazilian Funk" como nome do site
+// no resultado de busca, no lugar do endereço.
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  alternateName: "brazilianfunk.co",
+  url: `${SITE_URL}/`,
+  inLanguage: "pt-BR",
 }
 
 export default function RootLayout({
@@ -105,6 +117,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
       <body className={`${inter.className} bg-background font-sans text-foreground antialiased`}>
