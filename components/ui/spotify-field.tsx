@@ -16,6 +16,7 @@
 // placeholder "Search your artist or paste a Spotify link" da
 // referência) — a rota de API já detecta isso e busca o artista exato.
 
+import { useTranslation } from "@/lib/i18n/use-translation"
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Search, Check, X as XIcon, Loader2 } from "lucide-react"
@@ -36,6 +37,8 @@ interface SpotifyFieldProps {
 }
 
 export function SpotifyField({ value, onChange, autoFocus }: SpotifyFieldProps) {
+  const { t, locale } = useTranslation()
+  const f = t.form
   const [query, setQuery] = useState("")
   const [results, setResults] = useState<SpotifyProfile[]>([])
   const [isOpen, setIsOpen] = useState(false)
@@ -62,13 +65,13 @@ export function SpotifyField({ value, onChange, autoFocus }: SpotifyFieldProps) 
         const res = await fetch(`/api/spotify/search?q=${encodeURIComponent(query)}`)
         const data = await res.json()
         if (!res.ok) {
-          setError(data.error || "Não foi possível buscar agora.")
+          setError(f.spotifyError)
           setResults([])
         } else {
           setResults(data.results ?? [])
         }
       } catch {
-        setError("Não foi possível buscar agora. Verifique sua conexão.")
+        setError(f.spotifyErrorNetwork)
         setResults([])
       } finally {
         setIsLoading(false)
@@ -91,7 +94,7 @@ export function SpotifyField({ value, onChange, autoFocus }: SpotifyFieldProps) 
   // Perfil já selecionado — mostra claramente, com opção de trocar.
   if (value) {
     return (
-      <div className="flex items-center justify-between rounded-md border border-primary/40 bg-primary/5 px-4 py-4">
+      <div className="flex items-center justify-between rounded-2xl border border-foreground/40 bg-white/[0.03] px-4 py-4">
         <div className="flex items-center gap-3">
           {value.imageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -103,7 +106,7 @@ export function SpotifyField({ value, onChange, autoFocus }: SpotifyFieldProps) 
           )}
           <div>
             <p className="text-base font-medium text-foreground">{value.name}</p>
-            <p className="text-xs text-muted-foreground">Artista no Spotify</p>
+            <p className="text-xs text-muted-foreground">{f.spotifyArtist}</p>
           </div>
         </div>
         <button
@@ -112,7 +115,7 @@ export function SpotifyField({ value, onChange, autoFocus }: SpotifyFieldProps) 
             onChange(null)
             setQuery("")
           }}
-          aria-label="Trocar perfil selecionado"
+          aria-label={f.spotifyChange}
           className="text-muted-foreground hover:text-foreground"
         >
           <XIcon className="size-4" />
@@ -123,7 +126,7 @@ export function SpotifyField({ value, onChange, autoFocus }: SpotifyFieldProps) 
 
   return (
     <div ref={wrapRef} className="relative">
-      <div className="flex items-center gap-3 rounded-md border border-input px-4 focus-within:border-primary">
+      <div className="flex items-center gap-3 rounded-2xl border border-border px-4 transition-colors focus-within:border-foreground">
         {isLoading ? (
           <Loader2 className="size-4 flex-none animate-spin text-muted-foreground" />
         ) : (
@@ -137,7 +140,7 @@ export function SpotifyField({ value, onChange, autoFocus }: SpotifyFieldProps) 
             setIsOpen(true)
           }}
           onFocus={() => setIsOpen(true)}
-          placeholder="Buscar seu artista ou colar link do Spotify"
+          placeholder={f.spotifyPlaceholder}
           className="w-full bg-transparent py-4 text-lg text-foreground placeholder:text-muted-foreground focus:outline-none"
         />
       </div>
@@ -149,14 +152,14 @@ export function SpotifyField({ value, onChange, autoFocus }: SpotifyFieldProps) 
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="absolute z-20 mt-2 w-full overflow-hidden rounded-md border border-border bg-popover shadow-2xl"
+            className="absolute z-20 mt-2 w-full overflow-hidden rounded-2xl border border-border bg-card shadow-2xl"
           >
             {error ? (
               <p className="px-4 py-3 text-sm text-destructive">{error}</p>
             ) : isLoading ? (
-              <p className="px-4 py-3 text-sm text-muted-foreground">Buscando...</p>
+              <p className="px-4 py-3 text-sm text-muted-foreground">{f.spotifySearching}</p>
             ) : results.length === 0 ? (
-              <p className="px-4 py-3 text-sm text-muted-foreground">Nenhum resultado encontrado.</p>
+              <p className="px-4 py-3 text-sm text-muted-foreground">{f.spotifyNoResults}</p>
             ) : (
               results.map((profile, index) => (
                 <motion.button
@@ -182,7 +185,7 @@ export function SpotifyField({ value, onChange, autoFocus }: SpotifyFieldProps) 
                   <div className="min-w-0">
                     <p className="truncate text-sm font-medium text-foreground">{profile.name}</p>
                     <p className="text-xs text-muted-foreground">
-                      Artista{typeof profile.followers === "number" ? ` · ${profile.followers.toLocaleString("pt-BR")} seguidores` : ""}
+                      {f.optionArtist}{typeof profile.followers === "number" ? ` · ${profile.followers.toLocaleString({ pt: "pt-BR", en: "en-US", es: "es-ES" }[locale] ?? "pt-BR")} ${f.spotifyFollowers}` : ""}
                     </p>
                   </div>
                 </motion.button>

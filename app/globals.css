@@ -21,8 +21,24 @@
     --popover: 0 0% 4%;                 /* #0a0a0a */
     --popover-foreground: 60 9% 96%;
 
-    --primary: 220 98% 23%;              /* #012775 — azul da marca */
-    --primary-foreground: 0 0% 4%;      /* texto quase preto sobre o verde */
+    /* Azul da marca. Antes era #012775 (azul-marinho) com texto quase
+       preto por cima — o botão "Começar" ficava ilegível (contraste ~1,4:1)
+       e quase sumia no fundo preto. Mesmo tom, mais vivo: texto branco
+       passa 6:1 e o botão se destaca do fundo. */
+    --primary: 224 81% 52%;             /* ≈ #2152e8 */
+    --primary-foreground: 0 0% 100%;    /* texto branco sobre o azul */
+
+    /* Verde do Pix — cor de destaque secundária (selo "Novo", valores
+       recebidos, foco em elementos de pagamento). Texto sobre ele: preto. */
+    /* Azul claro para TEXTO (links, asteriscos, item ativo). O azul do
+       botão fica escuro demais como texto sobre preto (3,3:1). */
+    --brand-link: 226 100% 74%;         /* ≈ #7a95ff — 7:1 sobre o fundo */
+
+    /* Verde da marca (o mesmo do favicon/ícone do app). Usado só em detalhes
+       (valores recebidos, "online", barra de progresso, mapa do rodapé).
+       O nome da variável ficou "lime" para não mexer em todos os componentes. */
+    --brand-lime: 72 97% 59%;           /* #d7fc32 */
+    --brand-lime-foreground: 0 0% 4%;
 
     --secondary: 0 0% 10%;
     --secondary-foreground: 60 9% 96%;
@@ -38,7 +54,7 @@
 
     --border: 0 0% 15%;
     --input: 0 0% 15%;
-    --ring: 135 95% 30%;
+    --ring: 224 81% 60%;              /* anel de foco no azul da marca */
 
     --radius: 0.75rem;
   }
@@ -51,55 +67,217 @@
   html {
     scroll-behavior: smooth;
   }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
   body {
     @apply bg-background text-foreground;
   }
 }
 
-/*
-  Esteira de capas da Hero — CSS puro em vez de loop JS (framer-motion
-  `animate` com repeat: Infinity mantinha um requestAnimationFrame rodando
-  pra sempre, mesmo com a Hero fora da tela). Uma @keyframes composta pelo
-  navegador é mais barata e pode ser otimizada/pausada automaticamente
-  quando a camada não está visível.
-*/
-.hero-marquee-track {
-  width: max-content;
-  animation: heroMarquee 60s linear infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-marquee-track {
-    animation: none;
-  }
-}
-@keyframes heroMarquee {
+/* Faixa de plataformas (components/ui/logo-marquee.tsx): duas cópias da
+   lista lado a lado; andar -50% fecha o loop sem costura. */
+@keyframes logo-marquee {
   from {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
   to {
     transform: translateX(-50%);
   }
 }
 
-/*
-  Parede de capas do fundo da Hero — mesmo princípio da esteira acima:
-  só CSS (translateY em loop), zero JavaScript rodando a cada frame.
-  Duas cópias da grade empilhadas + translateY(-50%) = loop sem costura.
-*/
-.hero-wall-track {
-  animation: heroWallScroll 50s linear infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-wall-track {
-    animation: none;
+/* ------------------------------------------------------------------ */
+/* Detalhes visuais leves (só CSS, sem JavaScript a cada quadro).      */
+/* Tudo é aprimoramento: em navegadores sem suporte o conteúdo         */
+/* simplesmente aparece parado. Quem ativou "reduzir movimento" no     */
+/* aparelho não vê nenhuma dessas animações.                           */
+/* ------------------------------------------------------------------ */
+
+/* Entrada suave conforme a rolagem (scroll-driven animations). O
+   elemento só "chega" enquanto entra na tela; nada fica escondido
+   esperando JavaScript. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+    .reveal-scale {
+      animation: reveal-scale linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+    .grow-bar {
+      transform-origin: bottom;
+      animation: grow-bar linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 40%;
+    }
+    .grow-x {
+      transform-origin: left;
+      animation: grow-x linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 40%;
+    }
+    /* Barra fina de progresso de leitura no topo da página. */
+    .scroll-progress {
+      animation: grow-x linear both;
+      animation-timeline: scroll(root);
+    }
   }
 }
-@keyframes heroWallScroll {
-  from {
-    transform: translateY(0%);
-  }
-  to {
-    transform: translateY(-50%);
-  }
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes reveal-scale {
+  from { opacity: 0; transform: translateY(24px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes grow-bar {
+  from { transform: scaleY(0.15); }
+  to { transform: scaleY(1); }
+}
+@keyframes grow-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.scroll-progress {
+  transform-origin: left;
+  transform: scaleX(0);
+}
+@supports not (animation-timeline: scroll()) {
+  .scroll-progress { display: none; }
 }
 
+/* Celular de Pagamentos flutuando de leve. */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .float-soft { animation: float-soft 6s ease-in-out infinite; }
+  .float-soft-delay { animation: float-soft 6s ease-in-out -3s infinite; }
+}
+
+/* Ponto "online" pulsando. */
+@keyframes ping-soft {
+  0% { transform: scale(1); opacity: 0.7; }
+  80%, 100% { transform: scale(2.4); opacity: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ping-soft { animation: ping-soft 2s cubic-bezier(0, 0, 0.2, 1) infinite; }
+}
+
+/* Fundo levemente mais claro para algumas seções, com transição suave
+   de cor em cima e embaixo (sem "corte" seco entre seções). */
+.section-soft {
+  background: linear-gradient(to bottom, #050505 0, #0c0c0d 140px, #0c0c0d calc(100% - 140px), #050505 100%);
+}
+
+/* Granulado sutil (SVG minúsculo embutido) para dar textura ao preto. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Grade de pontos de fundo. */
+.dot-grid {
+  background-image: radial-gradient(hsl(0 0% 100% / 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ---------- Seções com fundo próprio (blocos de cor) ----------
+   Cada classe troca as variáveis de cor só dentro da seção, então os
+   componentes (badge, bordas, textos secundários, botões) se ajustam
+   sozinhos. .theme-dark devolve o tema escuro para algo dentro de uma
+   seção clara (ex.: o celular de Pagamentos). */
+.theme-light {
+  --background: 40 18% 94%;          /* #f3f1ec — branco quebrado */
+  --foreground: 0 0% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 4%;
+  --secondary: 40 10% 88%;
+  --muted-foreground: 30 4% 36%;
+  --border: 40 8% 82%;
+  --brand-link: 224 81% 45%;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+.theme-dark {
+  --background: 0 0% 2%;
+  --foreground: 60 9% 96%;
+  --card: 0 0% 5%;
+  --card-foreground: 60 9% 96%;
+  --secondary: 0 0% 10%;
+  --muted-foreground: 60 3% 58%;
+  --border: 0 0% 15%;
+  --brand-link: 226 100% 74%;
+  --brand-lime: 72 97% 59%;
+  color: hsl(var(--foreground));
+}
+
+/* ---------- Tela de entrada (components/intro-loader.tsx) ---------- */
+.intro {
+  position: fixed; inset: 0; z-index: 100; pointer-events: auto;
+  /* fallback sem JS: some sozinha depois de 6s */
+  animation: intro-auto-hide 0.4s ease 6s forwards;
+}
+html[data-intro-visto] .intro { display: none; }
+@media (prefers-reduced-motion: reduce) { .intro { display: none; } }
+@keyframes intro-auto-hide { to { opacity: 0; visibility: hidden; } }
+
+.intro-curtain {
+  position: absolute; inset: 0 0 -14vh 0; background: #050505;
+  display: grid; place-items: center;
+  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+}
+/* borda inferior em arco, que aparece quando a cortina sobe */
+.intro-curtain::after {
+  content: ""; position: absolute; left: -10%; right: -10%; bottom: 1px; height: 14vh;
+  background: #050505; border-radius: 0 0 50% 50% / 0 0 100% 100%; transform: translateY(100%);
+}
+.intro-out { pointer-events: none; }
+.intro-out .intro-curtain { transform: translateY(calc(-100% - 2px)); }
+
+.intro-logo { position: relative; width: clamp(96px, 12vw, 168px); aspect-ratio: 400 / 339; margin-bottom: 14vh; }
+.intro-mark {
+  position: absolute; inset: 0;
+  -webkit-mask: url(/brazilian-funk-mapa.png) center / contain no-repeat;
+  mask: url(/brazilian-funk-mapa.png) center / contain no-repeat;
+}
+.intro-mark-dim { background: #262626; }
+.intro-mark-fill {
+  background: hsl(var(--brand-lime));
+  clip-path: inset(0 calc(100% - var(--p, 0%)) 0 0);
+}
+.intro-label {
+  position: absolute; left: 4vw; bottom: calc(14vh + 5vh);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8a8a8a;
+}
+.intro-count {
+  position: absolute; right: 4vw; bottom: calc(14vh + 4vh);
+  font-size: clamp(48px, 7vw, 104px); font-weight: 900; line-height: 0.85; letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums; color: hsl(var(--foreground));
+}
+
+/* Painel de capas do formulário "Solicitar acesso": colunas subindo devagar */
+@keyframes cover-rise { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@media (prefers-reduced-motion: no-preference) {
+  .cover-rise { animation: cover-rise 70s linear infinite; }
+  .cover-rise-reverse { animation-direction: reverse; animation-duration: 85s; }
+}
+
+/* Logo do Deezer (PNG oficial usado como máscara, herda a cor do texto) */
+.icon-deezer {
+  -webkit-mask: url(/deezer-logo.png) center / contain no-repeat;
+  mask: url(/deezer-logo.png) center / contain no-repeat;
+}

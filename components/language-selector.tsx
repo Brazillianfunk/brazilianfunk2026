@@ -58,13 +58,13 @@ export function LanguageSelector({ className }: { className?: string }) {
                 className={cn(
                   "flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors",
                   isSelected
-                    ? "font-semibold text-primary"
+                    ? "font-semibold text-brand-link"
                     : "text-foreground hover:bg-white/[0.05]"
                 )}
               >
                 <span aria-hidden="true">{item.flag}</span>
                 <span className="flex-1">{item.label}</span>
-                {isSelected && <Check className="h-4 w-4 text-primary" />}
+                {isSelected && <Check className="h-4 w-4 text-brand-link" />}
               </button>
             )
           })}

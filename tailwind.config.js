@@ -38,6 +38,11 @@ module.exports = {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
+        "brand-link": "hsl(var(--brand-link))",
+        "brand-lime": {
+          DEFAULT: "hsl(var(--brand-lime))",
+          foreground: "hsl(var(--brand-lime-foreground))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -49,7 +54,6 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-inter, -apple-system)", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-        poppins: ["var(--font-poppins, sans-serif)", "sans-serif"],
       },
       keyframes: {
         shake: {

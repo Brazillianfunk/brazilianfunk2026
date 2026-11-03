@@ -11,11 +11,13 @@ export interface Dictionary {
     titleLine2: string
     description: string
     cta: string
+    wallLabel: string
   }
   distribution: {
     badge: string
     title: string
     description: string
+    statLabel: string
   }
   payment: {
     title: string
@@ -23,13 +25,48 @@ export interface Dictionary {
     withdraw: string
     pixName: string
     pixDesc: string
+    paypalDesc: string
+    balanceLabel: string
+    updatedNow: string
+    chooseMethod: string
+    amount: string
+    overline: string
+    features: { title: string; desc: string }[]
+    recentLabel: string
+    today: string
+    notifTitle: string
+    notifAmount: string
+    sendTo: string
   }
   delivery: {
+    badge: string
     title: string
     description: string
     steps: string[]
+    stepDescriptions: string[]
+    stepLabel: string
   }
   tools: {
+    badge: string
+    mock: {
+      streams: string
+      listeners: string
+      last28: string
+      artist: string
+      producer: string
+      label: string
+      feat: string
+      production: string
+      total: string
+      autoSplit: string
+      illustrativeSplit: string
+      region: string
+      share: string
+      presave: string
+      listenNow: string
+      generated: string
+      more: string
+    }
     title: string
     description: string
     items: {
@@ -38,6 +75,7 @@ export interface Dictionary {
     }[]
   }
   support: {
+    badge: string
     title: string
     description: string
     items: {
@@ -47,6 +85,8 @@ export interface Dictionary {
     }[]
   }
   blog: {
+    badge: string
+    viewAll: string
     heading: string
     subtitle: string
     readMore: string
@@ -64,8 +104,12 @@ export interface Dictionary {
     }[]
   }
   faq: {
+    badge: string
+    contactEmail: string
     heading: string
     subtitle: string
+    ctaText: string
+    ctaButton: string
     items: {
       question: string
       answer: string
@@ -86,6 +130,12 @@ export interface Dictionary {
     lastUpdatedLabel: string
     updatedDate: string
     privacyIntro: string
+    termsIntro: string
+    badge: string
+    summaryTitle: string
+    summaryNote: string
+    contentsTitle: string
+    otherDoc: string
   }
   form: {
     closeAria: string
@@ -124,6 +174,14 @@ export interface Dictionary {
     confirmTitle: string
     confirmBody: string
     confirmButton: string
+    spotifyPlaceholder: string
+    spotifySearching: string
+    spotifyNoResults: string
+    spotifyError: string
+    spotifyErrorNetwork: string
+    spotifyArtist: string
+    spotifyFollowers: string
+    spotifyChange: string
   }
 }
 
@@ -136,27 +194,46 @@ export const dictionary: Record<Locale, Dictionary> = {
       "ferramentas": "Ferramentas",
       "noticias": "Notícias",
       "entrar": "Entrar",
-      "comecar": "Começar"
+      "comecar": "Solicitar acesso"
     },
     "hero": {
       "titleLine1": "A Distribuidora",
       "titleLine2": "Musical do Funk",
       "description": "Uma plataforma especializada em Funk para artistas, DJs e gravadoras que desejam distribuir suas músicas globalmente, gerenciar royalties e desenvolver sua carreira musical.",
-      "cta": "Solicitar Acesso"
+      "cta": "Solicitar acesso",
+      "wallLabel": "Lançamentos distribuídos pela Brazilian Funk"
     },
     "distribution": {
-      "badge": "+40 Lojas e Serviços",
+      "badge": "Distribuição",
       "title": "Distribuição Global para os Principais Serviços de Música",
-      "description": "Envios ilimitados para as principais plataformas de streaming. Distribua suas músicas para Spotify, Apple Music, TikTok, Amazon, Deezer, Instagram, YouTube Music e mais de 40 plataformas globais."
+      "description": "Envios ilimitados. Um único envio leva seu lançamento para as principais lojas e serviços de streaming do mundo.",
+      "statLabel": "lojas e serviços de streaming"
     },
     "payment": {
       "title": "Receba seus pagamentos de forma simples",
       "description": "Efetue saques de forma prática e segura, com opções de recebimento via PayPal ou Pix.",
-      "withdraw": "WITHDRAW",
+      "withdraw": "Sacar",
       "pixName": "Pix",
-      "pixDesc": "Você está recebendo um pagamento pelos seus ganhos declarados através da Brazilian Funk."
+      "pixDesc": "Você está recebendo um pagamento pelos seus ganhos declarados através da Brazilian Funk.",
+      "paypalDesc": "Você está recebendo um pagamento pelos seus ganhos declarados através da Brazilian Funk.",
+      "balanceLabel": "Saldo disponível",
+      "updatedNow": "Atualizado agora",
+      "chooseMethod": "Escolha o método de saque",
+      "amount": "US$ 1.000,00",
+      "overline": "Pagamentos",
+      "features": [
+        { "title": "Saque via Pix", "desc": "O valor cai direto na sua chave Pix cadastrada." },
+        { "title": "Saque via PayPal", "desc": "Para quem prefere receber na conta PayPal." },
+        { "title": "Extrato transparente", "desc": "Veja quanto cada plataforma pagou, por período." }
+      ],
+      "recentLabel": "Última transação",
+      "today": "Hoje",
+      "notifTitle": "Pagamento recebido",
+      "notifAmount": "US$ 850,00",
+      "sendTo": "Receber em"
     },
     "delivery": {
+      "badge": "Entrega",
       "title": "Entrega Rápida de Conteúdo",
       "description": "Garantimos que seu conteúdo chegue às lojas em até 24 horas.",
       "steps": [
@@ -164,9 +241,36 @@ export const dictionary: Record<Locale, Dictionary> = {
         "Processamento",
         "Distribuição Global",
         "Disponível nas Lojas"
-      ]
+      ],
+      "stepDescriptions": [
+        "Você conclui o preenchimento e o envio das informações do lançamento.",
+        "O sistema processa e verifica as informações do lançamento antes de enviá-lo às plataformas.",
+        "O lançamento é enviado para Spotify, Apple Music, TikTok e mais de 50 plataformas.",
+        "Sua música fica disponível nas lojas em até 24 horas."
+      ],
+      "stepLabel": "Etapa"
     },
     "tools": {
+      "badge": "Ferramentas",
+      "mock": {
+          "streams": "Streams",
+          "listeners": "Ouvintes",
+          "last28": "Últimos 28 dias",
+          "artist": "Artista",
+          "producer": "Produtor",
+          "label": "Gravadora",
+          "feat": "Feat.",
+          "production": "Produção",
+          "total": "Total",
+          "autoSplit": "Divisão automática",
+          "illustrativeSplit": "Exemplo ilustrativo.",
+          "region": "Região",
+          "share": "Participação",
+          "presave": "Pré-save",
+          "listenNow": "Ouvir agora",
+          "generated": "Gerado automaticamente",
+          "more": "E muito mais no seu painel",
+        },
       "title": "Ferramentas para potencializar seu catálogo musical",
       "description": "Tudo que você precisa para acompanhar, proteger e maximizar o retorno das suas músicas, em um só lugar.",
       "items": [
@@ -176,7 +280,7 @@ export const dictionary: Record<Locale, Dictionary> = {
         },
         {
           "title": "Divisão de Royalties",
-          "desc": "Configure splits entre artistas, produtores e gravadora com transparência total."
+          "desc": "Defina a porcentagem de cada colaborador da faixa. A divisão dos royalties é feita automaticamente, e cada colaborador é notificado por e-mail quando ela é concluída."
         },
         {
           "title": "Relatórios e Dados",
@@ -191,12 +295,13 @@ export const dictionary: Record<Locale, Dictionary> = {
           "desc": "Geração automática dos códigos de identificação exigidos pelas plataformas."
         },
         {
-          "title": "+Recursos",
+          "title": "Recursos",
           "desc": "Diversos outros recursos para o gerenciamento e desenvolvimento do seu catálogo no ambiente digital."
         }
       ]
     },
     "support": {
+      "badge": "Suporte",
       "title": "Suporte em Cada Etapa",
       "description": "Acompanhamos você em todas as etapas, do envio do conteúdo ao primeiro pagamento.",
       "items": [
@@ -223,6 +328,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "blog": {
+      "badge": "Blog",
+      "viewAll": "Ver no Instagram",
       "heading": "Blog",
       "subtitle": "Notícias, cultura e os bastidores do desenvolvimento do funk.",
       "readMore": "Ler matéria",
@@ -254,8 +361,12 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "faq": {
+      "badge": "Dúvidas",
+      "contactEmail": "Envie um e-mail",
       "heading": "Perguntas frequentes",
       "subtitle": "Tire suas dúvidas sobre distribuição, prazos e royalties.",
+      "ctaText": "Quer distribuir com a Brazilian Funk?",
+      "ctaButton": "Começar agora",
       "items": [
         {
           "question": "O que é a Brazilian Funk?",
@@ -292,8 +403,14 @@ export const dictionary: Record<Locale, Dictionary> = {
     },
     "legal": {
       "lastUpdatedLabel": "Última atualização",
-      "updatedDate": "11 de agosto de 2026",
-      "privacyIntro": "Esta Política descreve como a Brazilian Funk coleta, usa, armazena e protege suas informações, em conformidade com a LGPD (Lei nº 13.709/2018), e é parte integrante dos nossos Termos de Uso."
+      "updatedDate": "3 de novembro de 2026",
+      "privacyIntro": "Esta Política explica quais dados pessoais a Brazilian Funk coleta, por que coleta, com quem compartilha e como você pode exercer seus direitos, conforme a LGPD (Lei nº 13.709/2018). Ela é parte integrante dos nossos Termos de Uso.",
+      "termsIntro": "Estes Termos explicam como funciona a distribuição das suas músicas pela Brazilian Funk: o que você autoriza, o que cobramos, como pagamos e quais regras valem para os dois lados.",
+      "badge": "Documento legal",
+      "summaryTitle": "O essencial",
+      "summaryNote": "Este resumo ajuda na leitura, mas não substitui o texto completo abaixo.",
+      "contentsTitle": "Nesta página",
+      "otherDoc": "Leia também"
     },
     "form": {
       "closeAria": "Fechar solicitação",
@@ -330,8 +447,16 @@ export const dictionary: Record<Locale, Dictionary> = {
       "sending": "Enviando...",
       "sendError": "Não foi possível enviar sua solicitação agora. Verifique sua internet e tente novamente.",
       "confirmTitle": "Solicitação enviada",
-      "confirmBody": "Vamos analisar seu perfil e retornar por e-mail em breve.",
-      "confirmButton": "Concluir"
+      "confirmBody": "Vamos analisar seu perfil e entrar em contato em breve.",
+      "confirmButton": "Concluir",
+      "spotifyPlaceholder": "Buscar seu artista ou colar link do Spotify",
+      "spotifySearching": "Buscando...",
+      "spotifyNoResults": "Nenhum resultado encontrado.",
+      "spotifyError": "Não foi possível buscar agora.",
+      "spotifyErrorNetwork": "Não foi possível buscar agora. Verifique sua conexão.",
+      "spotifyArtist": "Artista no Spotify",
+      "spotifyFollowers": "seguidores",
+      "spotifyChange": "Trocar perfil selecionado"
     }
   },
   "en": {
@@ -340,27 +465,46 @@ export const dictionary: Record<Locale, Dictionary> = {
       "ferramentas": "Tools",
       "noticias": "News",
       "entrar": "Sign In",
-      "comecar": "Get Started"
+      "comecar": "Request access"
     },
     "hero": {
       "titleLine1": "The Music Distributor",
       "titleLine2": "for Funk",
       "description": "A platform specialized in Funk for artists, DJs, and labels who want to distribute their music globally, manage royalties, and grow their music career.",
-      "cta": "Request Access"
+      "cta": "Request access",
+      "wallLabel": "Releases distributed by Brazilian Funk"
     },
     "distribution": {
-      "badge": "+40 Stores and Services",
+      "badge": "Distribution",
       "title": "Global Distribution to the Leading Music Services",
-      "description": "Unlimited uploads to the leading streaming platforms. Distribute your music to Spotify, Apple Music, TikTok, Amazon, Deezer, Instagram, YouTube Music, and more than 40 global platforms."
+      "description": "Unlimited releases. A single upload takes your music to the top stores and streaming services worldwide.",
+      "statLabel": "stores and streaming services"
     },
     "payment": {
       "title": "Receive your payments easily",
       "description": "Make withdrawals easily and securely, with payout options via PayPal or Pix.",
-      "withdraw": "WITHDRAW",
+      "withdraw": "Withdraw",
       "pixName": "Pix",
-      "pixDesc": "You are receiving a payment for your declared earnings through Brazilian Funk."
+      "pixDesc": "You are receiving a payment for your declared earnings through Brazilian Funk.",
+      "paypalDesc": "You are receiving a payment for your declared earnings through Brazilian Funk.",
+      "balanceLabel": "Available balance",
+      "updatedNow": "Updated just now",
+      "chooseMethod": "Choose a payout method",
+      "amount": "$1,000.00",
+      "overline": "Payments",
+      "features": [
+        { "title": "Pix payouts", "desc": "Money goes straight to your registered Pix key." },
+        { "title": "PayPal payouts", "desc": "For those who prefer to receive in their PayPal account." },
+        { "title": "Transparent statements", "desc": "See how much each platform paid, by period." }
+      ],
+      "recentLabel": "Last transaction",
+      "today": "Today",
+      "notifTitle": "Payment received",
+      "notifAmount": "$850.00",
+      "sendTo": "Receive via"
     },
     "delivery": {
+      "badge": "Delivery",
       "title": "Fast Content Delivery",
       "description": "We ensure your content reaches stores within 24 hours.",
       "steps": [
@@ -368,9 +512,36 @@ export const dictionary: Record<Locale, Dictionary> = {
         "Processing",
         "Global Distribution",
         "Live on Stores"
-      ]
+      ],
+      "stepDescriptions": [
+        "You complete filling in and submitting the release information.",
+        "The system processes and checks the release information before sending it to the platforms.",
+        "Your release is sent to Spotify, Apple Music, TikTok and 50+ platforms.",
+        "Your music goes live on stores within 24 hours."
+      ],
+      "stepLabel": "Step"
     },
     "tools": {
+      "badge": "Tools",
+      "mock": {
+          "streams": "Streams",
+          "listeners": "Listeners",
+          "last28": "Last 28 days",
+          "artist": "Artist",
+          "producer": "Producer",
+          "label": "Label",
+          "feat": "Feat.",
+          "production": "Production",
+          "total": "Total",
+          "autoSplit": "Automatic split",
+          "illustrativeSplit": "Illustrative example.",
+          "region": "Region",
+          "share": "Share",
+          "presave": "Pre-save",
+          "listenNow": "Listen now",
+          "generated": "Generated automatically",
+          "more": "And much more in your dashboard",
+        },
       "title": "Tools to power up your music catalog",
       "description": "Everything you need to track, protect, and maximize the return on your music, all in one place.",
       "items": [
@@ -380,7 +551,7 @@ export const dictionary: Record<Locale, Dictionary> = {
         },
         {
           "title": "Royalty Splits",
-          "desc": "Set up splits between artists, producers, and the label with full transparency."
+          "desc": "Set each collaborator's percentage on the track. Royalties are split automatically, and each collaborator is notified by email once the split is complete."
         },
         {
           "title": "Reports & Data",
@@ -395,12 +566,13 @@ export const dictionary: Record<Locale, Dictionary> = {
           "desc": "Automatic generation of the identification codes required by the platforms."
         },
         {
-          "title": "+More Features",
+          "title": "More Features",
           "desc": "Several other features to manage and grow your catalog in the digital space."
         }
       ]
     },
     "support": {
+      "badge": "Support",
       "title": "Support at Every Step",
       "description": "We support you every step of the way, from content submission to your first payment.",
       "items": [
@@ -427,6 +599,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "blog": {
+      "badge": "Blog",
+      "viewAll": "View on Instagram",
       "heading": "Blog",
       "subtitle": "News, culture, and the behind-the-scenes of funk's development.",
       "readMore": "Read article",
@@ -458,8 +632,12 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "faq": {
+      "badge": "FAQ",
+      "contactEmail": "Send us an email",
       "heading": "Frequently asked questions",
       "subtitle": "Get your questions answered about distribution, timelines, and royalties.",
+      "ctaText": "Want to distribute with Brazilian Funk?",
+      "ctaButton": "Get started",
       "items": [
         {
           "question": "What is Brazilian Funk?",
@@ -496,8 +674,14 @@ export const dictionary: Record<Locale, Dictionary> = {
     },
     "legal": {
       "lastUpdatedLabel": "Last updated",
-      "updatedDate": "August 11, 2026",
-      "privacyIntro": "This Policy describes how Brazilian Funk collects, uses, stores, and protects Your information, in compliance with the LGPD (Law No. 13,709/2018), and forms an integral part of our Terms of Use."
+      "updatedDate": "November 3, 2026",
+      "privacyIntro": "This Policy explains what personal data Brazilian Funk collects, why, who we share it with and how you can exercise your rights, under the LGPD (Law No. 13,709/2018). It is part of our Terms of Use.",
+      "termsIntro": "These Terms explain how distributing your music with Brazilian Funk works: what you authorize, what we charge, how we pay and which rules apply to both sides.",
+      "badge": "Legal document",
+      "summaryTitle": "The essentials",
+      "summaryNote": "This summary helps you read, but it does not replace the full text below.",
+      "contentsTitle": "On this page",
+      "otherDoc": "Also read"
     },
     "form": {
       "closeAria": "Close request",
@@ -534,8 +718,16 @@ export const dictionary: Record<Locale, Dictionary> = {
       "sending": "Sending...",
       "sendError": "We couldn't submit your request right now. Check your internet connection and try again.",
       "confirmTitle": "Request submitted",
-      "confirmBody": "We'll review your profile and get back to you by email soon.",
-      "confirmButton": "Done"
+      "confirmBody": "We'll review your profile and get in touch soon.",
+      "confirmButton": "Done",
+      "spotifyPlaceholder": "Search your artist or paste a Spotify link",
+      "spotifySearching": "Searching...",
+      "spotifyNoResults": "No results found.",
+      "spotifyError": "Could not search right now.",
+      "spotifyErrorNetwork": "Could not search right now. Check your connection.",
+      "spotifyArtist": "Artist on Spotify",
+      "spotifyFollowers": "followers",
+      "spotifyChange": "Change selected profile"
     }
   },
   "es": {
@@ -544,27 +736,46 @@ export const dictionary: Record<Locale, Dictionary> = {
       "ferramentas": "Herramientas",
       "noticias": "Noticias",
       "entrar": "Iniciar sesión",
-      "comecar": "Empezar"
+      "comecar": "Solicitar acceso"
     },
     "hero": {
       "titleLine1": "La Distribuidora",
       "titleLine2": "Musical del Funk",
       "description": "Una plataforma especializada en Funk para artistas, DJs y sellos discográficos que desean distribuir su música globalmente, gestionar regalías y desarrollar su carrera musical.",
-      "cta": "Solicitar Acceso"
+      "cta": "Solicitar acceso",
+      "wallLabel": "Lanzamientos distribuidos por Brazilian Funk"
     },
     "distribution": {
-      "badge": "+40 Tiendas y Servicios",
+      "badge": "Distribución",
       "title": "Distribución Global a los Principales Servicios de Música",
-      "description": "Envíos ilimitados a las principales plataformas de streaming. Distribuye tu música en Spotify, Apple Music, TikTok, Amazon, Deezer, Instagram, YouTube Music y más de 40 plataformas globales."
+      "description": "Envíos ilimitados. Un solo envío lleva tu lanzamiento a las principales tiendas y servicios de streaming del mundo.",
+      "statLabel": "tiendas y servicios de streaming"
     },
     "payment": {
       "title": "Recibe tus pagos de forma sencilla",
       "description": "Realiza retiros de forma práctica y segura, con opciones de cobro vía PayPal o Pix.",
-      "withdraw": "WITHDRAW",
+      "withdraw": "Retirar",
       "pixName": "Pix",
-      "pixDesc": "Estás recibiendo un pago por tus ganancias declaradas a través de Brazilian Funk."
+      "pixDesc": "Estás recibiendo un pago por tus ganancias declaradas a través de Brazilian Funk.",
+      "paypalDesc": "Estás recibiendo un pago por tus ganancias declaradas a través de Brazilian Funk.",
+      "balanceLabel": "Saldo disponible",
+      "updatedNow": "Actualizado ahora",
+      "chooseMethod": "Elige el método de retiro",
+      "amount": "US$ 1.000,00",
+      "overline": "Pagos",
+      "features": [
+        { "title": "Retiro vía Pix", "desc": "El dinero llega directo a tu clave Pix registrada." },
+        { "title": "Retiro vía PayPal", "desc": "Para quien prefiere recibir en su cuenta PayPal." },
+        { "title": "Extracto transparente", "desc": "Mira cuánto pagó cada plataforma, por período." }
+      ],
+      "recentLabel": "Última transacción",
+      "today": "Hoy",
+      "notifTitle": "Pago recibido",
+      "notifAmount": "US$ 850,00",
+      "sendTo": "Recibir en"
     },
     "delivery": {
+      "badge": "Entrega",
       "title": "Entrega Rápida de Contenido",
       "description": "Garantizamos que tu contenido llegue a las tiendas en hasta 24 horas.",
       "steps": [
@@ -572,9 +783,36 @@ export const dictionary: Record<Locale, Dictionary> = {
         "Procesamiento",
         "Distribución Global",
         "Disponible en las Tiendas"
-      ]
+      ],
+      "stepDescriptions": [
+        "Completas el llenado y el envío de la información del lanzamiento.",
+        "El sistema procesa y verifica la información del lanzamiento antes de enviarlo a las plataformas.",
+        "El lanzamiento se envía a Spotify, Apple Music, TikTok y más de 50 plataformas.",
+        "Tu música queda disponible en las tiendas en hasta 24 horas."
+      ],
+      "stepLabel": "Etapa"
     },
     "tools": {
+      "badge": "Herramientas",
+      "mock": {
+          "streams": "Streams",
+          "listeners": "Oyentes",
+          "last28": "Últimos 28 días",
+          "artist": "Artista",
+          "producer": "Productor",
+          "label": "Disquera",
+          "feat": "Feat.",
+          "production": "Producción",
+          "total": "Total",
+          "autoSplit": "División automática",
+          "illustrativeSplit": "Ejemplo ilustrativo.",
+          "region": "Región",
+          "share": "Participación",
+          "presave": "Pre-save",
+          "listenNow": "Escuchar ahora",
+          "generated": "Generado automáticamente",
+          "more": "Y mucho más en tu panel",
+        },
       "title": "Herramientas para potenciar tu catálogo musical",
       "description": "Todo lo que necesitas para monitorear, proteger y maximizar el retorno de tu música, en un solo lugar.",
       "items": [
@@ -584,7 +822,7 @@ export const dictionary: Record<Locale, Dictionary> = {
         },
         {
           "title": "División de Regalías",
-          "desc": "Configura divisiones entre artistas, productores y el sello con total transparencia."
+          "desc": "Define el porcentaje de cada colaborador de la canción. Las regalías se dividen automáticamente y cada colaborador recibe una notificación por correo cuando la división se completa."
         },
         {
           "title": "Informes y Datos",
@@ -599,12 +837,13 @@ export const dictionary: Record<Locale, Dictionary> = {
           "desc": "Generación automática de los códigos de identificación exigidos por las plataformas."
         },
         {
-          "title": "+Recursos",
+          "title": "Recursos",
           "desc": "Varios otros recursos para la gestión y el desarrollo de tu catálogo en el entorno digital."
         }
       ]
     },
     "support": {
+      "badge": "Soporte",
       "title": "Soporte en Cada Etapa",
       "description": "Te acompañamos en cada etapa, desde el envío del contenido hasta tu primer pago.",
       "items": [
@@ -631,6 +870,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "blog": {
+      "badge": "Blog",
+      "viewAll": "Ver en Instagram",
       "heading": "Blog",
       "subtitle": "Noticias, cultura y los bastidores del desarrollo del funk.",
       "readMore": "Leer artículo",
@@ -662,8 +903,12 @@ export const dictionary: Record<Locale, Dictionary> = {
       ]
     },
     "faq": {
+      "badge": "Dudas",
+      "contactEmail": "Envíanos un correo",
       "heading": "Preguntas frecuentes",
       "subtitle": "Resuelve tus dudas sobre distribución, plazos y regalías.",
+      "ctaText": "¿Quieres distribuir con Brazilian Funk?",
+      "ctaButton": "Empezar ahora",
       "items": [
         {
           "question": "¿Qué es Brazilian Funk?",
@@ -700,8 +945,14 @@ export const dictionary: Record<Locale, Dictionary> = {
     },
     "legal": {
       "lastUpdatedLabel": "Última actualización",
-      "updatedDate": "11 de agosto de 2026",
-      "privacyIntro": "Esta Política describe cómo Brazilian Funk recopila, usa, almacena y protege su información, de conformidad con la LGPD (Ley n.º 13.709/2018), y es parte integrante de nuestros Términos de Uso."
+      "updatedDate": "3 de noviembre de 2026",
+      "privacyIntro": "Esta Política explica qué datos personales recopila Brazilian Funk, para qué, con quién los comparte y cómo puedes ejercer tus derechos, conforme a la LGPD (Ley nº 13.709/2018). Forma parte de nuestros Términos de Uso.",
+      "termsIntro": "Estos Términos explican cómo funciona la distribución de tu música con Brazilian Funk: qué autorizas, qué cobramos, cómo pagamos y qué reglas valen para ambas partes.",
+      "badge": "Documento legal",
+      "summaryTitle": "Lo esencial",
+      "summaryNote": "Este resumen ayuda a la lectura, pero no sustituye el texto completo a continuación.",
+      "contentsTitle": "En esta página",
+      "otherDoc": "Lee también"
     },
     "form": {
       "closeAria": "Cerrar solicitud",
@@ -738,8 +989,16 @@ export const dictionary: Record<Locale, Dictionary> = {
       "sending": "Enviando...",
       "sendError": "No pudimos enviar tu solicitud en este momento. Verifica tu conexión a internet e inténtalo de nuevo.",
       "confirmTitle": "Solicitud enviada",
-      "confirmBody": "Analizaremos tu perfil y te responderemos por correo electrónico pronto.",
-      "confirmButton": "Listo"
+      "confirmBody": "Analizaremos tu perfil y nos pondremos en contacto pronto.",
+      "confirmButton": "Listo",
+      "spotifyPlaceholder": "Busca tu artista o pega el enlace de Spotify",
+      "spotifySearching": "Buscando...",
+      "spotifyNoResults": "No se encontraron resultados.",
+      "spotifyError": "No fue posible buscar ahora.",
+      "spotifyErrorNetwork": "No fue posible buscar ahora. Verifica tu conexión.",
+      "spotifyArtist": "Artista en Spotify",
+      "spotifyFollowers": "seguidores",
+      "spotifyChange": "Cambiar perfil seleccionado"
     }
   }
 }

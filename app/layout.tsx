@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { PageLoader } from "@/components/page-loader"
 import { LocaleProvider } from "@/lib/i18n/context"
 
 // A configuração com "variable" cria uma variável CSS (--font-inter) usada
@@ -10,9 +9,8 @@ import { LocaleProvider } from "@/lib/i18n/context"
 // font-family fica inválida (não é "pula pro próximo da lista"), e o
 // navegador cai pro padrão dele — que é serifado, bem diferente da Inter.
 // Por isso também aplicamos `inter.className` diretamente no <body> logo
-// abaixo — é o mesmo padrão já usado com a Poppins em payment-section.tsx,
-// que aplica a fonte de verdade sem depender de nenhuma variável
-// intermediária. Combinando os dois, a fonte correta sempre é aplicada,
+// abaixo, que aplica a fonte de verdade sem depender de nenhuma variável
+// intermediária. A Inter é a única família do site. Combinando os dois, a fonte correta sempre é aplicada,
 // mesmo se o mecanismo da variável falhar por algum motivo.
 const inter = Inter({
   subsets: ["latin"],
@@ -25,7 +23,7 @@ const SITE_URL = "https://www.brazilianfunk.co"
 const SITE_NAME = "Brazilian Funk"
 const SITE_TITLE = "Brazilian Funk — A Distribuidora Musical do Funk"
 const SITE_DESCRIPTION =
-  "Distribuição musical especializada em Funk para artistas, DJs e gravadoras. Distribua para Spotify, Apple Music, TikTok, Amazon e mais de 40 plataformas globais."
+  "Distribuição musical especializada em Funk para artistas, DJs e gravadoras. Distribua para Spotify, Apple Music, TikTok, Amazon e mais de 50 plataformas globais."
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -87,13 +85,25 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/brazilian-funk-mark.png`,
+  // Logo com fundo (a marca branca sem fundo some no fundo branco do Google)
+  logo: `${SITE_URL}/brazilian-funk-logo-quadrado.png`,
   description: SITE_DESCRIPTION,
   email: "contato@brazilianfunk.online",
   sameAs: [
     "https://www.instagram.com/brazillianfunk/",
     "https://www.youtube.com/@BrazillianFunk",
   ],
+}
+
+// WebSite: ajuda o Google a mostrar "Brazilian Funk" como nome do site
+// no resultado de busca, no lugar do endereço.
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  alternateName: "brazilianfunk.co",
+  url: `${SITE_URL}/`,
+  inLanguage: "pt-BR",
 }
 
 export default function RootLayout({
@@ -108,10 +118,15 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
       </head>
       <body className={`${inter.className} bg-background font-sans text-foreground antialiased`}>
+        {/* Barra fina de progresso de leitura (só CSS) */}
+        <div aria-hidden="true" className="scroll-progress fixed inset-x-0 top-0 z-[70] h-[2px] bg-brand-lime" />
         <LocaleProvider>
-          <PageLoader />
           {children}
         </LocaleProvider>
       </body>

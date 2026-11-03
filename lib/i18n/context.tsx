@@ -25,6 +25,12 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  // Mantém o atributo lang do <html> igual ao idioma escolhido
+  // (leitores de tela e tradutores automáticos usam essa informação).
+  useEffect(() => {
+    document.documentElement.lang = { pt: "pt-BR", en: "en", es: "es" }[locale]
+  }, [locale])
+
   function setLocale(next: Locale) {
     setLocaleState(next)
     window.localStorage.setItem(STORAGE_KEY, next)

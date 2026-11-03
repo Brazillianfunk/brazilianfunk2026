@@ -18,13 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/termos-de-uso`,
-      lastModified: new Date("2026-08-11"),
+      lastModified: new Date("2026-11-03"),
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${BASE_URL}/politica-de-privacidade`,
-      lastModified: new Date("2026-08-11"),
+      lastModified: new Date("2026-11-03"),
       changeFrequency: "yearly",
       priority: 0.3,
     },
