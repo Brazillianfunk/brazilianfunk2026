@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils"
 // porcentagens contam de 0 até o valor, uma depois da outra, e o total fecha em 100%.
 // Porcentagens de exemplo. Sem JS ou com "reduzir movimento": tudo preenchido.
 
-const TRACK = { title: "A Hora É Essa", isrc: "BR-BFK-26-00023", cover: "/lancamentos/lancamento-23.jpg" }
+const TRACK = { title: "A Hora É Essa", cover: "/lancamentos/lancamento-23.jpg" }
 
 export function RoyaltySplitPanel() {
   const { t } = useTranslation()
@@ -71,7 +71,7 @@ export function RoyaltySplitPanel() {
         <img src={TRACK.cover} alt="" className="h-10 w-10 flex-none rounded-md object-cover" />
         <div className="min-w-0">
           <p className="truncate text-[13px] font-semibold text-foreground">{TRACK.title}</p>
-          <p className="truncate font-mono text-[11px] text-muted-foreground">ISRC {TRACK.isrc}</p>
+          <p className="truncate text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">{m.autoSplit}</p>
         </div>
         <div className="ml-auto flex">
           {rows.map((r) => (

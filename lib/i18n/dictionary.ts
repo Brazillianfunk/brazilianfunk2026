@@ -58,6 +58,7 @@ export interface Dictionary {
       feat: string
       production: string
       total: string
+      autoSplit: string
       region: string
       share: string
       presave: string
@@ -245,6 +246,7 @@ export const dictionary: Record<Locale, Dictionary> = {
           "feat": "Feat.",
           "production": "Produção",
           "total": "Total",
+          "autoSplit": "Divisão automática",
           "region": "Região",
           "share": "Participação",
           "presave": "Pré-save",
@@ -499,6 +501,7 @@ export const dictionary: Record<Locale, Dictionary> = {
           "feat": "Feat.",
           "production": "Production",
           "total": "Total",
+          "autoSplit": "Automatic split",
           "region": "Region",
           "share": "Share",
           "presave": "Pre-save",
@@ -753,6 +756,7 @@ export const dictionary: Record<Locale, Dictionary> = {
           "feat": "Feat.",
           "production": "Producción",
           "total": "Total",
+          "autoSplit": "División automática",
           "region": "Región",
           "share": "Participación",
           "presave": "Pre-save",
