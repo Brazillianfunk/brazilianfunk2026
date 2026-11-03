@@ -36,6 +36,8 @@ export function LogoMarquee({
             <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6 fill-current md:h-7 md:w-7">
               <path d={p.path} />
             </svg>
+          ) : p.maskClass ? (
+            <span aria-hidden="true" className={cn("block h-6 w-6 bg-current md:h-7 md:w-7", p.maskClass)} />
           ) : (
             <Music2 aria-hidden="true" className="h-6 w-6 md:h-7 md:w-7" />
           )}

@@ -275,3 +275,9 @@ html[data-intro-visto] .intro { display: none; }
   .cover-rise { animation: cover-rise 70s linear infinite; }
   .cover-rise-reverse { animation-direction: reverse; animation-duration: 85s; }
 }
+
+/* Logo do Deezer (PNG oficial usado como máscara, herda a cor do texto) */
+.icon-deezer {
+  -webkit-mask: url(/deezer-logo.png) center / contain no-repeat;
+  mask: url(/deezer-logo.png) center / contain no-repeat;
+}
