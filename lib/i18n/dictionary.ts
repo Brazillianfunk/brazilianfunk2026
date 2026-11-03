@@ -128,6 +128,12 @@ export interface Dictionary {
     lastUpdatedLabel: string
     updatedDate: string
     privacyIntro: string
+    termsIntro: string
+    badge: string
+    summaryTitle: string
+    summaryNote: string
+    contentsTitle: string
+    otherDoc: string
   }
   form: {
     closeAria: string
@@ -393,8 +399,14 @@ export const dictionary: Record<Locale, Dictionary> = {
     },
     "legal": {
       "lastUpdatedLabel": "Última atualização",
-      "updatedDate": "11 de agosto de 2026",
-      "privacyIntro": "Esta Política descreve como a Brazilian Funk coleta, usa, armazena e protege suas informações, em conformidade com a LGPD (Lei nº 13.709/2018), e é parte integrante dos nossos Termos de Uso."
+      "updatedDate": "3 de novembro de 2026",
+      "privacyIntro": "Esta Política explica quais dados pessoais a Brazilian Funk coleta, por que coleta, com quem compartilha e como você pode exercer seus direitos, conforme a LGPD (Lei nº 13.709/2018). Ela é parte integrante dos nossos Termos de Uso.",
+      "termsIntro": "Estes Termos explicam como funciona a distribuição das suas músicas pela Brazilian Funk: o que você autoriza, o que cobramos, como pagamos e quais regras valem para os dois lados.",
+      "badge": "Documento legal",
+      "summaryTitle": "O essencial",
+      "summaryNote": "Este resumo ajuda na leitura, mas não substitui o texto completo abaixo.",
+      "contentsTitle": "Nesta página",
+      "otherDoc": "Leia também"
     },
     "form": {
       "closeAria": "Fechar solicitação",
@@ -656,8 +668,14 @@ export const dictionary: Record<Locale, Dictionary> = {
     },
     "legal": {
       "lastUpdatedLabel": "Last updated",
-      "updatedDate": "August 11, 2026",
-      "privacyIntro": "This Policy describes how Brazilian Funk collects, uses, stores, and protects Your information, in compliance with the LGPD (Law No. 13,709/2018), and forms an integral part of our Terms of Use."
+      "updatedDate": "November 3, 2026",
+      "privacyIntro": "This Policy explains what personal data Brazilian Funk collects, why, who we share it with and how you can exercise your rights, under the LGPD (Law No. 13,709/2018). It is part of our Terms of Use.",
+      "termsIntro": "These Terms explain how distributing your music with Brazilian Funk works: what you authorize, what we charge, how we pay and which rules apply to both sides.",
+      "badge": "Legal document",
+      "summaryTitle": "The essentials",
+      "summaryNote": "This summary helps you read, but it does not replace the full text below.",
+      "contentsTitle": "On this page",
+      "otherDoc": "Also read"
     },
     "form": {
       "closeAria": "Close request",
@@ -919,8 +937,14 @@ export const dictionary: Record<Locale, Dictionary> = {
     },
     "legal": {
       "lastUpdatedLabel": "Última actualización",
-      "updatedDate": "11 de agosto de 2026",
-      "privacyIntro": "Esta Política describe cómo Brazilian Funk recopila, usa, almacena y protege su información, de conformidad con la LGPD (Ley n.º 13.709/2018), y es parte integrante de nuestros Términos de Uso."
+      "updatedDate": "3 de noviembre de 2026",
+      "privacyIntro": "Esta Política explica qué datos personales recopila Brazilian Funk, para qué, con quién los comparte y cómo puedes ejercer tus derechos, conforme a la LGPD (Ley nº 13.709/2018). Forma parte de nuestros Términos de Uso.",
+      "termsIntro": "Estos Términos explican cómo funciona la distribución de tu música con Brazilian Funk: qué autorizas, qué cobramos, cómo pagamos y qué reglas valen para ambas partes.",
+      "badge": "Documento legal",
+      "summaryTitle": "Lo esencial",
+      "summaryNote": "Este resumen ayuda a la lectura, pero no sustituye el texto completo a continuación.",
+      "contentsTitle": "En esta página",
+      "otherDoc": "Lee también"
     },
     "form": {
       "closeAria": "Cerrar solicitud",
