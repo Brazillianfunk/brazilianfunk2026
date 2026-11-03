@@ -242,7 +242,7 @@ export const dictionary: Record<Locale, Dictionary> = {
         "Disponível nas Lojas"
       ],
       "stepDescriptions": [
-        "Você concluiu o preenchimento e envio das informações.",
+        "Você conclui o preenchimento e o envio das informações do lançamento.",
         "O sistema processa e verifica as informações do lançamento antes de enviá-lo às plataformas.",
         "O lançamento é enviado para Spotify, Apple Music, TikTok e mais de 50 plataformas.",
         "Sua música fica disponível nas lojas em até 24 horas."
@@ -512,7 +512,7 @@ export const dictionary: Record<Locale, Dictionary> = {
         "Live on Stores"
       ],
       "stepDescriptions": [
-        "You have completed filling in and submitting the information.",
+        "You complete filling in and submitting the release information.",
         "The system processes and checks the release information before sending it to the platforms.",
         "Your release is sent to Spotify, Apple Music, TikTok and 50+ platforms.",
         "Your music goes live on stores within 24 hours."
@@ -782,7 +782,7 @@ export const dictionary: Record<Locale, Dictionary> = {
         "Disponible en las Tiendas"
       ],
       "stepDescriptions": [
-        "Completaste el llenado y el envío de la información.",
+        "Completas el llenado y el envío de la información del lanzamiento.",
         "El sistema procesa y verifica la información del lanzamiento antes de enviarlo a las plataformas.",
         "El lanzamiento se envía a Spotify, Apple Music, TikTok y más de 50 plataformas.",
         "Tu música queda disponible en las tiendas en hasta 24 horas."
