@@ -5,7 +5,7 @@ import type { PlatformIcon } from "@/components/ui/platform-icons"
 // Faixa de logos em movimento contínuo.
 // Referências no 21st.dev: "Infinite Slider" (ibelick) e "Logo Cloud
 // Marquee" / "Logo Marquee": loop infinito sem costura, bordas que somem em
-// degradê e pausa ao passar o mouse ou focar. Diferente do carrossel antigo,
+// degradê, em loop contínuo (não pausa no mouse). Diferente do carrossel antigo,
 // que mostrava só 4 nomes por vez, aqui todas as plataformas passam.
 //
 // Só CSS (sem JavaScript a cada quadro). Com "reduzir movimento" ativo, a
@@ -55,7 +55,7 @@ export function LogoMarquee({
       )}
     >
       <div
-        className="flex w-max animate-[logo-marquee_var(--marquee-duration)_linear_infinite] group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none"
+        className="flex w-max animate-[logo-marquee_var(--marquee-duration)_linear_infinite] motion-reduce:w-full motion-reduce:animate-none"
         style={{ "--marquee-duration": `${duration}s`, animationDirection: reverse ? "reverse" : "normal" } as React.CSSProperties}
       >
         {row(0)}

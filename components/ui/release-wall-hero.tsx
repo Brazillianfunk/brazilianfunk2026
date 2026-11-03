@@ -88,7 +88,7 @@ const css = `
 .rwh-col{position:relative;min-width:0;animation:rwh-rise 1100ms var(--rwh-ease) both;animation-delay:calc(var(--ci) * 90ms)}
 .rwh-track{display:flex;flex-direction:column;will-change:transform;animation:rwh-up var(--rwh-dur) linear infinite;animation-delay:var(--rwh-phase)}
 .rwh-col[data-dir="down"] .rwh-track{animation-name:rwh-down}
-.rwh[data-offscreen] .rwh-track,.rwh-wall:hover .rwh-track,.rwh-wall:focus-within .rwh-track,.rwh[data-offscreen] .rwh-strip-track,.rwh-strip:focus-within .rwh-strip-track{animation-play-state:paused}
+.rwh[data-offscreen] .rwh-track,.rwh[data-offscreen] .rwh-strip-track{animation-play-state:paused}
 .rwh-card{position:relative;margin:0 0 var(--rwh-gap);aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--rwh-deep);transition:transform 260ms var(--rwh-ease),opacity 260ms ease;outline:none}
 .rwh-card img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:opacity 300ms ease,transform 300ms var(--rwh-ease)}
 .rwh-card:hover,.rwh-card:focus-visible{transform:translateY(-4px) scale(1.02);z-index:2}
