@@ -121,7 +121,7 @@ export const legalTerms: Record<Locale, LegalDoc> = {
         paragraphs: [
           "Os Royalties pertencem ao Usuário, titular dos direitos sobre as Obras. A Brazilian Funk os recebe das DSPs na qualidade de mandatária do Usuário, exclusivamente para apuração e repasse, sem que haja transferência de titularidade desses valores, exceto quanto à Comissão.",
           "Para todos os fins contratuais, contábeis e fiscais, a receita da Brazilian Funk corresponde apenas à Comissão de 15%. O valor restante é patrimônio do Usuário sob gestão da Brazilian Funk até o repasse.",
-          "Cada Parte é responsável pelos tributos incidentes sobre a sua própria receita. A Brazilian Funk poderá solicitar documentos e dados fiscais (como CPF ou CNPJ) necessários ao cumprimento de suas obrigações legais e reter valores nos casos em que a lei exigir.",
+          "Cada Parte é responsável pelos tributos incidentes sobre a sua própria receita. A Brazilian Funk ou seus meios de pagamento poderão solicitar verificação de identidade e documentos e dados fiscais (como CPF ou CNPJ) antes de liberar repasses e reter valores nos casos em que a lei exigir.",
           "A Brazilian Funk mantém registros que permitem identificar, por DSP, por Obra e por Usuário, os valores recebidos e a Comissão aplicada, e os disponibiliza no painel ou mediante solicitação.",
         ],
       },
@@ -310,7 +310,7 @@ export const legalTerms: Record<Locale, LegalDoc> = {
         paragraphs: [
           "Royalties belong to the User, who owns the rights in the Works. Brazilian Funk receives them from DSPs as the User's agent, solely to calculate and pay them out, with no transfer of ownership of those amounts except for the Commission.",
           "For all contractual, accounting and tax purposes, Brazilian Funk's revenue is only the 15% Commission. The remaining amount belongs to the User and is held by Brazilian Funk until paid out.",
-          "Each Party is responsible for the taxes on its own revenue. Brazilian Funk may request tax documents and details (such as Brazilian CPF or CNPJ numbers) needed to meet its legal obligations and may withhold amounts where the law requires.",
+          "Each Party is responsible for the taxes on its own revenue. Brazilian Funk or its payment providers may request identity verification and tax documents and details (such as Brazilian CPF or CNPJ numbers) before releasing payouts, and may withhold amounts where the law requires.",
           "Brazilian Funk keeps records identifying, by DSP, Work and User, the amounts received and the Commission applied, and makes them available in the dashboard or on request.",
         ],
       },
@@ -499,7 +499,7 @@ export const legalTerms: Record<Locale, LegalDoc> = {
         paragraphs: [
           "Las Regalías pertenecen al Usuario, titular de los derechos sobre las Obras. Brazilian Funk las recibe de las DSPs como mandataria del Usuario, exclusivamente para calcularlas y transferirlas, sin que haya transferencia de titularidad de esos valores, salvo en cuanto a la Comisión.",
           "Para todos los efectos contractuales, contables y fiscales, el ingreso de Brazilian Funk corresponde solo a la Comisión del 15%. El valor restante pertenece al Usuario y queda bajo gestión de Brazilian Funk hasta su transferencia.",
-          "Cada Parte es responsable de los impuestos sobre sus propios ingresos. Brazilian Funk podrá solicitar documentos y datos fiscales necesarios para cumplir sus obligaciones legales y retener valores cuando la ley lo exija.",
+          "Cada Parte es responsable de los impuestos sobre sus propios ingresos. Brazilian Funk o sus medios de pago podrán solicitar verificación de identidad y documentos y datos fiscales antes de liberar pagos, y retener valores cuando la ley lo exija.",
           "Brazilian Funk mantiene registros que permiten identificar, por DSP, por Obra y por Usuario, los valores recibidos y la Comisión aplicada, y los pone a disposición en el panel o a pedido.",
         ],
       },
