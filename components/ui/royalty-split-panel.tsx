@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 // Card "Divisão de Royalties": uma faixa real do catálogo e quem recebe,
 // no formato da tela de split da plataforma (referência: Symphonic
 // SplitShare + Leads Data Table do 21st.dev). Ao aparecer na tela, as
-// porcentagens são "digitadas" uma a uma e o total fecha em 100%.
+// porcentagens contam de 0 até o valor, uma depois da outra, e o total fecha em 100%.
 // Porcentagens de exemplo. Sem JS ou com "reduzir movimento": tudo preenchido.
 
 const TRACK = { title: "A Hora É Essa", isrc: "BR-BFK-26-00023", cover: "/lancamentos/lancamento-23.jpg" }
@@ -23,43 +23,47 @@ export function RoyaltySplitPanel() {
   ]
 
   const ref = useRef<HTMLDivElement>(null)
-  // null = estado final (SSR / sem animação); número = quantas linhas já "digitadas"
-  const [filled, setFilled] = useState<number | null>(null)
-  const [typing, setTyping] = useState(-1)
+  // null = valores finais (SSR, sem JS ou "reduzir movimento"); array = contagem em andamento
+  const [vals, setVals] = useState<number[] | null>(null)
 
   useEffect(() => {
     const el = ref.current
     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     const r = el.getBoundingClientRect()
-    if (r.top < window.innerHeight) return // já está visível: fica preenchido
-    setFilled(0)
-    const timers: number[] = []
+    if (r.top < window.innerHeight) return // já está visível ao carregar: fica no valor final
+    setVals(rows.map(() => 0))
+    let raf = 0
     const io = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return
         io.disconnect()
-        rows.forEach((_, i) => {
-          timers.push(window.setTimeout(() => setTyping(i), 250 + i * 550))
-          timers.push(
-            window.setTimeout(() => {
-              setFilled(i + 1)
-              setTyping(-1)
-            }, 250 + i * 550 + 260)
-          )
-        })
+        const start = performance.now()
+        const DUR = 900
+        const STAGGER = 220
+        const tick = (now: number) => {
+          let running = false
+          const next = rows.map((row, i) => {
+            const p = Math.min(1, Math.max(0, (now - start - i * STAGGER) / DUR))
+            if (p < 1) running = true
+            return Math.round((1 - Math.pow(1 - p, 3)) * row.pct)
+          })
+          setVals(next)
+          if (running) raf = requestAnimationFrame(tick)
+        }
+        raf = requestAnimationFrame(tick)
       },
       { threshold: 0.5 }
     )
     io.observe(el)
     return () => {
       io.disconnect()
-      timers.forEach(clearTimeout)
+      cancelAnimationFrame(raf)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const done = filled === null ? rows.length : filled
-  const total = rows.slice(0, done).reduce((s, r) => s + r.pct, 0)
+  const current = vals ?? rows.map((r) => r.pct)
+  const total = current.reduce((sum, v) => sum + v, 0)
 
   return (
     <div ref={ref} aria-hidden="true" className="overflow-hidden rounded-2xl border border-border text-xs">
@@ -77,7 +81,6 @@ export function RoyaltySplitPanel() {
       </div>
 
       {rows.map((r, i) => {
-        const shown = i < done ? `${r.pct}%` : typing === i ? `${String(r.pct)[0]}%` : "0%"
         return (
           <div key={r.name} className="grid grid-cols-[28px_1fr_64px] items-center gap-3 border-b border-white/5 px-3 py-2.5">
             <img src={r.img} alt="" className="h-7 w-7 rounded-full object-cover" />
@@ -87,11 +90,11 @@ export function RoyaltySplitPanel() {
             </div>
             <span
               className={cn(
-                "relative rounded-lg border border-white/15 bg-background px-2 py-1.5 text-right font-bold tabular-nums text-foreground transition-colors",
-                typing === i && "border-white/40"
+                "rounded-lg border bg-background px-2 py-1.5 text-right font-bold tabular-nums text-foreground transition-colors duration-300",
+                current[i] > 0 && current[i] < r.pct ? "border-white/40" : "border-white/15"
               )}
             >
-              {shown}
+              {current[i]}%
             </span>
           </div>
         )
