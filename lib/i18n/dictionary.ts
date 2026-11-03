@@ -261,7 +261,7 @@ export const dictionary: Record<Locale, Dictionary> = {
         },
         {
           "title": "Divisão de Royalties",
-          "desc": "Você define quanto cada um recebe na faixa e o pagamento cai separado para cada artista, feat. e produtor. Sem planilha e sem ninguém precisar repassar dinheiro."
+          "desc": "Defina a porcentagem de cada colaborador. A divisão é feita de forma automática, e os colaboradores recebem um e-mail informando a conclusão da divisão."
         },
         {
           "title": "Relatórios e Dados",
@@ -515,7 +515,7 @@ export const dictionary: Record<Locale, Dictionary> = {
         },
         {
           "title": "Royalty Splits",
-          "desc": "You decide how much each person gets on the track, and every artist, feature and producer is paid separately. No spreadsheets, and no one has to pass money along."
+          "desc": "Set the percentage for each collaborator. The split is done automatically, and collaborators get an email letting them know once it is complete."
         },
         {
           "title": "Reports & Data",
@@ -769,7 +769,7 @@ export const dictionary: Record<Locale, Dictionary> = {
         },
         {
           "title": "División de Regalías",
-          "desc": "Tú defines cuánto recibe cada uno en la canción y el pago llega por separado a cada artista, invitado y productor. Sin planillas y sin que nadie tenga que repartir el dinero."
+          "desc": "Define el porcentaje de cada colaborador. La división se hace de forma automática y los colaboradores reciben un correo informando que la división se completó."
         },
         {
           "title": "Informes y Datos",
