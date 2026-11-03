@@ -26,7 +26,7 @@ export const legalTerms: Record<Locale, LegalDoc> = {
         paragraphs: [
           "Estes Termos de Uso (“Termos”) regulam a relação entre a Brazilian Funk, distribuidora musical digital (“Brazilian Funk”, “nós”), e a pessoa física ou jurídica que utiliza seus serviços (“Você” ou “Usuário”), em conjunto denominadas “Partes”.",
           "Ao preencher a Solicitação de Acesso, criar uma conta ou utilizar a Plataforma, Você declara que leu, entendeu e aceita estes Termos e a Política de Privacidade, que é parte integrante deles. Se não concordar, não utilize os Serviços.",
-          "Para utilizar os Serviços, Você deve ter no mínimo 18 anos e plena capacidade civil. Quem age em nome de gravadora, selo ou empresa declara ter poderes para vinculá-la a estes Termos.",
+          "Para utilizar os Serviços, Você deve ter no mínimo 18 anos e plena capacidade civil. Quem age em nome de gravadora, selo ou artista, como empresários e representantes, declara ter poderes para vinculá-los a estes Termos.",
         ],
       },
       {
@@ -215,7 +215,7 @@ export const legalTerms: Record<Locale, LegalDoc> = {
         paragraphs: [
           "These Terms of Use (“Terms”) govern the relationship between Brazilian Funk, a digital music distributor (“Brazilian Funk”, “we”), and the individual or company that uses its services (“You” or “User”), together the “Parties”.",
           "By completing the Access Request, creating an account or using the Platform, You confirm that You have read, understood and accept these Terms and the Privacy Policy, which is part of them. If You do not agree, do not use the Services.",
-          "To use the Services You must be at least 18 years old and legally capable. Anyone acting on behalf of a label, imprint or company represents that they have authority to bind it to these Terms.",
+          "To use the Services You must be at least 18 years old and legally capable. Anyone acting on behalf of a label, imprint or artist, such as managers and representatives, represents that they have authority to bind them to these Terms.",
         ],
       },
       {
@@ -404,7 +404,7 @@ export const legalTerms: Record<Locale, LegalDoc> = {
         paragraphs: [
           "Estos Términos de Uso (“Términos”) regulan la relación entre Brazilian Funk, distribuidora de música digital (“Brazilian Funk”, “nosotros”), y la persona física o jurídica que utiliza sus servicios (“Tú” o “Usuario”), en conjunto las “Partes”.",
           "Al completar la Solicitud de Acceso, crear una cuenta o usar la Plataforma, declaras que leíste, entendiste y aceptas estos Términos y la Política de Privacidad, que forma parte de ellos. Si no estás de acuerdo, no utilices los Servicios.",
-          "Para usar los Servicios debes tener al menos 18 años y plena capacidad legal. Quien actúa en nombre de una disquera, sello o empresa declara tener facultades para obligarla con estos Términos.",
+          "Para usar los Servicios debes tener al menos 18 años y plena capacidad legal. Quien actúa en nombre de una disquera, sello o artista, como mánagers y representantes, declara tener facultades para obligarlos con estos Términos.",
         ],
       },
       {
