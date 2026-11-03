@@ -66,6 +66,7 @@ export function RoyaltySplitPanel() {
   const total = current.reduce((sum, v) => sum + v, 0)
 
   return (
+    <div>
     <div ref={ref} aria-hidden="true" className="overflow-hidden rounded-2xl border border-border text-xs">
       <div className="flex items-center gap-3 border-b border-border bg-white/[0.03] p-3">
         <img src={TRACK.cover} alt="" className="h-10 w-10 flex-none rounded-md object-cover" />
@@ -106,6 +107,8 @@ export function RoyaltySplitPanel() {
           {total}%{total === 100 && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
         </span>
       </div>
+    </div>
+    <p className="mt-2 text-[11px] leading-snug text-muted-foreground/80">{m.illustrativeSplit}</p>
     </div>
   )
 }

@@ -59,6 +59,7 @@ export interface Dictionary {
       production: string
       total: string
       autoSplit: string
+      illustrativeSplit: string
       region: string
       share: string
       presave: string
@@ -261,6 +262,7 @@ export const dictionary: Record<Locale, Dictionary> = {
           "production": "Produção",
           "total": "Total",
           "autoSplit": "Divisão automática",
+          "illustrativeSplit": "Exemplo ilustrativo. As porcentagens não representam a divisão real da faixa.",
           "region": "Região",
           "share": "Participação",
           "presave": "Pré-save",
@@ -530,6 +532,7 @@ export const dictionary: Record<Locale, Dictionary> = {
           "production": "Production",
           "total": "Total",
           "autoSplit": "Automatic split",
+          "illustrativeSplit": "Illustrative example. The percentages do not represent the track's actual split.",
           "region": "Region",
           "share": "Share",
           "presave": "Pre-save",
@@ -799,6 +802,7 @@ export const dictionary: Record<Locale, Dictionary> = {
           "production": "Producción",
           "total": "Total",
           "autoSplit": "División automática",
+          "illustrativeSplit": "Ejemplo ilustrativo. Los porcentajes no representan la división real de la canción.",
           "region": "Región",
           "share": "Participación",
           "presave": "Pre-save",
