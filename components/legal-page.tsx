@@ -87,21 +87,6 @@ export default function LegalPage({ document }: LegalPageProps) {
             <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">{intro}</p>
           </header>
 
-          {/* Resumo em linguagem simples */}
-          <section aria-labelledby="resumo" className="reveal mt-12 rounded-[24px] border border-border bg-card p-6 md:p-10">
-            <h2 id="resumo" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-              {t.legal.summaryTitle}
-            </h2>
-            <ul className="mt-6 grid gap-x-10 md:grid-cols-2">
-              {doc.summary.map((item, i) => (
-                <li key={i} className="border-t border-border py-5 text-base leading-relaxed text-foreground">
-                  {withLinks(item)}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-3 text-xs text-muted-foreground">{t.legal.summaryNote}</p>
-          </section>
-
           <div className="mt-16">
             {/* Texto completo */}
             <div className="max-w-3xl">
