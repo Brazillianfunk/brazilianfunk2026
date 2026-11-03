@@ -13,7 +13,6 @@ interface LegalPageProps {
   document: "termos" | "privacidade"
 }
 
-const pad = (n: number) => String(n).padStart(2, "0")
 const EMAIL = /([\w.+-]+@[\w-]+(?:\.[\w-]+)+)/g
 
 // Deixa os e-mails do texto clicáveis.
@@ -36,10 +35,9 @@ function renderBody(paragraphs: string[]) {
   const flush = () => {
     if (!list.length) return
     out.push(
-      <ul key={`ul-${out.length}`} className="space-y-3">
+      <ul key={`ul-${out.length}`} className="list-disc space-y-2 pl-5 marker:text-white/30">
         {list.map((item, i) => (
-          <li key={i} className="relative pl-6 text-base leading-relaxed text-muted-foreground">
-            <span aria-hidden="true" className="absolute left-0 top-[0.7em] h-px w-3 bg-brand-lime" />
+          <li key={i} className="pl-1 text-base leading-relaxed text-muted-foreground">
             {withLinks(item)}
           </li>
         ))}
@@ -83,7 +81,7 @@ export default function LegalPage({ document }: LegalPageProps) {
           <header className="reveal max-w-3xl">
             <SectionBadge>{t.legal.badge}</SectionBadge>
             <h1 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl">{title}</h1>
-            <p className="mt-4 font-mono text-sm text-muted-foreground">
+            <p className="mt-4 text-sm text-muted-foreground">
               {t.legal.lastUpdatedLabel}: {t.legal.updatedDate}
             </p>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">{intro}</p>
@@ -94,15 +92,14 @@ export default function LegalPage({ document }: LegalPageProps) {
             <h2 id="resumo" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
               {t.legal.summaryTitle}
             </h2>
-            <ul className="mt-6 grid gap-6 md:grid-cols-2 md:gap-x-10">
+            <ul className="mt-6 grid gap-x-10 md:grid-cols-2">
               {doc.summary.map((item, i) => (
-                <li key={i} className="flex gap-4">
-                  <span className="font-mono text-sm font-semibold tabular-nums text-brand-lime">{pad(i + 1)}</span>
-                  <p className="text-base leading-relaxed text-foreground">{withLinks(item)}</p>
+                <li key={i} className="border-t border-border py-5 text-base leading-relaxed text-foreground">
+                  {withLinks(item)}
                 </li>
               ))}
             </ul>
-            <p className="mt-8 border-t border-border pt-5 text-xs text-muted-foreground">{t.legal.summaryNote}</p>
+            <p className="mt-3 text-xs text-muted-foreground">{t.legal.summaryNote}</p>
           </section>
 
           <div className="mt-16">
@@ -114,8 +111,9 @@ export default function LegalPage({ document }: LegalPageProps) {
                   id={`secao-${i + 1}`}
                   className="scroll-mt-28 border-t border-border py-10 first:border-t-0 first:pt-0"
                 >
-                  <p className="font-mono text-xs tabular-nums text-muted-foreground">{pad(i + 1)}</p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">{section.title}</h2>
+                  <h2 className="text-2xl font-semibold tracking-tight text-foreground">
+                    {i + 1}. {section.title}
+                  </h2>
                   <div className="mt-5 space-y-4">{renderBody(section.paragraphs)}</div>
                 </section>
               ))}
