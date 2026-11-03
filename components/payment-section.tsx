@@ -165,7 +165,6 @@ export default function PaymentSection() {
               <p className="text-base font-bold tabular-nums">{money.format(850)}</p>
             </div>
           </div>
-          <p className="mt-3 text-center text-xs text-muted-foreground">{t.payment.illustrative}</p>
         </div>
       </div>
     </section>

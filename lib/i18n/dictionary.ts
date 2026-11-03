@@ -34,7 +34,6 @@ export interface Dictionary {
     features: { title: string; desc: string }[]
     recentLabel: string
     today: string
-    illustrative: string
     notifTitle: string
     notifAmount: string
     sendTo: string
@@ -62,7 +61,6 @@ export interface Dictionary {
       listenNow: string
       generated: string
       more: string
-      illustrative: string
     }
     title: string
     description: string
@@ -210,7 +208,6 @@ export const dictionary: Record<Locale, Dictionary> = {
       ],
       "recentLabel": "Última transação",
       "today": "Hoje",
-      "illustrative": "Valores ilustrativos",
       "notifTitle": "Pagamento recebido",
       "notifAmount": "US$ 850,00",
       "sendTo": "Receber em"
@@ -248,7 +245,6 @@ export const dictionary: Record<Locale, Dictionary> = {
           "listenNow": "Ouvir agora",
           "generated": "Gerado automaticamente",
           "more": "E muito mais no seu painel",
-          "illustrative": "Valores ilustrativos"
         },
       "title": "Ferramentas para potencializar seu catálogo musical",
       "description": "Tudo que você precisa para acompanhar, proteger e maximizar o retorno das suas músicas, em um só lugar.",
@@ -463,7 +459,6 @@ export const dictionary: Record<Locale, Dictionary> = {
       ],
       "recentLabel": "Last transaction",
       "today": "Today",
-      "illustrative": "Illustrative values",
       "notifTitle": "Payment received",
       "notifAmount": "$850.00",
       "sendTo": "Receive via"
@@ -501,7 +496,6 @@ export const dictionary: Record<Locale, Dictionary> = {
           "listenNow": "Listen now",
           "generated": "Generated automatically",
           "more": "And much more in your dashboard",
-          "illustrative": "Illustrative values"
         },
       "title": "Tools to power up your music catalog",
       "description": "Everything you need to track, protect, and maximize the return on your music, all in one place.",
@@ -716,7 +710,6 @@ export const dictionary: Record<Locale, Dictionary> = {
       ],
       "recentLabel": "Última transacción",
       "today": "Hoy",
-      "illustrative": "Valores ilustrativos",
       "notifTitle": "Pago recibido",
       "notifAmount": "US$ 850,00",
       "sendTo": "Recibir en"
@@ -754,7 +747,6 @@ export const dictionary: Record<Locale, Dictionary> = {
           "listenNow": "Escuchar ahora",
           "generated": "Generado automáticamente",
           "more": "Y mucho más en tu panel",
-          "illustrative": "Valores ilustrativos"
         },
       "title": "Herramientas para potenciar tu catálogo musical",
       "description": "Todo lo que necesitas para monitorear, proteger y maximizar el retorno de tu música, en un solo lugar.",
