@@ -3,6 +3,7 @@ export interface Dictionary {
     distribuicao: string
     ferramentas: string
     noticias: string
+    artigos: string
     entrar: string
     comecar: string
   }
@@ -193,6 +194,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "distribuicao": "Distribuição",
       "ferramentas": "Ferramentas",
       "noticias": "Notícias",
+      "artigos": "Artigos",
       "entrar": "Entrar",
       "comecar": "Solicitar acesso"
     },
@@ -464,6 +466,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "distribuicao": "Distribution",
       "ferramentas": "Tools",
       "noticias": "News",
+      "artigos": "Articles",
       "entrar": "Sign In",
       "comecar": "Request access"
     },
@@ -735,6 +738,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       "distribuicao": "Distribución",
       "ferramentas": "Herramientas",
       "noticias": "Noticias",
+      "artigos": "Artículos",
       "entrar": "Iniciar sesión",
       "comecar": "Solicitar acceso"
     },

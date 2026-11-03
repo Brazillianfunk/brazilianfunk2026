@@ -30,6 +30,7 @@ export default function SiteNavbar() {
     { name: t.nav.distribuicao, link: "/#distribuicao" },
     { name: t.nav.ferramentas, link: "/#ferramentas" },
     { name: t.nav.noticias, link: "/#noticias" },
+    { name: t.nav.artigos, link: "/artigos" },
   ]
 
   return (
