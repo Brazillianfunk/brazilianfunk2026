@@ -105,7 +105,7 @@ export interface Dictionary {
   }
   faq: {
     badge: string
-    whatsapp: string
+    contactEmail: string
     heading: string
     subtitle: string
     ctaText: string
@@ -361,7 +361,7 @@ export const dictionary: Record<Locale, Dictionary> = {
     },
     "faq": {
       "badge": "Dúvidas",
-      "whatsapp": "Falar no WhatsApp",
+      "contactEmail": "Envie um e-mail",
       "heading": "Perguntas frequentes",
       "subtitle": "Tire suas dúvidas sobre distribuição, prazos e royalties.",
       "ctaText": "Quer distribuir com a Brazilian Funk?",
@@ -631,7 +631,7 @@ export const dictionary: Record<Locale, Dictionary> = {
     },
     "faq": {
       "badge": "FAQ",
-      "whatsapp": "Chat on WhatsApp",
+      "contactEmail": "Send us an email",
       "heading": "Frequently asked questions",
       "subtitle": "Get your questions answered about distribution, timelines, and royalties.",
       "ctaText": "Want to distribute with Brazilian Funk?",
@@ -901,7 +901,7 @@ export const dictionary: Record<Locale, Dictionary> = {
     },
     "faq": {
       "badge": "Dudas",
-      "whatsapp": "Hablar por WhatsApp",
+      "contactEmail": "Envíanos un correo",
       "heading": "Preguntas frecuentes",
       "subtitle": "Resuelve tus dudas sobre distribución, plazos y regalías.",
       "ctaText": "¿Quieres distribuir con Brazilian Funk?",

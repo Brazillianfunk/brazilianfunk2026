@@ -18,8 +18,7 @@ import { SectionBadge } from "@/components/ui/section-badge"
 
 const CTA_COVERS = [1, 2, 3, 5, 6, 8, 9, 11, 12, 14].map((n) => `/lancamentos/lancamento-${String(n).padStart(2, "0")}.jpg`)
 
-const WHATSAPP_URL =
-  "https://api.whatsapp.com/send/?phone=5592981755727&text=Ol%C3%A1%2C+Brazilian+Funk.+Podem+me+ajudar+%3F&type=phone_number&app_absent=0"
+const CONTACT_EMAIL_URL = "mailto:contato@brazilianfunk.online"
 
 export default function FaqSection() {
   const { t } = useTranslation()
@@ -31,8 +30,8 @@ export default function FaqSection() {
             <SectionBadge>{t.faq.badge}</SectionBadge>
             <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">{t.faq.heading}</h2>
             <p className="mt-6 max-w-sm text-base text-muted-foreground md:text-lg">{t.faq.subtitle}</p>
-            <Button href={WHATSAPP_URL} variant="secondary" className="mt-8" target="_blank" rel="noopener noreferrer">
-              {t.faq.whatsapp}
+            <Button href={CONTACT_EMAIL_URL} variant="secondary" className="mt-8">
+              {t.faq.contactEmail}
             </Button>
           </div>
 
